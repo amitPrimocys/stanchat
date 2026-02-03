@@ -10,13 +10,6 @@ plugins {
     id("com.google.gms.google-services")
 }
 
-// // Load keystore properties
-// val keystoreProperties = Properties()
-// val keystorePropertiesFile = rootProject.file("key.properties")
-// if (keystorePropertiesFile.exists()) {
-//     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-// }
-
 android {
     namespace = "com.stanchat.app"
     compileSdk = 36
@@ -46,27 +39,12 @@ android {
         // Enable multidex support for larger apps
         multiDexEnabled = true
     }
-
-    signingConfigs {
-        // create("release") {
-        //     if (keystorePropertiesFile.exists() && keystoreProperties["storeFile"] != null) {
-        //         val storeFilePath = keystoreProperties["storeFile"] as String
-        //         val resolvedStoreFile = rootProject.file(storeFilePath)
-        //         if (resolvedStoreFile.exists()) {
-        //             keyAlias = keystoreProperties["keyAlias"] as String
-        //             keyPassword = keystoreProperties["keyPassword"] as String
-        //             storeFile = resolvedStoreFile
-        //             storePassword = keystoreProperties["storePassword"] as String
-        //         }
-        //     }
-        // }
-    }
     
     buildTypes {
         release {
             // Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 }

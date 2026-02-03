@@ -1,0 +1,711 @@
+// import 'dart:io';
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
+// import 'package:whoxa/featuers/auth/provider/auth_provider.dart';
+// import 'package:whoxa/featuers/chat/data/chat_list_model.dart' as chatlist;
+// import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
+// import 'package:whoxa/featuers/chat/widgets/chat_test.dart';
+// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+// import 'package:whoxa/utils/preference_key/preference_key.dart';
+// import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+
+// class ChatScreen extends StatefulWidget {
+//   final int chatId;
+//   final chatlist.PeerUserData? peerUser;
+
+//   const ChatScreen({
+//     Key? key,
+//     required this.chatId,
+//     this.peerUser,
+//   }) : super(key: key);
+
+//   @override
+//   State<ChatScreen> createState() => _ChatScreenState();
+// }
+
+// class _ChatScreenState extends State<ChatScreen> {
+//   final TextEditingController _messageController = TextEditingController();
+//   final ScrollController _scrollController = ScrollController();
+//   final ImagePicker _imagePicker = ImagePicker();
+//   bool _isAttachmentMenuOpen = false;
+//   bool _isTyping = false;
+
+//   @override
+//   void initState() {
+//     super.initState();
+
+//     // Initialize chat
+//     Future.microtask(() {
+//       final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+//       chatProvider.setCurrentChat(chatId: widget.chatId);
+
+//       // Set up scroll listener for pagination
+//       _scrollController.addListener(_scrollListener);
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     // Clean up controllers
+//     _messageController.dispose();
+//     _scrollController.removeListener(_scrollListener);
+//     _scrollController.dispose();
+
+//     // Reset current chat
+//     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+//     chatProvider.resetCurrentChat();
+
+//     super.dispose();
+//   }
+
+//   // Scroll listener for pagination
+//   void _scrollListener() {
+//     if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent * 0.9) {
+//       // Load more messages when near the end of the list
+//       final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+//       if (!chatProvider.isChatLoading && chatProvider.hasMoreMessages) {
+//         chatProvider.loadMoreMessages();
+//       }
+//     }
+//   }
+
+//   // Send text message
+//   void _sendMessage() {
+//     final message = _messageController.text.trim();
+//     if (message.isEmpty) return;
+
+//     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+//     chatProvider.sendMessage(messageContent: message);
+
+//     // Clear input field
+//     _messageController.clear();
+
+//     // Stop typing indicator
+//     _updateTypingStatus(false);
+
+//     // Scroll to bottom
+//     _scrollToBottom();
+//   }
+
+//   // Pick and send image
+//   Future<void> _pickAndSendImage() async {
+//     final ImagePicker picker = ImagePicker();
+//     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+//     if (image != null) {
+//       // Implement image upload and sending
+//       // This would involve:
+//       // 1. Upload the image to your server
+//       // 2. Get the image URL
+//       // 3. Send a message with the image URL
+//     }
+
+//     // Close attachment menu
+//     setState(() {
+//       _isAttachmentMenuOpen = false;
+//     });
+//   }
+
+//   // Pick and send video
+//   Future<void> _pickAndSendVideo() async {
+//     final ImagePicker picker = ImagePicker();
+//     final XFile? video = await picker.pickVideo(source: ImageSource.gallery);
+
+//     if (video != null) {
+//       // Implement video upload and sending
+//     }
+
+//     // Close attachment menu
+//     setState(() {
+//       _isAttachmentMenuOpen = false;
+//     });
+//   }
+
+//   // Handle typing status change
+//   void _updateTypingStatus(bool isTyping) {
+//     if (_isTyping != isTyping) {
+//       _isTyping = isTyping;
+
+//       final chatProvider = Provider.of<ChatProvider>(context, listen: false);
+//       chatProvider.sendTypingIndicator(
+//         chatId: widget.chatId,
+//         isTyping: isTyping,
+//       );
+//     }
+//   }
+
+//   // Scroll to bottom of the list
+//   void _scrollToBottom() {
+//     if (_scrollController.hasClients) {
+//       _scrollController.animateTo(
+//         0,
+//         duration: const Duration(milliseconds: 300),
+//         curve: Curves.easeOut,
+//       );
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: _buildAppBar(),
+//       body: Column(
+//         children: [
+//           // Messages area
+//           Expanded(
+//             child: Consumer<ChatProvider>(
+//               builder: (context, chatProvider, child) {
+//                 // Show error if any
+//                 if (chatProvider.error != null) {
+//                   return Center(
+//                     child: AppMessageBox(
+//                       message: chatProvider.error!,
+//                       onRetry: () {
+//                         chatProvider.clearError();
+//                         chatProvider.getChatMessages(reset: true);
+//                       },
+//                     ),
+//                   );
+//                 }
+
+//                 // Show loading indicator for first load
+//                 if (chatProvider.isChatLoading &&
+//                     (chatProvider.chatsData.records == null ||
+//                         chatProvider.chatsData.records!.isEmpty)) {
+//                   return const Center(
+//                     child: AppProgressIndicator(),
+//                   );
+//                 }
+
+//                 // Show no messages found
+//                 if (chatProvider.chatsData.records == null ||
+//                     chatProvider.chatsData.records!.isEmpty) {
+//                   return const NoDataFound(
+//                     message: "No messages yet",
+//                     icon: Icons.chat_bubble_outline,
+//                   );
+//                 }
+
+//                 // Show messages
+//                 return Stack(
+//                   children: [
+//                     // Message list
+//                     ListView.builder(
+//                       controller: _scrollController,
+//                       reverse: true,
+//                       padding: const EdgeInsets.all(16),
+//                       itemCount: chatProvider.chatsData.records!.length +
+//                           (chatProvider.isChatLoading && chatProvider.hasMoreMessages ? 1 : 0),
+//                       itemBuilder: (context, index) {
+//                         // Show loading indicator at the end
+//                         if (chatProvider.isChatLoading &&
+//                             chatProvider.hasMoreMessages &&
+//                             index == chatProvider.chatsData.records!.length) {
+//                           return const Padding(
+//                             padding: EdgeInsets.all(8.0),
+//                             child: Center(child: AppProgressIndicator()),
+//                           );
+//                         }
+
+//                         // Show message
+//                         return _buildMessageItem(
+//                           context,
+//                           chatProvider.chatsData.records![index],
+//                         );
+//                       },
+//                     ),
+
+//                     // Typing indicator
+//                     Positioned(
+//                       bottom: 0,
+//                       left: 0,
+//                       right: 0,
+//                       child: _buildTypingIndicator(chatProvider),
+//                     ),
+//                   ],
+//                 );
+//               },
+//             ),
+//           ),
+
+//           // Attachment menu
+//           if (_isAttachmentMenuOpen) _buildAttachmentMenu(),
+
+//           // Message input area
+//           _buildMessageInput(),
+//         ],
+//       ),
+//     );
+//   }
+
+//   // Build app bar with user info
+//   PreferredSizeWidget _buildAppBar() {
+//     return AppBar(
+//       backgroundColor: Colors.white,
+//       elevation: 1,
+//       leading: IconButton(
+//         icon: const Icon(Icons.arrow_back, color: Colors.black),
+//         onPressed: () => Navigator.pop(context),
+//       ),
+//       titleSpacing: 0,
+//       title: Consumer<ChatProvider>(
+//         builder: (context, chatProvider, child) {
+//           // Get peer user from provider or widget
+//           final peerUser = widget.peerUser;
+
+//           // Check if user is online
+//           final isOnline = peerUser?.userId != null
+//               ? chatProvider.isUserOnline(peerUser!.userId!)
+//               : false;
+
+//           return Row(
+//             children: [
+//               // User avatar
+//               CircleAvatar(
+//                 radius: 18,
+//                 backgroundColor: Colors.grey[300],
+//                 backgroundImage: peerUser?.profilePic != null
+//                     ? NetworkImage(peerUser!.profilePic!)
+//                     : null,
+//                 child: peerUser?.profilePic == null
+//                     ? const Icon(Icons.person, color: Colors.grey, size: 20)
+//                     : null,
+//               ),
+//               const SizedBox(width: 8),
+
+//               // User name and status
+//               Expanded(
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     Text(
+//                       peerUser?.fullName ?? 'Unknown User',
+//                       style: const TextStyle(
+//                         color: Colors.black,
+//                         fontSize: 16,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     ),
+//                     Text(
+//                       isOnline ? 'Online' : 'Offline',
+//                       style: TextStyle(
+//                         color: isOnline ? Colors.green : Colors.grey,
+//                         fontSize: 12,
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           );
+//         },
+//       ),
+//       actions: [
+//         IconButton(
+//           icon: const Icon(Icons.call, color: Colors.black),
+//           onPressed: () {
+//             // Implement voice call
+//           },
+//         ),
+//         IconButton(
+//           icon: const Icon(Icons.videocam, color: Colors.black),
+//           onPressed: () {
+//             // Implement video call
+//           },
+//         ),
+//         IconButton(
+//           icon: const Icon(Icons.more_vert, color: Colors.black),
+//           onPressed: () {
+//             // Show more options
+//           },
+//         ),
+//       ],
+//     );
+//   }
+
+//   // Build message input area
+//   Widget _buildMessageInput() {
+//     return Container(
+//       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         boxShadow: [
+//           BoxShadow(
+//             color: Colors.grey.withOpacity(0.2),
+//             blurRadius: 4,
+//             offset: const Offset(0, -1),
+//           ),
+//         ],
+//       ),
+//       child: Row(
+//         children: [
+//           // Attachment button
+//           IconButton(
+//             icon: Icon(
+//               Icons.attach_file,
+//               color: _isAttachmentMenuOpen
+//                   ? AppColors.appPriSecColor.primaryColor
+//                   : Colors.grey,
+//             ),
+//             onPressed: () {
+//               setState(() {
+//                 _isAttachmentMenuOpen = !_isAttachmentMenuOpen;
+//               });
+//             },
+//           ),
+
+//           // Message input field
+//           Expanded(
+//             child: TextField(
+//               controller: _messageController,
+//               decoration: const InputDecoration(
+//                 hintText: 'Type a message',
+//                 border: InputBorder.none,
+//               ),
+//               textCapitalization: TextCapitalization.sentences,
+//               keyboardType: TextInputType.multiline,
+//               maxLines: 3,
+//               minLines: 1,
+//               onChanged: (value) {
+//                 // Update typing status
+//                 _updateTypingStatus(value.isNotEmpty);
+//               },
+//             ),
+//           ),
+
+//           // Send button
+//           IconButton(
+//             icon: Icon(
+//               Icons.send,
+//               color: AppColors.appPriSecColor.primaryColor,
+//             ),
+//             onPressed: _sendMessage,
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   // Build attachment menu
+//   Widget _buildAttachmentMenu() {
+//     return Container(
+//       color: Colors.white,
+//       padding: const EdgeInsets.symmetric(vertical: 16),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         children: [
+//           // Camera
+//           _buildAttachmentButton(
+//             icon: Icons.camera_alt,
+//             color: Colors.purple,
+//             label: 'Camera',
+//             onTap: () async {
+//               final XFile? image = await _imagePicker.pickImage(
+//                 source: ImageSource.camera,
+//               );
+//               if (image != null) {
+//                 // Upload and send image
+//               }
+//               setState(() {
+//                 _isAttachmentMenuOpen = false;
+//               });
+//             },
+//           ),
+
+//           // Gallery
+//           _buildAttachmentButton(
+//             icon: Icons.photo,
+//             color: Colors.blue,
+//             label: 'Gallery',
+//             onTap: _pickAndSendImage,
+//           ),
+
+//           // Video
+//           _buildAttachmentButton(
+//             icon: Icons.videocam,
+//             color: Colors.red,
+//             label: 'Video',
+//             onTap: _pickAndSendVideo,
+//           ),
+
+//           // Document
+//           _buildAttachmentButton(
+//             icon: Icons.insert_drive_file,
+//             color: Colors.orange,
+//             label: 'Document',
+//             onTap: () {
+//               // Implement document picker
+//               setState(() {
+//                 _isAttachmentMenuOpen = false;
+//               });
+//             },
+//           ),
+
+//           // Location
+//           _buildAttachmentButton(
+//             icon: Icons.location_on,
+//             color: Colors.green,
+//             label: 'Location',
+//             onTap: () {
+//               // Implement location sharing
+//               setState(() {
+//                 _isAttachmentMenuOpen = false;
+//               });
+//             },
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   // Build attachment button
+//   Widget _buildAttachmentButton({
+//     required IconData icon,
+//     required Color color,
+//     required String label,
+//     required VoidCallback onTap,
+//   }) {
+//     return GestureDetector(
+//       onTap: onTap,
+//       child: Column(
+//         mainAxisSize: MainAxisSize.min,
+//         children: [
+//           Container(
+//             width: 50,
+//             height: 50,
+//             decoration: BoxDecoration(
+//               color: color.withOpacity(0.1),
+//               shape: BoxShape.circle,
+//             ),
+//             child: Icon(icon, color: color),
+//           ),
+//           const SizedBox(height: 4),
+//           Text(
+//             label,
+//             style: const TextStyle(
+//               fontSize: 12,
+//               color: Colors.grey,
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   // Build typing indicator
+//   Widget _buildTypingIndicator(ChatProvider chatProvider) {
+//     if (chatProvider.typingData.chatId == widget.chatId &&
+//         chatProvider.typingData.typing == true) {
+//       return Container(
+//         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+//         color: Colors.grey[100],
+//         child: Row(
+//           children: [
+//             Container(
+//               width: 8,
+//               height: 8,
+//               decoration: BoxDecoration(
+//                 color: AppColors.appPriSecColor.primaryColor,
+//                 shape: BoxShape.circle,
+//               ),
+//             ),
+//             const SizedBox(width: 4),
+//             Container(
+//               width: 8,
+//               height: 8,
+//               decoration: BoxDecoration(
+//                 color: AppColors.appPriSecColor.primaryColor.withOpacity(0.7),
+//                 shape: BoxShape.circle,
+//               ),
+//             ),
+//             const SizedBox(width: 4),
+//             Container(
+//               width: 8,
+//               height: 8,
+//               decoration: BoxDecoration(
+//                 color: AppColors.appPriSecColor.primaryColor.withOpacity(0.4),
+//                 shape: BoxShape.circle,
+//               ),
+//             ),
+//             const SizedBox(width: 8),
+//             const Text(
+//               'Typing...',
+//               style: TextStyle(
+//                 color: Colors.grey,
+//                 fontSize: 12,
+//               ),
+//             ),
+//           ],
+//         ),
+//       );
+//     }
+//     return const SizedBox.shrink();
+//   }
+
+//   // Build message item
+//   Widget _buildMessageItem(BuildContext context, chats.Records message) {
+//     // Get current user ID
+//     final authProvider = Provider.of<AuthProvider>(context, listen: false);
+//     // final currentUserId = authProvider.userData.data?.userId ?? 0;
+//     final currentUserId = SecurePrefs.getString(SecureStorageKeys.USERID)??0;
+//     // Check if message is from current user
+//     final isMe = message.senderId == currentUserId;
+
+//     // Parse message time
+//     final messageTime = message.createdAt != null
+//         ? _formatMessageTime(message.createdAt!)
+//         : '';
+
+//     // Build message bubble
+//     return Padding(
+//       padding: const EdgeInsets.only(bottom: 8),
+//       child: Row(
+//         mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+//         crossAxisAlignment: CrossAxisAlignment.end,
+//         children: [
+//           // Avatar for received messages
+//           if (!isMe)
+//             CircleAvatar(
+//               radius: 16,
+//               backgroundColor: Colors.grey[300],
+//               backgroundImage: message.user?.profilePic != null
+//                   ? NetworkImage(message.user!.profilePic!)
+//                   : null,
+//               child: message.user?.profilePic == null
+//                   ? const Icon(Icons.person, color: Colors.grey, size: 16)
+//                   : null,
+//             ),
+
+//           const SizedBox(width: 8),
+
+//           // Message content
+//           Flexible(
+//             child: Container(
+//               constraints: BoxConstraints(
+//                 maxWidth: MediaQuery.of(context).size.width * 0.7,
+//               ),
+//               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+//               decoration: BoxDecoration(
+//                 color: isMe
+//                     ? AppColors.appPriSecColor.secondaryColor.withOpacity(0.2)
+//                     : Colors.grey[200],
+//                 borderRadius: BorderRadius.circular(16),
+//               ),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   // Message content based on type
+//                   _buildMessageContent(message),
+
+//                   // Message time and status
+//                   Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       Text(
+//                         messageTime,
+//                         style: const TextStyle(
+//                           color: Colors.grey,
+//                           fontSize: 10,
+//                         ),
+//                       ),
+//                       if (isMe) const SizedBox(width: 4),
+//                       if (isMe) _buildMessageStatus(message.messageSeenStatus),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   // Build message content based on type
+//   Widget _buildMessageContent(chats.Records message) {
+//     switch (message.messageType) {
+//       case 'image':
+//         return Container(
+//           width: double.infinity,
+//           height: 200,
+//           decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(8),
+//             image: DecorationImage(
+//               image: NetworkImage(message.messageContent ?? ''),
+//               fit: BoxFit.cover,
+//             ),
+//           ),
+//         );
+
+//       case 'video':
+//         return Container(
+//           width: double.infinity,
+//           height: 200,
+//           decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(8),
+//             color: Colors.black,
+//           ),
+//           child: const Center(
+//             child: Icon(Icons.play_circle_outline, color: Colors.white, size: 50),
+//           ),
+//         );
+
+//       case 'social':
+//         if (message.social != null) {
+//           return Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Container(
+//                 width: double.infinity,
+//                 height: 150,
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(8),
+//                   image: DecorationImage(
+//                     image: NetworkImage(message.social!.reelThumbnail ?? ''),
+//                     fit: BoxFit.cover,
+//                   ),
+//                 ),
+//                 child: const Center(
+//                   child: Icon(Icons.play_circle_outline, color: Colors.white, size: 50),
+//                 ),
+//               ),
+//               const SizedBox(height: 8),
+//               Text(
+//                 message.social!.socialDesc ?? 'Shared a post',
+//                 style: const TextStyle(fontWeight: FontWeight.bold),
+//               ),
+//             ],
+//           );
+//         }
+//         return const Text('Shared a post');
+
+//       default:
+//         return Text(
+//           message.messageContent ?? '',
+//           style: const TextStyle(fontSize: 16),
+//         );
+//     }
+//   }
+
+//   // Build message status indicator
+//   Widget _buildMessageStatus(String? status) {
+//     if (status == 'seen') {
+//       return const Icon(Icons.done_all, color: Colors.blue, size: 14);
+//     } else {
+//       return const Icon(Icons.done, color: Colors.grey, size: 14);
+//     }
+//   }
+
+//   // Format message time
+//   String _formatMessageTime(String timeString) {
+//     try {
+//       final dateTime = DateTime.parse(timeString);
+//       return '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
+//     } catch (e) {
+//       return '';
+//     }
+//   }
+// }

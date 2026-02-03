@@ -1,0 +1,23 @@
+--- a/ios/Classes/FlutterWebRTCPlugin.m
++++ b/ios/Classes/FlutterWebRTCPlugin.m
+@@ -86,8 +86,18 @@
+ }
+ @end
+ 
+ void postEvent(FlutterEventSink _Nonnull sink, id _Nullable event) {
+-    dispatch_async(dispatch_get_main_queue(), ^{
+-      sink(event);
++    // Robust null safety checks to prevent EXC_BAD_ACCESS crashes
++    if (sink == nil) {
++        NSLog(@"[FlutterWebRTC] Warning: Attempted to post event to nil sink");
++        return;
++    }
++    
++    // Capture sink in a local variable to avoid race conditions
++    FlutterEventSink localSink = sink;
++    dispatch_async(dispatch_get_main_queue(), ^{
++        if (localSink != nil) {
++            localSink(event);
++        }
+     });
+ }

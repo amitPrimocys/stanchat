@@ -1,0 +1,203 @@
+import 'dart:async';
+// import 'package:flutter/foundation.dart';
+// import 'package:whoxa/core/services/socket/socket_event_controller.dart';
+// import 'package:whoxa/core/services/socket/socket_service.dart';
+// import 'package:whoxa/featuers/chat/data/chat_ids_model.dart';
+// import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
+// import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
+// import 'package:whoxa/utils/logger.dart';
+
+// /// ChatProvider
+// /// Responsible for chat-specific UI state management
+// /// Delegates all socket operations to SocketEventController
+// class ChatProvider with ChangeNotifier {
+//   // Dependencies
+//   final SocketEventController _socketEventController;
+//   final ConsoleAppLogger _logger = ConsoleAppLogger();
+
+//   // State variables - now these are mostly derived from SocketEventController
+//   ChatListModel _chatListData = ChatListModel(chats: []);
+//   chats.ChatsModel _chatsData = chats.ChatsModel();
+//   ChatIdsModel _chatIdsData = ChatIdsModel();
+//   String? _error;
+
+//   // Subscriptions to SocketEventController streams
+//   StreamSubscription? _chatListSubscription;
+//   StreamSubscription? _chatsSubscription;
+//   StreamSubscription? _chatIdsSubscription;
+//   StreamSubscription? _typingStatusSubscription;
+//   StreamSubscription? _onlineStatusSubscription;
+
+//   // Getters
+//   ChatListModel get chatListData => _chatListData;
+//   chats.ChatsModel get chatsData => _chatsData;
+//   ChatIdsModel get chatIdsData => _chatIdsData;
+//   bool get isChatLoading => _socketEventController.isChatLoading;
+//   bool get isChatListLoading => _socketEventController.isChatListLoading;
+//   String? get error => _error ?? _socketEventController.lastError;
+//   bool get hasMoreMessages => _socketEventController.hasMoreMessages;
+
+//   // Constructor with dependency injection
+//   ChatProvider(this._socketEventController) {
+//     _logger.i('Creating ChatProvider');
+//   }
+
+//   /// Initialize the chat provider
+//   /// Sets up listeners for SocketEventController updates
+//   Future<void> initialize() async {
+//     _logger.i('Initializing ChatProvider');
+
+//     // Cancel existing subscriptions
+//     await _chatListSubscription?.cancel();
+//     await _chatsSubscription?.cancel();
+//     await _chatIdsSubscription?.cancel();
+//     await _typingStatusSubscription?.cancel();
+//     await _onlineStatusSubscription?.cancel();
+
+//     // Subscribe to SocketEventController streams
+//     _chatListSubscription = _socketEventController.chatListStream.listen(
+//       (chatList) {
+//         _chatListData = chatList;
+//         notifyListeners();
+//       },
+//       onError: (e) {
+//         _error = 'Chat list stream error: ${e.toString()}';
+//         notifyListeners();
+//       },
+//     );
+
+//     _chatsSubscription = _socketEventController.chatsStream.listen(
+//       (chats) {
+//         _chatsData = chats;
+//         notifyListeners();
+//       },
+//       onError: (e) {
+//         _error = 'Chats stream error: ${e.toString()}';
+//         notifyListeners();
+//       },
+//     );
+
+//     _chatIdsSubscription = _socketEventController.chatIdsStream.listen(
+//       (chatIds) {
+//         _chatIdsData = chatIds;
+//         notifyListeners();
+//       },
+//       onError: (e) {
+//         _error = 'Chat IDs stream error: ${e.toString()}';
+//         notifyListeners();
+//       },
+//     );
+
+//     // Initialize with current data from controller
+//     _chatListData = _socketEventController.chatListData;
+//     _chatsData = _socketEventController.chatsData;
+//     _chatIdsData = _socketEventController.chatIdsData;
+
+//     // Check if socket is already connected and get chat list if needed
+//     if (_chatListData.chats.isEmpty) {
+//       await refreshChatList();
+//     }
+//   }
+
+//   // Delegated methods - all now just call through to SocketEventController
+
+//   /// Connect to socket
+//   Future<bool> connect() async {
+//     return await _socketEventController.connect();
+//   }
+
+//   /// Silent refresh that doesn't show loading indicators
+//   Future<void> silentRefresh() async {
+//     await _socketEventController.silentRefresh();
+//   }
+
+//   /// Request chat list
+//   Future<void> emitChatList() async {
+//     await _socketEventController.emitChatList();
+//   }
+
+//   /// Load more messages with pagination
+//   Future<void> loadMoreMessages() async {
+//     await _socketEventController.loadMoreMessages();
+//   }
+
+//   /// Emit request for initial online users
+//   void emitInitialOnlineUser() {
+//     _socketEventController.emitInitialOnlineUser();
+//   }
+
+//   /// Set current chat and user IDs
+//   void setCurrentChat(int chatId, int userId) {
+//     _socketEventController.setCurrentChat(chatId, userId);
+//   }
+
+//   /// Send message
+//   Future<bool> sendMessage(
+//     int chatId,
+//     String message, {
+//     String messageType = 'text',
+//   }) async {
+//     return await _socketEventController.sendMessage(
+//       chatId.toString(),
+//       message,
+//       messageType: messageType,
+//     );
+//   }
+
+//   /// Mark message as seen
+//   Future<bool> markMessageAsSeen(int chatId, int messageId) async {
+//     return await _socketEventController.markMessageAsSeen(
+//       chatId.toString(),
+//       messageId.toString(),
+//     );
+//   }
+
+//   /// Send typing status
+//   void sendTypingStatus(int chatId, bool isTyping) {
+//     _socketEventController.sendTypingIndicator(chatId.toString(), isTyping);
+//   }
+
+//   /// Request chat ID
+//   Future<bool> getChatId(String userId) async {
+//     return await _socketEventController.getChatId(userId);
+//   }
+
+//   /// Check if a user is online
+//   bool isUserOnline(String userId) {
+//     return _socketEventController.isUserOnline(userId);
+//   }
+
+//   /// Check if someone is typing in a chat
+//   bool isUserTypingInChat(String chatId) {
+//     return _socketEventController.isUserTypingInChat(chatId);
+//   }
+
+//   /// Format time utility for UI
+//   String formatTime(String? time) {
+//     return _socketEventController.formatTime(time);
+//   }
+
+//   /// Refresh chat list - utility method for UI
+//   Future<void> refreshChatList() async {
+//     _logger.i('refreshChatList: Called from ChatProvider');
+//     await _socketEventController.refreshChatList();
+//   }
+
+//   /// Clear error state
+//   void clearError() {
+//     _error = null;
+//     _socketEventController.clearError();
+//     notifyListeners();
+//   }
+
+//   /// Clean up resources
+//   @override
+//   void dispose() {
+//     _chatListSubscription?.cancel();
+//     _chatsSubscription?.cancel();
+//     _chatIdsSubscription?.cancel();
+//     _typingStatusSubscription?.cancel();
+//     _onlineStatusSubscription?.cancel();
+//     super.dispose();
+//   }
+// }

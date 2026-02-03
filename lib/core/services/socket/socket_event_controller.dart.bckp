@@ -1,0 +1,1015 @@
+import 'dart:async';
+// import 'dart:convert';
+// import 'package:flutter/foundation.dart';
+// import 'package:whoxa/core/services/socket/socket_service.dart';
+// import 'package:whoxa/featuers/chat/data/chat_ids_model.dart';
+// import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
+// import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
+// import 'package:whoxa/utils/logger.dart';
+
+// class SocketEventController with ChangeNotifier {
+//   //====================================================================
+//   // DEPENDENCIES & CONSTANTS
+//   //====================================================================
+
+//   // Core dependencies
+//   final SocketService _socketService;
+//   final _logger = ConsoleAppLogger.forModule('Socket');
+//   final SocketEvents _events = SocketEvents();
+
+//   //====================================================================
+//   // STATE MANAGEMENT
+//   //====================================================================
+
+//   // Connection state
+//   bool _isConnected = false;
+//   bool get isConnected => _isConnected;
+//   String? _lastError;
+//   String? get lastError => _lastError;
+//   StreamSubscription? _connectionSubscription;
+
+//   // Chat data models
+//   ChatListModel _chatListData = ChatListModel(chats: []);
+//   chats.ChatsModel _chatsData = chats.ChatsModel();
+//   ChatIdsModel _chatIdsData = ChatIdsModel();
+
+//   // Online users state
+//   final Map<String, bool> _onlineUsers = {};
+//   List<String> get onlineUserIds =>
+//       _onlineUsers.keys.where((k) => _onlineUsers[k] == true).toList();
+
+//   // Typing indicators
+//   final Map<String, bool> _typingStatusByChatId = {};
+//   final Map<String, Timer> _typingTimers = {};
+
+//   // Current chat context
+//   int? _currentChatId;
+//   int? _currentUserId;
+//   int get currentChatId => _currentChatId ?? 0;
+//   int get currentUserId => _currentUserId ?? 0;
+
+//   // Pagination state
+//   int _chatsPageNo = 1;
+//   bool _hasMoreMessages = true;
+//   bool get hasMoreMessages => _hasMoreMessages;
+
+//   // Loading states
+//   bool _isChatLoading = false;
+//   bool _isChatListLoading = false;
+//   bool get isChatLoading => _isChatLoading;
+//   bool get isChatListLoading => _isChatListLoading;
+//   Timer? _chatListTimer;
+//   bool _chatListRequestInProgress = false;
+
+//   //====================================================================
+//   // DATA STREAMS
+//   //====================================================================
+
+//   // Public streams for UI consumption
+//   final _chatListStream = StreamController<ChatListModel>.broadcast();
+//   final _chatsStream = StreamController<chats.ChatsModel>.broadcast();
+//   final _chatIdsStream = StreamController<ChatIdsModel>.broadcast();
+//   final _typingStatusStream = StreamController<Map<String, bool>>.broadcast();
+//   final _onlineStatusStream = StreamController<Map<String, bool>>.broadcast();
+
+//   // Stream getters
+//   Stream<ChatListModel> get chatListStream => _chatListStream.stream;
+//   Stream<chats.ChatsModel> get chatsStream => _chatsStream.stream;
+//   Stream<ChatIdsModel> get chatIdsStream => _chatIdsStream.stream;
+//   Stream<Map<String, bool>> get typingStatusStream =>
+//       _typingStatusStream.stream;
+//   Stream<Map<String, bool>> get onlineStatusStream =>
+//       _onlineStatusStream.stream;
+
+//   // Data access getters
+//   ChatListModel get chatListData => _chatListData;
+//   chats.ChatsModel get chatsData => _chatsData;
+//   ChatIdsModel get chatIdsData => _chatIdsData;
+
+//   //====================================================================
+//   // INITIALIZATION & SETUP
+//   //====================================================================
+
+//   // Constructor
+//   SocketEventController(this._socketService) {
+//     _logger.i('Creating SocketEventController');
+//   }
+
+//   // Initialize the controller and setup event listeners
+//   Future<void> initialize() async {
+//     _logger.i('Initializing SocketEventController');
+
+//     // Cancel existing subscription if any
+//     await _connectionSubscription?.cancel();
+
+//     // Set up connection status listener
+//     _connectionSubscription = _socketService.connectionState.listen(
+//       _handleConnectionStateChange,
+//       onError: (error) {
+//         _lastError = error.toString();
+//         _logger.e('Connection state stream error', error);
+//         notifyListeners();
+//       },
+//     );
+
+//     // Check current state
+//     _isConnected = _socketService.isConnected;
+
+//     // Set up event listeners
+//     _setupEventListeners();
+//   }
+
+//   // Handle socket connection state changes
+//   void _handleConnectionStateChange(SocketConnectionState state) {
+//     switch (state) {
+//       case SocketConnectionState.connected:
+//         _isConnected = true;
+//         _lastError = null;
+//         _logger.i('Socket connected in SocketEventController');
+
+//         // Emit initial events when connection is established
+//         try {
+//           _emitInitialEvents();
+//         } catch (e) {
+//           _logger.e('Error emitting initial events', e);
+//         }
+//         notifyListeners();
+//         break;
+
+//       case SocketConnectionState.disconnected:
+//         _isConnected = false;
+//         _logger.i('Socket disconnected in SocketEventController');
+//         notifyListeners();
+//         break;
+
+//       case SocketConnectionState.error:
+//         _isConnected = false;
+//         _lastError = 'Connection error';
+//         _logger.e('Socket error in SocketEventController');
+//         notifyListeners();
+//         break;
+
+//       case SocketConnectionState.connecting:
+//       case SocketConnectionState.reconnecting:
+//         // No state changes for these transitional states
+//         break;
+//     }
+//   }
+
+//   // Emit initial events when connection is established
+//   void _emitInitialEvents() {
+//     if (!_socketService.isConnected) {
+//       _logger.w('Cannot emit initial events: not connected');
+//       return;
+//     }
+
+//     try {
+//       // Request initial online users
+//       _socketService.emit(_events.initialOnlineUser);
+
+//       // Request chat list
+//       emitChatList();
+
+//       _logger.i('Emitted initial events');
+//     } catch (e) {
+//       _logger.e('Failed to emit initial events', e);
+//     }
+//   }
+
+//   // Set up all event listeners
+//   void _setupEventListeners() {
+//     // Remove existing listeners first to avoid duplication
+//     _removeExistingEventListeners();
+
+//     try {
+//       // Online users
+//       _socketService.on(_events.initialOnlineUser, _handleInitialOnlineUsers);
+//       _socketService.on(_events.onlineUser, _handleUserOnline);
+//       _socketService.on(_events.offlineUser, _handleUserOffline);
+
+//       // Typing indicators
+//       _socketService.on(_events.typing, _handleTyping);
+
+//       // Chat related events
+//       _socketService.on(_events.chatList, _handleChatList);
+//       _socketService.on(_events.messageList, _handleMessageList);
+//       _socketService.on(_events.getChatId, _handleGetChatId);
+//       _socketService.on(_events.recieve, _handleNewMessage);
+
+//       // Message status
+//       _socketService.on(_events.realTimeMessageSeen, _handleMessageSeen);
+//       _socketService.on(_events.messageSeenStatus, _handleMessageSeenStatus);
+
+//       // Live stream events
+//       _socketService.on(_events.startLive, _handleStartLive);
+//       _socketService.on(_events.joinLive, _handleJoinLive);
+//       _socketService.on(_events.stopLive, _handleStopLive);
+//       _socketService.on(_events.leaveLive, _handleLeaveLive);
+//       _socketService.on(_events.activityOnLive, _handleActivityOnLive);
+
+//       _logger.i('Socket event listeners set up successfully');
+//     } catch (e) {
+//       _logger.e('Error setting up socket event listeners', e);
+//     }
+//   }
+
+//   // Remove existing event listeners to avoid duplicates
+//   void _removeExistingEventListeners() {
+//     final events = [
+//       _events.initialOnlineUser,
+//       _events.onlineUser,
+//       _events.offlineUser,
+//       _events.typing,
+//       _events.chatList,
+//       _events.messageList,
+//       _events.getChatId,
+//       _events.recieve,
+//       _events.realTimeMessageSeen,
+//       _events.messageSeenStatus,
+//       _events.startLive,
+//       _events.joinLive,
+//       _events.stopLive,
+//       _events.leaveLive,
+//       _events.activityOnLive,
+//     ];
+
+//     for (final event in events) {
+//       try {
+//         _socketService.off(event);
+//       } catch (e) {
+//         _logger.w('Error removing event listener for $event: $e');
+//       }
+//     }
+//   }
+
+//   //====================================================================
+//   // ONLINE USERS SCREEN HANDLERS
+//   //====================================================================
+
+//   // Handle initial online users response
+//   void _handleInitialOnlineUsers(dynamic data) {
+//     _logger.d('Received initial online users');
+//     try {
+//       // Extract online users from different response formats
+//       if (data is Map && data.containsKey('onlineUsers')) {
+//         final onlineUsers = data['onlineUsers'];
+//         if (onlineUsers is List) {
+//           _processOnlineUsersList(onlineUsers);
+//         }
+//       } else if (data is List) {
+//         _processOnlineUsersList(data);
+//       }
+
+//       _onlineStatusStream.add(Map.from(_onlineUsers));
+//       notifyListeners();
+//     } catch (e) {
+//       _logger.e('Error handling initial online users', e);
+//     }
+//   }
+
+//   // Helper method to process online users list
+//   void _processOnlineUsersList(List onlineUsers) {
+//     // Clear existing data
+//     _onlineUsers.clear();
+
+//     // Process each user
+//     for (var user in onlineUsers) {
+//       if (user is Map && user.containsKey('user_id')) {
+//         final userId = user['user_id'].toString();
+//         _onlineUsers[userId] = true;
+//       }
+//     }
+
+//     _logger.i('Processed ${_onlineUsers.length} online users');
+//   }
+
+//   // Handle user online status update
+//   void _handleUserOnline(dynamic data) {
+//     try {
+//       _logger.d('User came online: $data');
+//       if (data is Map && data.containsKey('user_id')) {
+//         final userId = data['user_id'].toString();
+//         _onlineUsers[userId] = true;
+//         _onlineStatusStream.add(Map.from(_onlineUsers));
+//         notifyListeners();
+//       }
+//     } catch (e) {
+//       _logger.e('Error handling user online', e);
+//     }
+//   }
+
+//   // Handle user offline status update
+//   void _handleUserOffline(dynamic data) {
+//     try {
+//       _logger.d('User went offline: $data');
+//       if (data is Map && data.containsKey('user_id')) {
+//         final userId = data['user_id'].toString();
+//         _onlineUsers[userId] = false;
+//         _onlineStatusStream.add(Map.from(_onlineUsers));
+//         notifyListeners();
+//       }
+//     } catch (e) {
+//       _logger.e('Error handling user offline', e);
+//     }
+//   }
+
+//   // Check if a specific user is online
+//   bool isUserOnline(String userId) {
+//     return _onlineUsers[userId] == true;
+//   }
+
+//   // Emit request for initial online users
+//   void emitInitialOnlineUser() {
+//     if (!_socketService.isConnected) {
+//       _logger.w('Cannot emit initial online user: socket not connected');
+//       return;
+//     }
+
+//     try {
+//       _logger.d('Emitting initial online user request');
+//       _socketService.emit(_events.initialOnlineUser);
+//     } catch (e) {
+//       _logger.e('Emit initial online user error', e);
+//     }
+//   }
+
+//   //====================================================================
+//   // CHAT LIST SCREEN HANDLERS
+//   //====================================================================
+
+//   // Handle chat list response
+//   void _handleChatList(dynamic data) {
+//     _logger.i('_handleChatList called with data received');
+//     _logger.i('_handleChatList data received : $data');
+//     _chatListRequestInProgress = false;
+
+//     if (_chatListTimer != null) {
+//       _chatListTimer!.cancel();
+//       _chatListTimer = null;
+//     }
+
+//     _isChatListLoading = false;
+
+//     try {
+//       _logger.d('Handling chat list response');
+//       Map<String, dynamic> jsonData;
+
+//       // Handle different data types
+//       if (data is Map<String, dynamic>) {
+//         jsonData = data;
+//       } else if (data is String) {
+//         jsonData = Map<String, dynamic>.from(jsonDecode(data));
+//       } else {
+//         jsonData = Map<String, dynamic>.from(data);
+//       }
+
+//       // Validate response structure
+//       if (!jsonData.containsKey('Chats')) {
+//         _lastError = 'Invalid chat list format: Chats key not found';
+//         _logger.e('Invalid chat list format: $jsonData');
+//         notifyListeners();
+//         return;
+//       }
+
+//       final chatListRaw = jsonData['Chats'];
+//       if (chatListRaw is! List) {
+//         _lastError = 'Invalid "Chats" format';
+//         _logger.e('Invalid Chats format: $chatListRaw');
+//         notifyListeners();
+//         return;
+//       }
+
+//       try {
+//         // Parse chat list data
+//         final List<Chats> newChats =
+//             chatListRaw.map<Chats>((e) => Chats.fromJson(e)).toList();
+
+//         // Handle pagination
+//         if (_chatsPageNo == 1) {
+//           _chatListData = ChatListModel(
+//             pagination:
+//                 jsonData['pagination'] != null
+//                     ? Pagination.fromJson(jsonData['pagination'])
+//                     : null,
+//             chats: newChats,
+//           );
+//         } else {
+//           _chatListData.chats.addAll(newChats);
+//         }
+
+//         // Update hasMoreMessages based on pagination
+//         if (_chatListData.pagination != null) {
+//           _hasMoreMessages =
+//               (_chatListData.pagination!.currentPage ?? 0) <
+//               (_chatListData.pagination!.totalPages ?? 1);
+//         } else {
+//           _hasMoreMessages = newChats.isNotEmpty;
+//         }
+
+//         _lastError = null;
+//         _logger.i('Parsed chats count: ${_chatListData.chats.length}');
+
+//         // Broadcast to stream
+//         _chatListStream.add(_chatListData);
+//       } catch (e) {
+//         _logger.e('Error parsing chat list items', e);
+//         // If parsing fails, but we have the raw data, try to create empty chat objects
+//         if (_chatsPageNo == 1) {
+//           _chatListData = ChatListModel(chats: []);
+//         }
+//         _lastError = 'Error parsing chat data: ${e.toString()}';
+//       }
+
+//       notifyListeners();
+//     } catch (e) {
+//       _logger.e('Error in _handleChatList', e);
+//       _lastError = 'Failed to parse chat list: ${e.toString()}';
+//       notifyListeners();
+//     }
+//   }
+
+//   // Request chat list with pagination
+//   Future<void> emitChatList() async {
+//     if (_chatListRequestInProgress) {
+//       _logger.d('Chat list request already in progress, skipping');
+//       return;
+//     }
+
+//     if (!_socketService.isConnected) {
+//       _lastError =
+//           'Not connected to chat server. Please check your connection.';
+//       notifyListeners();
+//       return;
+//     }
+
+//     _chatListRequestInProgress = true;
+//     _isChatListLoading = true;
+//     _lastError = null;
+//     notifyListeners();
+
+//     // Cancel any existing timers
+//     _chatListTimer?.cancel();
+
+//     // Set a timeout timer
+//     _chatListTimer = Timer(const Duration(seconds: 15), () {
+//       if (_isChatListLoading) {
+//         _isChatListLoading = false;
+//         _chatListRequestInProgress = false;
+//         _lastError = 'Request timed out. Pull to refresh.';
+//         notifyListeners();
+//       }
+//     });
+
+//     try {
+//       _logger.d('Emitting chat list with page: $_chatsPageNo');
+//       _socketService.emit(
+//         _events.chatList,
+//         data: {'page': _chatsPageNo, 'pageSize': 10},
+//       );
+//     } catch (e) {
+//       _chatListRequestInProgress = false;
+//       _isChatListLoading = false;
+//       _lastError = 'Failed to request chat list: ${e.toString()}';
+//       _logger.e('Emit chat list error', e);
+//       notifyListeners();
+//     }
+//   }
+
+//   // Load more messages with pagination
+//   Future<void> loadMoreMessages() async {
+//     if (!_hasMoreMessages || _chatListRequestInProgress) {
+//       return;
+//     }
+
+//     _chatsPageNo++;
+//     await emitChatList();
+//   }
+
+//   // Refresh chat list - pull to refresh functionality
+//   Future<void> refreshChatList() async {
+//     _logger.i('refreshChatList: Called');
+
+//     // Only set loading if we weren't already loading
+//     if (!_isChatListLoading) {
+//       _isChatListLoading = true;
+//       _lastError = null;
+//       notifyListeners();
+//     }
+
+//     _chatsPageNo = 1;
+
+//     // Check connection first
+//     if (!_socketService.isConnected) {
+//       try {
+//         final connected = await _socketService.connect();
+//         if (!connected) {
+//           _isChatListLoading = false;
+//           _lastError = "Could not connect to chat server";
+//           notifyListeners();
+//           return;
+//         }
+//       } catch (e) {
+//         _isChatListLoading = false;
+//         _lastError = "Connection error: ${e.toString()}";
+//         notifyListeners();
+//         return;
+//       }
+//     }
+
+//     // Now that we're connected, request chat list
+//     try {
+//       await emitChatList();
+//     } catch (e) {
+//       _isChatListLoading = false;
+//       _lastError = "Failed to load chats: ${e.toString()}";
+//       notifyListeners();
+//     }
+//   }
+
+//   // Background refresh without loading indicators
+//   Future<void> silentRefresh() async {
+//     try {
+//       if (!_socketService.isConnected) {
+//         await _socketService.connect();
+//       }
+
+//       if (_socketService.isConnected) {
+//         _chatListRequestInProgress = true;
+//         _socketService.emit(
+//           _events.chatList,
+//           data: {'page': 1, 'pageSize': 10},
+//         );
+//       }
+//     } catch (e) {
+//       _logger.w('Silent refresh error: ${e.toString()}');
+//     }
+//   }
+
+//   // Update chat list when new message arrives
+//   void _updateChatListWithNewMessage(chats.Records newChatRecord) {
+//     if (newChatRecord.chatId == null) {
+//       return;
+//     }
+
+//     try {
+//       // Find the chat in the chat list with the same chatId
+//       final chatIndex = _chatListData.chats.indexWhere(
+//         (chat) =>
+//             chat.records?.isNotEmpty == true &&
+//             chat.records![0].chatId == newChatRecord.chatId,
+//       );
+
+//       if (chatIndex >= 0) {
+//         // Get the existing chat
+//         final existingChat = _chatListData.chats[chatIndex];
+
+//         // Update the chat record with new message info
+//         if (existingChat.records != null && existingChat.records!.isNotEmpty) {
+//           final record = existingChat.records![0];
+
+//           // Create or update messages collection
+//           record.messages ??= [];
+
+//           // Create a new message with data from the new chat record
+//           final newMessage = Messages(
+//             messageContent: newChatRecord.messageContent,
+//             messageType: newChatRecord.messageType,
+//             createdAt: newChatRecord.createdAt,
+//             chatId: newChatRecord.chatId,
+//             senderId: newChatRecord.senderId,
+//           );
+
+//           // Add the new message at the beginning of the list
+//           if (record.messages!.isEmpty) {
+//             record.messages!.add(newMessage);
+//           } else {
+//             record.messages![0] = newMessage;
+//           }
+
+//           // Update timestamps
+//           record.createdAt = newChatRecord.createdAt ?? record.createdAt;
+//           record.updatedAt = newChatRecord.updatedAt ?? record.updatedAt;
+
+//           // Update unseen count if the message is from another user
+//           if (newChatRecord.senderId != _currentUserId) {
+//             record.unseenCount = (record.unseenCount ?? 0) + 1;
+//           }
+//         }
+
+//         // Move this chat to the top of the list for proper sorting
+//         if (chatIndex > 0) {
+//           final chat = _chatListData.chats.removeAt(chatIndex);
+//           _chatListData.chats.insert(0, chat);
+//         }
+//       } else {
+//         // This is a new chat that's not in our list
+//         // Refresh the entire chat list
+//         _chatsPageNo = 1;
+//         emitChatList();
+//       }
+//     } catch (e) {
+//       _logger.e('Error updating chat list with new message', e);
+//     }
+//   }
+
+//   // Reset page for fresh loading
+//   void resetPage() {
+//     _chatsPageNo = 1;
+//     _hasMoreMessages = true;
+//   }
+
+//   //====================================================================
+//   // CHAT DETAIL SCREEN HANDLERS
+//   //====================================================================
+
+//   // Handle message list response for chat detail screen
+//   void _handleMessageList(dynamic data) {
+//     try {
+//       _logger.d('Handling message list response');
+//       final result = chats.ChatsModel.fromJson(data);
+
+//       if (_chatsData.records == null || _chatsPageNo == 1) {
+//         _chatsData = result;
+//       } else {
+//         // Append new messages for pagination
+//         if (_chatsData.records != null) {
+//           _chatsData.records!.addAll(result.records ?? []);
+//         }
+//       }
+
+//       _hasMoreMessages = (result.records?.isNotEmpty ?? false);
+//       _isChatLoading = false;
+
+//       // Broadcast to stream
+//       _chatsStream.add(_chatsData);
+
+//       notifyListeners();
+//     } catch (e) {
+//       _lastError = 'Message list parse error: ${e.toString()}';
+//       _isChatLoading = false;
+//       _logger.e('Error handling message list', e);
+//       notifyListeners();
+//     }
+//   }
+
+//   // Handle new message events in active chat
+//   void _handleNewMessage(dynamic data) {
+//     try {
+//       _logger.d('Handling new message in SocketEventController');
+//       final newMessageData = chats.ChatsModel.fromJson(data);
+
+//       if (newMessageData.records != null &&
+//           newMessageData.records!.isNotEmpty) {
+//         final newChatRecord = newMessageData.records!.first;
+
+//         // Initialize records list if null
+//         _chatsData.records ??= [];
+
+//         // Add new message to chat data
+//         _chatsData.records!.insert(0, newChatRecord);
+
+//         // Update chat list with new message
+//         _updateChatListWithNewMessage(newChatRecord);
+
+//         // Reset typing indicator for this chat
+//         if (newChatRecord.chatId != null) {
+//           final chatId = newChatRecord.chatId.toString();
+//           _typingStatusByChatId[chatId] = false;
+//           _typingTimers[chatId]?.cancel();
+//           _typingStatusStream.add(Map.from(_typingStatusByChatId));
+//         }
+
+//         // Broadcast to streams
+//         _chatsStream.add(_chatsData);
+//         _chatListStream.add(_chatListData);
+
+//         notifyListeners();
+//       }
+//     } catch (e) {
+//       _logger.e('Error handling new message in SocketEventController', e);
+//     }
+//   }
+
+//   // Handle typing indicators in chat
+//   void _handleTyping(dynamic data) {
+//     try {
+//       _logger.d('Typing indicator: $data');
+//       if (data is Map) {
+//         final chatId = data['chat_id']?.toString();
+//         final isTyping = data['is_typing'] == true;
+
+//         if (chatId != null) {
+//           _typingStatusByChatId[chatId] = isTyping;
+
+//           // Auto-reset typing status after a timeout
+//           if (isTyping) {
+//             _typingTimers[chatId]?.cancel();
+//             _typingTimers[chatId] = Timer(const Duration(seconds: 5), () {
+//               _typingStatusByChatId[chatId] = false;
+//               _typingStatusStream.add(Map.from(_typingStatusByChatId));
+//               notifyListeners();
+//             });
+//           } else {
+//             _typingTimers[chatId]?.cancel();
+//           }
+
+//           _typingStatusStream.add(Map.from(_typingStatusByChatId));
+//           notifyListeners();
+//         }
+//       }
+//     } catch (e) {
+//       _logger.e('Error handling typing indicator', e);
+//     }
+//   }
+
+//   // Send message in current chat
+//   Future<bool> sendMessage(
+//     String chatId,
+//     String message, {
+//     String messageType = 'text',
+//   }) async {
+//     if (!_socketService.isConnected) {
+//       _lastError = 'Cannot send message: not connected';
+//       notifyListeners();
+//       return false;
+//     }
+
+//     try {
+//       _socketService.emit(
+//         _events.recieve,
+//         data: {
+//           'chat_id': chatId,
+//           'message_content': message,
+//           'message_type': messageType,
+//         },
+//       );
+//       return true;
+//     } catch (e) {
+//       _lastError = e.toString();
+//       _logger.e('Error sending message', e);
+//       notifyListeners();
+//       return false;
+//     }
+//   }
+
+//   // Send typing indicator for current chat
+//   Future<bool> sendTypingIndicator(String chatId, bool isTyping) async {
+//     if (!_socketService.isConnected) return false;
+
+//     try {
+//       _socketService.emit(
+//         _events.typing,
+//         data: {'chat_id': chatId, 'is_typing': isTyping},
+//       );
+//       return true;
+//     } catch (e) {
+//       _lastError = e.toString();
+//       _logger.e('Error sending typing indicator', e);
+//       notifyListeners();
+//       return false;
+//     }
+//   }
+
+//   // Check if someone is typing in a specific chat
+//   bool isUserTypingInChat(String chatId) {
+//     return _typingStatusByChatId[chatId] == true;
+//   }
+
+//   // Set current chat and user IDs for active chat
+//   void setCurrentChat(int chatId, int userId) {
+//     _currentChatId = chatId;
+//     _currentUserId = userId;
+//     notifyListeners();
+//   }
+
+//   //====================================================================
+//   // MESSAGE STATUS HANDLERS
+//   //====================================================================
+
+//   // Handle message seen events
+//   void _handleMessageSeen(dynamic data) {
+//     try {
+//       _logger.d('Message seen event: $data');
+//       if (data is Map && data.containsKey('chat_id')) {
+//         final chatId = int.tryParse(data['chat_id'].toString());
+//         if (chatId != null) {
+//           _updateUnreadCountForChat(chatId);
+//           notifyListeners();
+//         }
+//       }
+//     } catch (e) {
+//       _logger.e('Error handling message seen', e);
+//     }
+//   }
+
+//   // Handle message seen status updates
+//   void _handleMessageSeenStatus(dynamic data) {
+//     try {
+//       _logger.d('Message seen status: $data');
+//       if (data is Map && data.containsKey('chat_id')) {
+//         final chatId = int.tryParse(data['chat_id'].toString());
+//         if (chatId != null) {
+//           _updateUnreadCountForChat(chatId);
+//           notifyListeners();
+//         }
+//       }
+//     } catch (e) {
+//       _logger.e('Error handling message seen status', e);
+//     }
+//   }
+
+//   // Update unread count for a specific chat
+//   void _updateUnreadCountForChat(int chatId) {
+//     try {
+//       final chatIndex = _chatListData.chats.indexWhere(
+//         (chat) =>
+//             chat.records?.isNotEmpty == true &&
+//             chat.records![0].chatId == chatId,
+//       );
+
+//       if (chatIndex >= 0) {
+//         final chat = _chatListData.chats[chatIndex];
+//         if (chat.records != null && chat.records!.isNotEmpty) {
+//           // Reset unseen count when message is seen
+//           chat.records![0].unseenCount = 0;
+//           _chatListStream.add(_chatListData);
+//         }
+//       }
+//     } catch (e) {
+//       _logger.e('Error updating unread count', e);
+//     }
+//   }
+
+//   // Mark message as seen
+//   Future<bool> markMessageAsSeen(String chatId, String messageId) async {
+//     if (!_socketService.isConnected) return false;
+
+//     try {
+//       _socketService.emit(
+//         _events.realTimeMessageSeen,
+//         data: {'chat_id': chatId, 'message_id': messageId},
+//       );
+
+//       // Optimistically update local state
+//       final chatIdInt = int.tryParse(chatId);
+//       if (chatIdInt != null) {
+//         _updateUnreadCountForChat(chatIdInt);
+//       }
+
+//       return true;
+//     } catch (e) {
+//       _lastError = e.toString();
+//       _logger.e('Error marking message as seen', e);
+//       notifyListeners();
+//       return false;
+//     }
+//   }
+
+//   //====================================================================
+//   // NEW CHAT / CONTACT SCREEN HANDLERS
+//   //====================================================================
+
+//   // Handle get chat ID response when starting new chat
+//   void _handleGetChatId(dynamic data) {
+//     try {
+//       _logger.d('Handling get chat ID response');
+//       _chatIdsData = ChatIdsModel.fromJson(data);
+
+//       // Update current chat data
+//       if (_chatIdsData.chatIds != null && _chatIdsData.chatIds!.isNotEmpty) {
+//         final chatId = _chatIdsData.chatIds![0];
+//         if (chatId.chatId != null) {
+//           _currentChatId = chatId.chatId;
+//         }
+//         if (chatId.userId != null) {
+//           _currentUserId = chatId.userId;
+//         }
+//       }
+
+//       // Broadcast to stream
+//       _chatIdsStream.add(_chatIdsData);
+
+//       notifyListeners();
+//     } catch (e) {
+//       _logger.e('Error handling get chat ID', e);
+//     }
+//   }
+
+//   // Request chat ID for a user to start a new chat
+//   Future<bool> getChatId(String userId) async {
+//     if (!_socketService.isConnected) return false;
+
+//     try {
+//       _socketService.emit(_events.getChatId, data: {'user_id': userId});
+//       return true;
+//     } catch (e) {
+//       _lastError = e.toString();
+//       _logger.e('Error getting chat ID', e);
+//       notifyListeners();
+//       return false;
+//     }
+//   }
+
+//   //====================================================================
+//   // LIVE STREAM HANDLERS
+//   //====================================================================
+
+//   // Handle start live event
+//   void _handleStartLive(dynamic data) {
+//     _logger.d('Handling start live event');
+//     // Implementation based on specific requirements
+//     notifyListeners();
+//   }
+
+//   // Handle join live event
+//   void _handleJoinLive(dynamic data) {
+//     _logger.d('Handling join live event');
+//     // Handle join live event based on your app's requirements
+//     notifyListeners();
+//   }
+
+//   // Handle stop live event
+//   void _handleStopLive(dynamic data) {
+//     _logger.d('Handling stop live event');
+//     // Handle stop live event based on your app's requirements
+//     notifyListeners();
+//   }
+
+//   // Handle leave live event
+//   void _handleLeaveLive(dynamic data) {
+//     _logger.d('Handling leave live event');
+//     // Handle leave live event based on your app's requirements
+//     notifyListeners();
+//   }
+
+//   // Handle activity on live event
+//   void _handleActivityOnLive(dynamic data) {
+//     _logger.d('Handling activity on live event');
+//     // Handle activity on live event based on your app's requirements
+//     notifyListeners();
+//   }
+
+//   //====================================================================
+//   // UTILITY METHODS
+//   //====================================================================
+
+//   // Attempt to connect to socket if not already connected
+//   Future<bool> connect() async {
+//     if (_socketService.isConnected) return true;
+
+//     try {
+//       return await _socketService.connect();
+//     } catch (e) {
+//       _lastError = 'Connection error: ${e.toString()}';
+//       notifyListeners();
+//       return false;
+//     }
+//   }
+
+//   // Clear error state
+//   void clearError() {
+//     _lastError = null;
+//     notifyListeners();
+//   }
+
+//   // Format time utility for UI
+//   String formatTime(String? time) {
+//     if (time == null || time.isEmpty) return '';
+
+//     try {
+//       final dt = DateTime.parse(time);
+//       final now = DateTime.now();
+//       if (dt.day == now.day && dt.month == now.month && dt.year == now.year) {
+//         return "${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}";
+//       } else if (dt.year == now.year) {
+//         return "${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')}";
+//       } else {
+//         return "${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')}/${dt.year.toString().substring(2)}";
+//       }
+//     } catch (_) {
+//       return '';
+//     }
+//   }
+
+//   // Clean up resources
+//   @override
+//   void dispose() {
+//     _chatListTimer?.cancel();
+//     _connectionSubscription?.cancel();
+
+//     // Cancel all typing timers
+//     for (var timer in _typingTimers.values) {
+//       timer.cancel();
+//     }
+//     _typingTimers.clear();
+
+//     // Close all streams
+//     _chatListStream.close();
+//     _chatsStream.close();
+//     _chatIdsStream.close();
+//     _typingStatusStream.close();
+//     _onlineStatusStream.close();
+
+//     super.dispose();
+//   }
+// }

@@ -1,6 +1,6 @@
 // app_progress_indicator.dart
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 /// A custom progress indicator widget that can be used throughout the app.
 /// Displays a centered circular progress indicator with optional custom color.

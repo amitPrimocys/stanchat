@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/widgets/global.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 //import your model class

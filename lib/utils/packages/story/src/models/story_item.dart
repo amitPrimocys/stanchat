@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:whoxa/utils/packages/story/src/controller/flutter_story_controller.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_view_audio_config.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_view_image_config.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_view_text_config.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_view_video_config.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_view_web_config.dart';
-import 'package:whoxa/utils/packages/story/src/utils/story_utils.dart';
+import 'package:stanchat/utils/packages/story/src/controller/flutter_story_controller.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_view_audio_config.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_view_image_config.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_view_text_config.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_view_video_config.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_view_web_config.dart';
+import 'package:stanchat/utils/packages/story/src/utils/story_utils.dart';
 
 class StoryItem {
   const StoryItem({

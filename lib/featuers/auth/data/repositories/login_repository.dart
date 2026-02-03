@@ -1,15 +1,15 @@
 import 'dart:io';
 
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/auth/data/models/login_model.dart';
-import 'package:whoxa/featuers/auth/data/models/otp_model.dart';
-import 'package:whoxa/featuers/auth/data/models/user_delete_model.dart';
-import 'package:whoxa/featuers/auth/data/models/logout_model.dart';
-import 'package:whoxa/featuers/auth/data/models/user_name_check_model.dart';
-import 'package:whoxa/featuers/auth/data/models/user_profile_model.dart';
-import 'package:whoxa/featuers/auth/data/models/avatar_model.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/auth/data/models/login_model.dart';
+import 'package:stanchat/featuers/auth/data/models/otp_model.dart';
+import 'package:stanchat/featuers/auth/data/models/user_delete_model.dart';
+import 'package:stanchat/featuers/auth/data/models/logout_model.dart';
+import 'package:stanchat/featuers/auth/data/models/user_name_check_model.dart';
+import 'package:stanchat/featuers/auth/data/models/user_profile_model.dart';
+import 'package:stanchat/featuers/auth/data/models/avatar_model.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class LoginRepository {
   final ApiClient _apiClient;

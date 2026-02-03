@@ -2,8 +2,8 @@
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/packages/phone_field/countries.dart';
-import 'package:whoxa/utils/packages/phone_field/helpers.dart';
+import 'package:stanchat/utils/packages/phone_field/countries.dart';
+import 'package:stanchat/utils/packages/phone_field/helpers.dart';
 
 class PickerDialogStyle {
   final Color? backgroundColor;

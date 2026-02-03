@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/core/services/socket/socket_event_controller.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/custom_check_circle.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/core/services/socket/socket_event_controller.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/custom_check_circle.dart';
+import 'package:stanchat/widgets/global.dart';
 
 // Forward item model to unify different data types
 class ForwardItem {

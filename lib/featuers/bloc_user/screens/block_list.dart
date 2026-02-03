@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/data/blocked_user_model.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/gradient_border.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/cusotm_blur_appbar.dart';
-import 'package:whoxa/widgets/custom_bottomsheet.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/featuers/chat/data/blocked_user_model.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/gradient_border.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/cusotm_blur_appbar.dart';
+import 'package:stanchat/widgets/custom_bottomsheet.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
 
 class BlockListScreen extends StatefulWidget {
   const BlockListScreen({super.key});

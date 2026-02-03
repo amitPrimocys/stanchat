@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class CallHistoryResponse {
   final bool status;

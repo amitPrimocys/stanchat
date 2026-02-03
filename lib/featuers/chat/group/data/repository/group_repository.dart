@@ -1,10 +1,10 @@
 // File: lib/features/groups/repository/group_repo.dart
 import 'dart:io';
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/chat/group/data/model/create_group_response.dart';
-import 'package:whoxa/featuers/chat/group/data/model/group_member_response.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/chat/group/data/model/create_group_response.dart';
+import 'package:stanchat/featuers/chat/group/data/model/group_member_response.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class GroupRepo {
   final ApiClient _apiClient;

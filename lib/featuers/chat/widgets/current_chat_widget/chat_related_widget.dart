@@ -4,11 +4,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
 
 class ChatRelatedWidget {
   static Widget buildMetadataRow({
@@ -196,7 +196,7 @@ class ChatRelatedWidget {
     );
   }
 
-   // ✅ Build voice preview
+  // ✅ Build voice preview
   static Widget buildVoicePreview({
     required BuildContext context,
     required bool isSentByMe,

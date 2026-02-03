@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/auth/provider/auth_provider.dart';
-import 'package:whoxa/featuers/auth/services/onesignal_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/featuers/provider/tabbar_provider.dart';
-import 'package:whoxa/core/services/cold_start_handler.dart';
-import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/featuers/auth/provider/auth_provider.dart';
+import 'package:stanchat/featuers/auth/services/onesignal_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/featuers/provider/tabbar_provider.dart';
+import 'package:stanchat/core/services/cold_start_handler.dart';
+import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/utils/logger.dart';
 
 enum InitializationStatus { loading, completed, error }
 

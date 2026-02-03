@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 class CustomCircularProgressIndicator extends StatelessWidget {
   final double value;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class CustomCircleImage extends StatelessWidget {
   final String imageUrl;

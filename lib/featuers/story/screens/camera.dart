@@ -1,7 +1,7 @@
 // import 'package:camera/camera.dart';
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-// import 'package:whoxa/featuers/story/provider/story_provider.dart';
+// import 'package:stanchat/featuers/story/provider/story_provider.dart';
 
 // class CameraScreen extends StatefulWidget {
 //   const CameraScreen({super.key});

@@ -1,13 +1,13 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 // import 'package:flutter_svg/svg.dart';
-// import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-// import 'package:whoxa/utils/app_size_config.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-// import 'package:whoxa/utils/preference_key/constant/strings.dart';
-// import 'package:whoxa/widgets/global.dart';
+// import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+// import 'package:stanchat/utils/app_size_config.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+// import 'package:stanchat/utils/preference_key/constant/strings.dart';
+// import 'package:stanchat/widgets/global.dart';
 
 // // Enhanced chatTypeDailog with multi-delete support
 // Future chatTypeDailog(
@@ -353,14 +353,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/global.dart';
 
 // ✅ ENHANCED: Updated chatTypeDailog with multi-select support
 Future chatTypeDailog(

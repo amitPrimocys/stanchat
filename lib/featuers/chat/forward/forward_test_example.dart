@@ -2,8 +2,8 @@
 // This file demonstrates the enhanced forward functionality
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/contacts/screen/contact_list.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/featuers/contacts/screen/contact_list.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class ForwardTestExample {
   // Example 1: Navigate to forward mode with message IDs

@@ -9,15 +9,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_direction_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/widgets/clip_path.dart';
-import 'package:whoxa/widgets/custom_bottomsheet.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_direction_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/widgets/clip_path.dart';
+import 'package:stanchat/widgets/custom_bottomsheet.dart';
 
 String contrycode = '+91';
 String? phone;
@@ -1194,8 +1194,8 @@ Widget chatCountContainer(BuildContext context, {required int count}) {
   );
 }
 
-Future closeKeyboard() {
-  return SystemChannels.textInput.invokeMethod('TextInput.hide');
+void closeKeyboard() {
+  return FocusManager.instance.primaryFocus?.unfocus();
 }
 
 Widget messageContentIcon(BuildContext context, {required String messageType}) {

@@ -4,9 +4,9 @@
 // =============================================================================
 
 import 'dart:async';
-import 'package:whoxa/core/navigation_helper.dart';
-import 'package:whoxa/featuers/call/call_manager.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/core/navigation_helper.dart';
+import 'package:stanchat/featuers/call/call_manager.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class ColdStartHandler {
   static final ColdStartHandler _instance = ColdStartHandler._internal();

@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/chat/data/blocked_user_model.dart';
-import 'package:whoxa/featuers/chat/data/count_model.dart';
-import 'package:whoxa/featuers/chat/data/starred_messages_model.dart';
-import 'package:whoxa/featuers/chat/data/models/chat_media_model.dart';
-import 'package:whoxa/featuers/chat/utils/message_utils.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/utils/enums.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/chat/data/blocked_user_model.dart';
+import 'package:stanchat/featuers/chat/data/count_model.dart';
+import 'package:stanchat/featuers/chat/data/starred_messages_model.dart';
+import 'package:stanchat/featuers/chat/data/models/chat_media_model.dart';
+import 'package:stanchat/featuers/chat/utils/message_utils.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/utils/enums.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 import 'package:http/http.dart' as http;
 
 class ChatRepository {

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whoxa/services/contact_service.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/services/contact_service.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class ContactDetailsBottomSheet extends StatelessWidget {
   final String contactName;

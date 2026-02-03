@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ChatKeyboard extends StatelessWidget {
   final TextEditingController controller;
@@ -155,77 +155,83 @@ class ChatKeyboard extends StatelessWidget {
               ),
             ),
             SizedBox(width: SizeConfig.sizedBoxWidth(13)),
-            (controller.text.trim().isNotEmpty)
-                ? InkWell(
-                  onTap: isLoading ? null : onTapSendMsg,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.appPriSecColor.primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: SizeConfig.getPaddingSymmetric(
-                        horizontal: 13,
-                        vertical: 11,
+            ValueListenableBuilder(
+              valueListenable: controller,
+              builder: (context, value, _) {
+                final hasText = value.text.trim().isNotEmpty;
+                return hasText
+                    ? InkWell(
+                      onTap: isLoading ? null : onTapSendMsg,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.appPriSecColor.primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: SizeConfig.getPaddingSymmetric(
+                            horizontal: 13,
+                            vertical: 11,
+                          ),
+                          child:
+                              isLoading
+                                  ? SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: CircularProgressIndicator(
+                                      color: ThemeColorPalette.getTextColor(
+                                        AppColors.appPriSecColor.primaryColor,
+                                      ), //AppThemeManage.appTheme.darkWhiteColor,
+                                      strokeWidth: 2,
+                                    ),
+                                  )
+                                  : Image.asset(
+                                    AppAssets.send,
+                                    color: ThemeColorPalette.getTextColor(
+                                      AppColors.appPriSecColor.primaryColor,
+                                    ), //AppThemeManage.appTheme.darkWhiteColor,
+                                    height: SizeConfig.sizedBoxHeight(24),
+                                    width: SizeConfig.sizedBoxWidth(24),
+                                  ),
+                        ),
                       ),
-                      child:
-                          isLoading
-                              ? SizedBox(
-                                height: 24,
-                                width: 24,
-                                child: CircularProgressIndicator(
-                                  color: ThemeColorPalette.getTextColor(
-                                    AppColors.appPriSecColor.primaryColor,
-                                  ), //AppThemeManage.appTheme.darkWhiteColor,
-                                  strokeWidth: 2,
-                                ),
-                              )
-                              : Image.asset(
-                                AppAssets.send,
-                                color: ThemeColorPalette.getTextColor(
-                                  AppColors.appPriSecColor.primaryColor,
-                                ), //AppThemeManage.appTheme.darkWhiteColor,
-                                height: SizeConfig.sizedBoxHeight(24),
-                                width: SizeConfig.sizedBoxWidth(24),
-                              ),
-                    ),
-                  ),
-                )
-                : InkWell(
-                  onTap: onTapVoiceRecordOpen,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.appPriSecColor.primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: SizeConfig.getPaddingSymmetric(
-                        horizontal: 13,
-                        vertical: 11,
+                    )
+                    : InkWell(
+                      onTap: onTapVoiceRecordOpen,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.appPriSecColor.primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: SizeConfig.getPaddingSymmetric(
+                            horizontal: 13,
+                            vertical: 11,
+                          ),
+                          child:
+                              isLoading
+                                  ? SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: CircularProgressIndicator(
+                                      color: ThemeColorPalette.getTextColor(
+                                        AppColors.appPriSecColor.primaryColor,
+                                      ), //AppThemeManage.appTheme.darkWhiteColor,
+                                      strokeWidth: 2,
+                                    ),
+                                  )
+                                  : SvgPicture.asset(
+                                    "assets/images/call/microphone-on.svg",
+                                    color: ThemeColorPalette.getTextColor(
+                                      AppColors.appPriSecColor.primaryColor,
+                                    ), //AppThemeManage.appTheme.darkWhiteColor,
+                                    height: SizeConfig.sizedBoxHeight(24),
+                                    width: SizeConfig.sizedBoxWidth(24),
+                                  ),
+                        ),
                       ),
-                      child:
-                          isLoading
-                              ? SizedBox(
-                                height: 24,
-                                width: 24,
-                                child: CircularProgressIndicator(
-                                  color: ThemeColorPalette.getTextColor(
-                                    AppColors.appPriSecColor.primaryColor,
-                                  ), //AppThemeManage.appTheme.darkWhiteColor,
-                                  strokeWidth: 2,
-                                ),
-                              )
-                              : SvgPicture.asset(
-                                "assets/images/call/microphone-on.svg",
-                                color: ThemeColorPalette.getTextColor(
-                                  AppColors.appPriSecColor.primaryColor,
-                                ), //AppThemeManage.appTheme.darkWhiteColor,
-                                height: SizeConfig.sizedBoxHeight(24),
-                                width: SizeConfig.sizedBoxWidth(24),
-                              ),
-                    ),
-                  ),
-                ),
+                    );
+              },
+            ),
           ],
         ),
       ),

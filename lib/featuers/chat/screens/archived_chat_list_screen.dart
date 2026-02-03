@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/core/services/socket/socket_event_controller.dart';
-import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-import 'package:whoxa/featuers/chat/provider/archive_chat_provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/chat/services/call_display_service.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/cusotm_blur_appbar.dart';
-import 'package:whoxa/widgets/custom_bottomsheet.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/core/services/socket/socket_event_controller.dart';
+import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+import 'package:stanchat/featuers/chat/provider/archive_chat_provider.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/chat/services/call_display_service.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/cusotm_blur_appbar.dart';
+import 'package:stanchat/widgets/custom_bottomsheet.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ArchivedChatListScreen extends StatefulWidget {
   final Function(
@@ -781,18 +781,24 @@ class _ArchivedChatListScreenState extends State<ArchivedChatListScreen> {
           String? actionedUserName;
 
           if (actionedUser is Map) {
-            actionedUserId = actionedUser['user_id'] as int? ?? actionedUser['userId'] as int?;
-            actionedUserName = actionedUser['full_name'] as String? ??
-                              actionedUser['fullName'] as String? ??
-                              actionedUser['user_name'] as String? ??
-                              actionedUser['userName'] as String?;
+            actionedUserId =
+                actionedUser['user_id'] as int? ??
+                actionedUser['userId'] as int?;
+            actionedUserName =
+                actionedUser['full_name'] as String? ??
+                actionedUser['fullName'] as String? ??
+                actionedUser['user_name'] as String? ??
+                actionedUser['userName'] as String?;
           } else {
             try {
               actionedUserId = (actionedUser as dynamic).userId as int?;
-              actionedUserName = (actionedUser as dynamic).fullName as String? ??
-                                (actionedUser as dynamic).userName as String?;
+              actionedUserName =
+                  (actionedUser as dynamic).fullName as String? ??
+                  (actionedUser as dynamic).userName as String?;
             } catch (e) {
-              debugPrint('Error parsing actionedUser in archived member-removed: $e');
+              debugPrint(
+                'Error parsing actionedUser in archived member-removed: $e',
+              );
             }
           }
 
@@ -810,18 +816,24 @@ class _ArchivedChatListScreenState extends State<ArchivedChatListScreen> {
           String? actionedUserName;
 
           if (actionedUser is Map) {
-            actionedUserId = actionedUser['user_id'] as int? ?? actionedUser['userId'] as int?;
-            actionedUserName = actionedUser['full_name'] as String? ??
-                              actionedUser['fullName'] as String? ??
-                              actionedUser['user_name'] as String? ??
-                              actionedUser['userName'] as String?;
+            actionedUserId =
+                actionedUser['user_id'] as int? ??
+                actionedUser['userId'] as int?;
+            actionedUserName =
+                actionedUser['full_name'] as String? ??
+                actionedUser['fullName'] as String? ??
+                actionedUser['user_name'] as String? ??
+                actionedUser['userName'] as String?;
           } else {
             try {
               actionedUserId = (actionedUser as dynamic).userId as int?;
-              actionedUserName = (actionedUser as dynamic).fullName as String? ??
-                                (actionedUser as dynamic).userName as String?;
+              actionedUserName =
+                  (actionedUser as dynamic).fullName as String? ??
+                  (actionedUser as dynamic).userName as String?;
             } catch (e) {
-              debugPrint('Error parsing actionedUser in archived member-added: $e');
+              debugPrint(
+                'Error parsing actionedUser in archived member-added: $e',
+              );
             }
           }
 
@@ -839,18 +851,24 @@ class _ArchivedChatListScreenState extends State<ArchivedChatListScreen> {
           String? actionedUserName;
 
           if (actionedUser is Map) {
-            actionedUserId = actionedUser['user_id'] as int? ?? actionedUser['userId'] as int?;
-            actionedUserName = actionedUser['full_name'] as String? ??
-                              actionedUser['fullName'] as String? ??
-                              actionedUser['user_name'] as String? ??
-                              actionedUser['userName'] as String?;
+            actionedUserId =
+                actionedUser['user_id'] as int? ??
+                actionedUser['userId'] as int?;
+            actionedUserName =
+                actionedUser['full_name'] as String? ??
+                actionedUser['fullName'] as String? ??
+                actionedUser['user_name'] as String? ??
+                actionedUser['userName'] as String?;
           } else {
             try {
               actionedUserId = (actionedUser as dynamic).userId as int?;
-              actionedUserName = (actionedUser as dynamic).fullName as String? ??
-                                (actionedUser as dynamic).userName as String?;
+              actionedUserName =
+                  (actionedUser as dynamic).fullName as String? ??
+                  (actionedUser as dynamic).userName as String?;
             } catch (e) {
-              debugPrint('Error parsing actionedUser in archived promoted-as-admin: $e');
+              debugPrint(
+                'Error parsing actionedUser in archived promoted-as-admin: $e',
+              );
             }
           }
 
@@ -868,18 +886,24 @@ class _ArchivedChatListScreenState extends State<ArchivedChatListScreen> {
           String? actionedUserName;
 
           if (actionedUser is Map) {
-            actionedUserId = actionedUser['user_id'] as int? ?? actionedUser['userId'] as int?;
-            actionedUserName = actionedUser['full_name'] as String? ??
-                              actionedUser['fullName'] as String? ??
-                              actionedUser['user_name'] as String? ??
-                              actionedUser['userName'] as String?;
+            actionedUserId =
+                actionedUser['user_id'] as int? ??
+                actionedUser['userId'] as int?;
+            actionedUserName =
+                actionedUser['full_name'] as String? ??
+                actionedUser['fullName'] as String? ??
+                actionedUser['user_name'] as String? ??
+                actionedUser['userName'] as String?;
           } else {
             try {
               actionedUserId = (actionedUser as dynamic).userId as int?;
-              actionedUserName = (actionedUser as dynamic).fullName as String? ??
-                                (actionedUser as dynamic).userName as String?;
+              actionedUserName =
+                  (actionedUser as dynamic).fullName as String? ??
+                  (actionedUser as dynamic).userName as String?;
             } catch (e) {
-              debugPrint('Error parsing actionedUser in archived removed-as-admin: $e');
+              debugPrint(
+                'Error parsing actionedUser in archived removed-as-admin: $e',
+              );
             }
           }
 
@@ -899,19 +923,25 @@ class _ArchivedChatListScreenState extends State<ArchivedChatListScreen> {
 
           // Handle different data types safely
           if (actionedUser is Map) {
-            actionedUserId = actionedUser['user_id'] as int? ?? actionedUser['userId'] as int?;
-            actionedUserName = actionedUser['full_name'] as String? ??
-                              actionedUser['fullName'] as String? ??
-                              actionedUser['user_name'] as String? ??
-                              actionedUser['userName'] as String?;
+            actionedUserId =
+                actionedUser['user_id'] as int? ??
+                actionedUser['userId'] as int?;
+            actionedUserName =
+                actionedUser['full_name'] as String? ??
+                actionedUser['fullName'] as String? ??
+                actionedUser['user_name'] as String? ??
+                actionedUser['userName'] as String?;
           } else {
             // Assume it's a User object
             try {
               actionedUserId = (actionedUser as dynamic).userId as int?;
-              actionedUserName = (actionedUser as dynamic).fullName as String? ??
-                                (actionedUser as dynamic).userName as String?;
+              actionedUserName =
+                  (actionedUser as dynamic).fullName as String? ??
+                  (actionedUser as dynamic).userName as String?;
             } catch (e) {
-              debugPrint('Error parsing actionedUser in archived member-left: $e');
+              debugPrint(
+                'Error parsing actionedUser in archived member-left: $e',
+              );
             }
           }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/call/call_history/models/call_history_model.dart';
-import 'package:whoxa/featuers/call/call_history/repositories/call_history_repository.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/call/call_history/models/call_history_model.dart';
+import 'package:stanchat/featuers/call/call_history/repositories/call_history_repository.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class CallHistoryProvider with ChangeNotifier {
   final CallHistoryRepository _callHistoryRepository;

@@ -22,18 +22,18 @@ library;
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:whoxa/core/services/socket/socket_service.dart';
-import 'package:whoxa/featuers/chat/data/online_user_model.dart';
-import 'package:whoxa/featuers/chat/data/chat_ids_model.dart';
-import 'package:whoxa/featuers/chat/data/chat_list_model.dart' as chatlist;
-import 'package:whoxa/featuers/chat/data/chats_model.dart';
-import 'package:whoxa/featuers/chat/data/typing_model.dart';
-import 'package:whoxa/featuers/chat/data/block_updates_model.dart';
-import 'package:whoxa/featuers/chat/provider/archive_chat_provider.dart';
-import 'package:whoxa/featuers/chat/utils/chat_cache_manager.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/core/services/socket/socket_service.dart';
+import 'package:stanchat/featuers/chat/data/online_user_model.dart';
+import 'package:stanchat/featuers/chat/data/chat_ids_model.dart';
+import 'package:stanchat/featuers/chat/data/chat_list_model.dart' as chatlist;
+import 'package:stanchat/featuers/chat/data/chats_model.dart';
+import 'package:stanchat/featuers/chat/data/typing_model.dart';
+import 'package:stanchat/featuers/chat/data/block_updates_model.dart';
+import 'package:stanchat/featuers/chat/provider/archive_chat_provider.dart';
+import 'package:stanchat/featuers/chat/utils/chat_cache_manager.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 
 class SocketEventController with ChangeNotifier {
   // ═══════════════════════════════════════════════════════════════════════════
@@ -233,7 +233,7 @@ class SocketEventController with ChangeNotifier {
   Stream<OnlineUsersModel> get onlineUsersStream =>
       _onlineUsersStreamController.stream;
   Stream<TypingModel> get typingStream => _typingStreamController.stream;
-  Stream<BlockUpdatesModel> get blockUpdatesStream => 
+  Stream<BlockUpdatesModel> get blockUpdatesStream =>
       _blockUpdatesStreamController.stream;
 
   Stream<ChatsModel> get pinUnpinStream => _pinUnpinStreamController.stream;
@@ -2358,7 +2358,7 @@ class SocketEventController with ChangeNotifier {
         _blockUpdatesData = BlockUpdatesModel.fromJson(data);
         _blockUpdatesStreamController.add(_blockUpdatesData);
         _logger.i(
-          'Block update processed: userId=${_blockUpdatesData.userId}, chatId=${_blockUpdatesData.chatId}, isBlocked=${_blockUpdatesData.isBlocked}'
+          'Block update processed: userId=${_blockUpdatesData.userId}, chatId=${_blockUpdatesData.chatId}, isBlocked=${_blockUpdatesData.isBlocked}',
         );
         notifyListeners();
       } catch (e) {
@@ -2435,8 +2435,12 @@ class SocketEventController with ChangeNotifier {
         _logger.d('Chat ID: ${newMessage.chatId}');
         _logger.d('Message Type: ${newMessage.messageType}');
         _logger.d('Sender ID: ${newMessage.senderId}');
-        _logger.d('ActionedUser from socket: ${newMessage.actionedUser?.userId ?? "NULL"}');
-        _logger.d('ActionedUser name: ${newMessage.actionedUser?.fullName ?? "NULL"}');
+        _logger.d(
+          'ActionedUser from socket: ${newMessage.actionedUser?.userId ?? "NULL"}',
+        );
+        _logger.d(
+          'ActionedUser name: ${newMessage.actionedUser?.fullName ?? "NULL"}',
+        );
         _logger.d('===========================');
 
         // ✅ SIMPLE FIX: Use mutex lock
@@ -2619,8 +2623,12 @@ class SocketEventController with ChangeNotifier {
           newMessage.messageType == 'member-added') {
         _logger.d('🔍 MEMBER ACTION MESSAGE:');
         _logger.d('  Type: ${newMessage.messageType}');
-        _logger.d('  ActionedUser: ${newMessage.actionedUser?.userId ?? "NULL"}');
-        _logger.d('  ActionedUser Name: ${newMessage.actionedUser?.fullName ?? "NULL"}');
+        _logger.d(
+          '  ActionedUser: ${newMessage.actionedUser?.userId ?? "NULL"}',
+        );
+        _logger.d(
+          '  ActionedUser Name: ${newMessage.actionedUser?.fullName ?? "NULL"}',
+        );
         _logger.d('  Sender: ${newMessage.senderId}');
       }
 
@@ -3134,7 +3142,7 @@ class SocketEventController with ChangeNotifier {
 
     if (_chatListData.chats.isEmpty) {
       _logger.d('Chat list is empty, attempting to create new chat entry');
-      
+
       // ✅ FIX: When chat list is empty, check if we can create a new chat entry
       if (newMessage.messageType == 'group-created' ||
           newMessage.messageType == 'group_created' ||
@@ -3290,32 +3298,45 @@ class SocketEventController with ChangeNotifier {
       // Extract info from the new message
       final chatId = newMessage.chatId;
       final peerUserData = newMessage.peerUserData;
-      final chatInfo = newMessage.chat; // ✅ Extract Chat object from socket response
+      final chatInfo =
+          newMessage.chat; // ✅ Extract Chat object from socket response
 
       // ✅ Enhanced check: Allow creation with either chatId OR peerUserData
       if (chatId == null && peerUserData == null) {
-        _logger.w('❌ Cannot create chat entry - missing both chat ID and peer user data');
+        _logger.w(
+          '❌ Cannot create chat entry - missing both chat ID and peer user data',
+        );
         return;
       }
 
       // ✅ Determine chat type and extract appropriate info
-      final chatType = chatInfo?.chatType ?? 'private'; // Default to private for new chats
-      
+      final chatType =
+          chatInfo?.chatType ?? 'private'; // Default to private for new chats
+
       // ✅ Extract info based on chat type
-      final groupName = chatType.toLowerCase() == 'group'
-          ? (chatInfo?.groupName?.isNotEmpty == true ? chatInfo!.groupName! : 'New Group')
-          : (peerUserData?.fullName ?? peerUserData?.userName ?? 'Unknown User');
-      
-      final groupIcon = chatType.toLowerCase() == 'group'
-          ? (chatInfo?.groupIcon?.isNotEmpty == true ? chatInfo!.groupIcon! : '')
-          : (peerUserData?.profilePic ?? '');
-      
+      final groupName =
+          chatType.toLowerCase() == 'group'
+              ? (chatInfo?.groupName?.isNotEmpty == true
+                  ? chatInfo!.groupName!
+                  : 'New Group')
+              : (peerUserData?.fullName ??
+                  peerUserData?.userName ??
+                  'Unknown User');
+
+      final groupIcon =
+          chatType.toLowerCase() == 'group'
+              ? (chatInfo?.groupIcon?.isNotEmpty == true
+                  ? chatInfo!.groupIcon!
+                  : '')
+              : (peerUserData?.profilePic ?? '');
+
       final groupDescription = chatInfo?.groupDescription ?? '';
 
       // ✅ Determine if message should be marked as unseen
       final currentUserId = await _getCurrentUserIdAsync();
       final isFromCurrentUser = newMessage.senderId == currentUserId;
-      final unseenCount = isFromCurrentUser ? 0 : 1; // Don't count own messages as unseen
+      final unseenCount =
+          isFromCurrentUser ? 0 : 1; // Don't count own messages as unseen
 
       _logger.d('✅ Extracted chat info:');
       _logger.d('  Chat Name: $groupName');
@@ -3397,7 +3418,9 @@ class SocketEventController with ChangeNotifier {
 
       _logger.d('✅ Successfully created new chat entry');
       _logger.d('📊 Chat list now has ${_chatListData.chats.length} chats');
-      _logger.d('💬 Chat added for: ${chatType == "group" ? "Group" : "Private"} chat with ${peerUserData?.fullName ?? "Unknown"}');
+      _logger.d(
+        '💬 Chat added for: ${chatType == "group" ? "Group" : "Private"} chat with ${peerUserData?.fullName ?? "Unknown"}',
+      );
 
       // Update listeners
       _chatListStreamController.add(_chatListData);
@@ -3475,10 +3498,10 @@ class SocketEventController with ChangeNotifier {
       // ✅ Update or create message with intelligent handling
       if (chatRecord.messages?.isNotEmpty ?? false) {
         final lastMessage = chatRecord.messages!.first;
-        
+
         // CRITICAL: Check if this is a brand new message or an update to existing message
-        if (newMessage.messageId != null && 
-            lastMessage.messageId != null && 
+        if (newMessage.messageId != null &&
+            lastMessage.messageId != null &&
             newMessage.messageId != lastMessage.messageId &&
             newMessage.messageType != 'call') {
           // This is a genuinely new message (different ID, not a call event)
@@ -3526,19 +3549,26 @@ class SocketEventController with ChangeNotifier {
   /// ✅ HELPER: Update existing message data while preserving important fields
   void _updateMessageData(chatlist.Messages lastMessage, Records newMessage) {
     _logger.d('🔄 Updating message data:');
-    _logger.d('  Old: ${lastMessage.messageContent} (Type: ${lastMessage.messageType})');
-    _logger.d('  New: ${newMessage.messageContent} (Type: ${newMessage.messageType})');
+    _logger.d(
+      '  Old: ${lastMessage.messageContent} (Type: ${lastMessage.messageType})',
+    );
+    _logger.d(
+      '  New: ${newMessage.messageContent} (Type: ${newMessage.messageType})',
+    );
     _logger.d('  Old calls count: ${lastMessage.calls?.length ?? 0}');
     _logger.d('  New calls count: ${newMessage.calls?.length ?? 0}');
 
     // CRITICAL FIX: Only replace with newer messages, not call events updating existing messages
     final oldMessageId = lastMessage.messageId;
     final newMessageId = newMessage.messageId;
-    
+
     // If this is truly a newer/different message, update all fields
-    if (newMessageId != null && (oldMessageId == null || newMessageId > oldMessageId)) {
-      _logger.d('✅ Updating to newer message ID: $oldMessageId -> $newMessageId');
-      
+    if (newMessageId != null &&
+        (oldMessageId == null || newMessageId > oldMessageId)) {
+      _logger.d(
+        '✅ Updating to newer message ID: $oldMessageId -> $newMessageId',
+      );
+
       lastMessage.messageContent = newMessage.messageContent;
       lastMessage.messageType = newMessage.messageType;
       lastMessage.createdAt = newMessage.createdAt;
@@ -3550,7 +3580,9 @@ class SocketEventController with ChangeNotifier {
       // Update calls array if provided
       if (newMessage.calls != null && newMessage.calls!.isNotEmpty) {
         lastMessage.calls = newMessage.calls;
-        _logger.d('✅ Updated calls array with ${newMessage.calls!.length} calls');
+        _logger.d(
+          '✅ Updated calls array with ${newMessage.calls!.length} calls',
+        );
       }
 
       // Update user data if provided
@@ -3570,17 +3602,22 @@ class SocketEventController with ChangeNotifier {
         _logger.d('✅ Updated actionedUser: ${newMessage.actionedUser!.userId}');
       } else if (lastMessage.actionedUser != null) {
         // ANTI-FLICKER: Preserve existing actionedUser if new message doesn't have it
-        _logger.d('⚠️ Preserving existing actionedUser: ${lastMessage.actionedUser!.userId}');
+        _logger.d(
+          '⚠️ Preserving existing actionedUser: ${lastMessage.actionedUser!.userId}',
+        );
       }
-    } 
+    }
     // If it's the same message ID, only update specific fields (for call events)
     else if (newMessageId != null && oldMessageId == newMessageId) {
-      _logger.d('🔄 Updating same message ID: $newMessageId (likely call event update)');
-      
+      _logger.d(
+        '🔄 Updating same message ID: $newMessageId (likely call event update)',
+      );
+
       // Only update timestamp and seen status for same message
       lastMessage.updatedAt = newMessage.updatedAt ?? lastMessage.updatedAt;
-      lastMessage.messageSeenStatus = newMessage.messageSeenStatus ?? lastMessage.messageSeenStatus;
-      
+      lastMessage.messageSeenStatus =
+          newMessage.messageSeenStatus ?? lastMessage.messageSeenStatus;
+
       // Update calls array if provided (this handles call_end events)
       if (newMessage.calls != null && newMessage.calls!.isNotEmpty) {
         lastMessage.calls = newMessage.calls;
@@ -3588,18 +3625,21 @@ class SocketEventController with ChangeNotifier {
       }
 
       // Update message content ONLY for call messages to reflect final status
-      if (lastMessage.messageType == 'call' && newMessage.messageContent != null) {
+      if (lastMessage.messageType == 'call' &&
+          newMessage.messageContent != null) {
         lastMessage.messageContent = newMessage.messageContent;
-        _logger.d('🔄 Updated call message content: ${newMessage.messageContent}');
+        _logger.d(
+          '🔄 Updated call message content: ${newMessage.messageContent}',
+        );
       }
     }
     // Fallback for cases where we don't have clear message ID info
     else {
       _logger.d('⚠️  Fallback update - preserving calls array');
-      
+
       // Preserve the calls array from the old message if new message doesn't have calls
       final oldCalls = lastMessage.calls;
-      
+
       lastMessage.messageContent = newMessage.messageContent;
       lastMessage.messageType = newMessage.messageType;
       lastMessage.createdAt = newMessage.createdAt;
@@ -3630,7 +3670,9 @@ class SocketEventController with ChangeNotifier {
         _logger.d('✅ Updated actionedUser: ${newMessage.actionedUser!.userId}');
       } else if (lastMessage.actionedUser != null) {
         // ANTI-FLICKER: Preserve existing actionedUser if new message doesn't have it
-        _logger.d('⚠️ Preserving existing actionedUser: ${lastMessage.actionedUser!.userId}');
+        _logger.d(
+          '⚠️ Preserving existing actionedUser: ${lastMessage.actionedUser!.userId}',
+        );
       }
     }
 
@@ -3665,14 +3707,15 @@ class SocketEventController with ChangeNotifier {
       chatId: newMessage.chatId,
       calls: newMessage.calls, // CRITICAL FIX: Include calls array
       user: newMessage.user, // Include user data
-      actionedUser: newMessage.actionedUser != null
-          ? chatlist.User(
-              userId: newMessage.actionedUser!.userId,
-              userName: newMessage.actionedUser!.userName,
-              fullName: newMessage.actionedUser!.fullName,
-              profilePic: newMessage.actionedUser!.profilePic,
-            )
-          : null, // ✅ CRITICAL FIX: Include actionedUser for member-left messages
+      actionedUser:
+          newMessage.actionedUser != null
+              ? chatlist.User(
+                userId: newMessage.actionedUser!.userId,
+                userName: newMessage.actionedUser!.userName,
+                fullName: newMessage.actionedUser!.fullName,
+                profilePic: newMessage.actionedUser!.profilePic,
+              )
+              : null, // ✅ CRITICAL FIX: Include actionedUser for member-left messages
     );
   }
 
@@ -4226,14 +4269,16 @@ class SocketEventController with ChangeNotifier {
       _seenMessages.add(messageId);
 
       // ✅ IMMEDIATE LOCAL UPDATE: Update UI immediately for better UX
-      _logger.d('🔄 IMMEDIATE: Updating local message $messageId status to seen');
+      _logger.d(
+        '🔄 IMMEDIATE: Updating local message $messageId status to seen',
+      );
       bool localUpdateSuccess = await _updateMessageSeenStatus(
-        messageId, 
-        'seen', 
+        messageId,
+        'seen',
         null, // senderId doesn't matter for immediate local update
         currentUserId,
       );
-      
+
       if (localUpdateSuccess) {
         // ✅ IMMEDIATE UI UPDATE: Force UI refresh
         _chatsStreamController.add(_chatsData);
@@ -4526,17 +4571,23 @@ class SocketEventController with ChangeNotifier {
   /// ✅ NEW: Handle archive status changes that affect both regular and archived lists
   void _handleArchiveStatusChange(dynamic archiveData) async {
     try {
-      _logger.d('🗃️ Processing archive status change: $archiveData (type: ${archiveData.runtimeType})');
+      _logger.d(
+        '🗃️ Processing archive status change: $archiveData (type: ${archiveData.runtimeType})',
+      );
 
       // ✅ HANDLE STRING RESPONSES (e.g., demo accounts or errors)
       if (archiveData is String) {
-        _logger.w('Received String response for archive status change: $archiveData');
+        _logger.w(
+          'Received String response for archive status change: $archiveData',
+        );
         return;
       }
 
       // ✅ HANDLE MAP RESPONSE (normal case)
       if (archiveData is! Map<String, dynamic>) {
-        _logger.e('Unexpected data type for archive status change: ${archiveData.runtimeType}');
+        _logger.e(
+          'Unexpected data type for archive status change: ${archiveData.runtimeType}',
+        );
         return;
       }
 
@@ -5042,7 +5093,7 @@ class SocketEventController with ChangeNotifier {
       _logger.d(
         'UPDATE chatId:$chatId msgId:$messageId status:$callStatus preview:Updating...',
       );
-      
+
       // Find the chat in the chat list
       final chatIndex = _chatListData.chats.indexWhere((chat) {
         final record =
@@ -5082,7 +5133,7 @@ class SocketEventController with ChangeNotifier {
 
       // CRITICAL FIX: Update both calls array AND message content for proper preview
       bool wasUpdated = false;
-      
+
       // Update the call status in the calls array
       if (messageToUpdate.calls?.isNotEmpty == true) {
         for (var call in messageToUpdate.calls!) {
@@ -5115,7 +5166,7 @@ class SocketEventController with ChangeNotifier {
       // This prevents the preview from being stuck on "calling"
       if (messageToUpdate.messageType == 'call') {
         final oldContent = messageToUpdate.messageContent;
-        
+
         // Map call status to appropriate message content
         switch (callStatus.toLowerCase()) {
           case 'ended':
@@ -5134,7 +5185,7 @@ class SocketEventController with ChangeNotifier {
             messageToUpdate.messageContent = callStatus;
             break;
         }
-        
+
         if (oldContent != messageToUpdate.messageContent) {
           wasUpdated = true;
           _logger.i(
@@ -5144,7 +5195,9 @@ class SocketEventController with ChangeNotifier {
       }
 
       if (!wasUpdated) {
-        _logger.w('No calls array or message content found for call event update');
+        _logger.w(
+          'No calls array or message content found for call event update',
+        );
         return;
       }
 
@@ -5167,10 +5220,11 @@ class SocketEventController with ChangeNotifier {
       // Enhanced logging with preview information
       final callType = messageToUpdate.calls?.first.callType ?? 'voice';
       final duration = messageToUpdate.calls?.first.callDuration;
-      final previewInfo = duration != null && duration > 0 
-        ? 'Ended $callType call (${_formatDurationForLog(duration)})' 
-        : '$callStatus $callType call';
-        
+      final previewInfo =
+          duration != null && duration > 0
+              ? 'Ended $callType call (${_formatDurationForLog(duration)})'
+              : '$callStatus $callType call';
+
       _logger.i(
         'UPDATE chatId:$chatId msgId:$messageId status:$callStatus type:$callType preview:"$previewInfo"',
       );
@@ -5266,7 +5320,9 @@ class SocketEventController with ChangeNotifier {
       _onlineUsersData = OnlineUsersModel(onlineUsers: []);
       _typingData = TypingModel();
       _blockUpdatesData = BlockUpdatesModel();
-      _logger.d('✅ Cleared all data models (chatList, chats, onlineUsers, etc.)');
+      _logger.d(
+        '✅ Cleared all data models (chatList, chats, onlineUsers, etc.)',
+      );
 
       // Clear all collections but keep streams alive
       _recentlyProcessedMessages.clear();

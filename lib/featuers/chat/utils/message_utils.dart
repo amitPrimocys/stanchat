@@ -1,4 +1,4 @@
-import 'package:whoxa/utils/enums.dart';
+import 'package:stanchat/utils/enums.dart';
 
 class MessageTypeUtils {
   /// Converts MessageType enum to API-compatible string format

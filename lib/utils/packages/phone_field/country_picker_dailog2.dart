@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/packages/phone_field/countries.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/packages/phone_field/countries.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 class CountryPickerDialog2 extends StatefulWidget {
   final List<Country> countries;

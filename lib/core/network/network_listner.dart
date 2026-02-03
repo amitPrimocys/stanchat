@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/utils/logger.dart';
 
 /// NetworkListener
 /// A class that monitors network connectivity changes

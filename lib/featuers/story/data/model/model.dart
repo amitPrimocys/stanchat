@@ -1,5 +1,5 @@
-import 'package:whoxa/utils/packages/story/src/models/story_item.dart';
-import 'package:whoxa/utils/packages/story/src/utils/story_utils.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_item.dart';
+import 'package:stanchat/utils/packages/story/src/utils/story_utils.dart';
 
 class StoryModel {
   final String userID;

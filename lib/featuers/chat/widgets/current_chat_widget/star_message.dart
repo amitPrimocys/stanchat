@@ -3,8 +3,8 @@
 // ========================================
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
 
 /// Reusable star indicator widget for starred messages
 class StarIndicatorWidget extends StatelessWidget {

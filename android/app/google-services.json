@@ -1,67 +1,26 @@
 {
   "project_info": {
-    "project_number": "391729812590",
-    "project_id": "meyaoo-36820",
-    "storage_bucket": "meyaoo-36820.firebasestorage.app"
+    "project_number": "877090836373",
+    "project_id": "stanchat-ef802",
+    "storage_bucket": "stanchat-ef802.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:391729812590:android:9b96c0b770cb86013cc27f",
+        "mobilesdk_app_id": "1:877090836373:android:d60c03ab3d25b4fe6b309c",
         "android_client_info": {
-          "package_name": "com.primocys.chat"
+          "package_name": "com.stanchat.app"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "391729812590-1lgnk5ml8o5d5jl6vaplkkei53mvq1c8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.primocys.chat",
-            "certificate_hash": "f4ecb47c08b23e9dd088b993bad156d42b953cd8"
-          }
-        },
-        {
-          "client_id": "391729812590-inqmda2njafuhkh25tf14e0p88njo2fg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.primocys.chat",
-            "certificate_hash": "4f793cd8f4d89c0a1e241ae115d4a25dce7f483f"
-          }
-        },
-        {
-          "client_id": "391729812590-smshbli8g4hivh1k3eicmk4l1dtql36u.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.primocys.chat",
-            "certificate_hash": "b4dc7472f8aedb2cc8fa00e61bc34caae2e9df7d"
-          }
-        },
-        {
-          "client_id": "391729812590-loarj6v8o3nbn1gllubnj6cm4fa05h3l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAkQrEHySselU83c0xs5xZPc2taixT9T7A"
+          "current_key": "AIzaSyDuW_DJDOxetDNyvl5-HkrQsNkYTkxl2Tg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "391729812590-c1qif3msti77uf21sev4isde99i80naa.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "391729812590-4j9ih1qa16i1k7vnnqo2ip4fcit0ua58.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.primocys.chat"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

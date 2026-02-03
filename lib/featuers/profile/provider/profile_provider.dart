@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/featuers/auth/data/models/user_name_check_model.dart';
-import 'package:whoxa/featuers/profile/data/repository/profile_status_repo.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/featuers/auth/data/models/user_name_check_model.dart';
+import 'package:stanchat/featuers/profile/data/repository/profile_status_repo.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ProfileProvider extends ChangeNotifier {
   TextEditingController statuscontroller = TextEditingController();

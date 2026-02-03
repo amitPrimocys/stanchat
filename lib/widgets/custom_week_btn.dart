@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 Widget globButton({
   required String name,

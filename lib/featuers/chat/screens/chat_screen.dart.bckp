@@ -2,14 +2,14 @@
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 // import 'package:image_picker/image_picker.dart';
-// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// import 'package:whoxa/featuers/auth/provider/auth_provider.dart';
-// import 'package:whoxa/featuers/chat/data/chat_list_model.dart' as chatlist;
-// import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-// import 'package:whoxa/featuers/chat/widgets/chat_test.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// import 'package:whoxa/utils/preference_key/preference_key.dart';
-// import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+// import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// import 'package:stanchat/featuers/auth/provider/auth_provider.dart';
+// import 'package:stanchat/featuers/chat/data/chat_list_model.dart' as chatlist;
+// import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+// import 'package:stanchat/featuers/chat/widgets/chat_test.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/utils/preference_key/preference_key.dart';
+// import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 
 // class ChatScreen extends StatefulWidget {
 //   final int chatId;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_item.dart';
-import 'package:whoxa/utils/packages/story/src/story_presenter/story_view.dart';
-import 'package:whoxa/utils/packages/story/src/utils/story_utils.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_item.dart';
+import 'package:stanchat/utils/packages/story/src/story_presenter/story_view.dart';
+import 'package:stanchat/utils/packages/story/src/utils/story_utils.dart';
 
 typedef OnTextStoryLoaded = void Function(bool);
 

@@ -8,12 +8,12 @@
 // *****************************************************************************************
 
 import 'package:dio/dio.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/network_info.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/network_info.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 
 class ApiClient {
   final Dio _dio;

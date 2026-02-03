@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 class ImageViewerScreen extends StatefulWidget {
   final dynamic imageSource; // Can be String (URL/path), File, or AssetImage
@@ -205,8 +205,8 @@ class _ImageViewerScreenState extends State<ImageViewerScreen>
         animation: _heroAnimationController,
         builder: (context, child) {
           return Scaffold(
-            backgroundColor: Colors.black.withValues(alpha: 
-              _heroAnimationController.value,
+            backgroundColor: Colors.black.withValues(
+              alpha: _heroAnimationController.value,
             ),
             body: Stack(
               children: [

@@ -5,7 +5,7 @@
 import 'dart:async';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:peerdart/peerdart.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/utils/logger.dart';
 
 /// Simplified controller that handles mesh connections properly
 class SimpleMeshController {

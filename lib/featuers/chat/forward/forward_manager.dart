@@ -1,13 +1,13 @@
 // // forward_list_manager.dart
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-// import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-// import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-// import 'package:whoxa/utils/app_size_config.dart';
+// import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+// import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+// import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+// import 'package:stanchat/utils/app_size_config.dart';
 
 // // Forward item model to unify different data types
 // class ForwardItem {
@@ -487,7 +487,7 @@
 //                   color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
 //                   borderRadius: BorderRadius.circular(8),
 //                   border: Border.all(
-//                     color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 
+//                     color: AppColors.appPriSecColor.primaryColor.withValues(alpha:
 //                       0.3,
 //                     ),
 //                   ),
@@ -1032,13 +1032,13 @@
 // // forward_list_manager.dart
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-// import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-// import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-// import 'package:whoxa/utils/app_size_config.dart';
+// import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+// import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+// import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+// import 'package:stanchat/utils/app_size_config.dart';
 
 // class ForwardItem {
 //   final String id;
@@ -1629,7 +1629,7 @@
 //                   color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
 //                   borderRadius: BorderRadius.circular(8),
 //                   border: Border.all(
-//                     color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 
+//                     color: AppColors.appPriSecColor.primaryColor.withValues(alpha:
 //                       0.3,
 //                     ),
 //                   ),
@@ -2175,13 +2175,13 @@
 // // // forward_list_manager.dart
 // // import 'package:flutter/material.dart';
 // // import 'package:provider/provider.dart';
-// // import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// // import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-// // import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-// // import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-// // import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// // import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-// // import 'package:whoxa/utils/app_size_config.dart';
+// // import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// // import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+// // import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+// // import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+// // import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// // import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+// // import 'package:stanchat/utils/app_size_config.dart';
 
 // // // Forward item model to unify different data types
 // // class ForwardItem {
@@ -2766,7 +2766,7 @@
 // //                   color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
 // //                   borderRadius: BorderRadius.circular(8),
 // //                   border: Border.all(
-// //                     color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 
+// //                     color: AppColors.appPriSecColor.primaryColor.withValues(alpha:
 // //                       0.3,
 // //                     ),
 // //                   ),
@@ -3337,13 +3337,13 @@
 // forward_list_manager.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ForwardItem {
   final String id;
@@ -3933,11 +3933,13 @@ class _ForwardListManagerState extends State<ForwardListManager>
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
+                  color: AppColors.appPriSecColor.primaryColor.withValues(
+                    alpha: 0.1,
+                  ),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 
-                      0.3,
+                    color: AppColors.appPriSecColor.primaryColor.withValues(
+                      alpha: 0.3,
                     ),
                   ),
                 ),
@@ -4022,10 +4024,14 @@ class _ForwardListManagerState extends State<ForwardListManager>
               padding: const EdgeInsets.all(12),
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
-                color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
+                color: AppColors.appPriSecColor.primaryColor.withValues(
+                  alpha: 0.1,
+                ),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.3),
+                  color: AppColors.appPriSecColor.primaryColor.withValues(
+                    alpha: 0.3,
+                  ),
                 ),
               ),
               child: Column(
@@ -4056,8 +4062,9 @@ class _ForwardListManagerState extends State<ForwardListManager>
                     Text(
                       'Forwarding ${widget.selectedMessageIds!.length} message${widget.selectedMessageIds!.length != 1 ? 's' : ''}',
                       style: AppTypography.smallText(context).copyWith(
-                        color: AppColors.appPriSecColor.primaryColor
-                            .withValues(alpha: 0.8),
+                        color: AppColors.appPriSecColor.primaryColor.withValues(
+                          alpha: 0.8,
+                        ),
                         fontSize: 11,
                       ),
                     ),
@@ -4080,8 +4087,9 @@ class _ForwardListManagerState extends State<ForwardListManager>
                           : AppColors.strokeColor.greyColor,
                   foregroundColor: Colors.white,
                   elevation: hasSelection ? 4 : 0,
-                  shadowColor: AppColors.appPriSecColor.primaryColor
-                      .withValues(alpha: 0.3),
+                  shadowColor: AppColors.appPriSecColor.primaryColor.withValues(
+                    alpha: 0.3,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -4230,8 +4238,9 @@ class _ForwardListManagerState extends State<ForwardListManager>
                       width: 48,
                       height: 48,
                       decoration: BoxDecoration(
-                        color: AppColors.appPriSecColor.primaryColor
-                            .withValues(alpha: 0.1),
+                        color: AppColors.appPriSecColor.primaryColor.withValues(
+                          alpha: 0.1,
+                        ),
                         borderRadius: BorderRadius.circular(24),
                         image:
                             item.profilePic?.isNotEmpty == true

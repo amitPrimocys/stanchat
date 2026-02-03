@@ -3,7 +3,7 @@
 // Handles audio routing, focus management, and ringtone playback
 // =============================================================================
 
-package com.primocys.chat
+package com.stanchat.app
 
 import android.content.Context
 import android.media.AudioManager

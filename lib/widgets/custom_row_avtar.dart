@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/widgets/custom_image.dart';
+import 'package:stanchat/widgets/custom_image.dart';
 
 class UserImagesRow extends StatelessWidget {
   final List<String> imageUrls;

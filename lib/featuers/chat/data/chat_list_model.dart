@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart';
 
 // class ChatListModel {
 //   Pagination? pagination;
@@ -664,7 +664,13 @@ class Records {
       debugPrint('StackTrace: $stackTrace');
       debugPrint('JSON: $json');
       // Return default values
-      return Records(chatId: 0, messages: [], unseenCount: 0, blockedBy: [], archivedFor: []);
+      return Records(
+        chatId: 0,
+        messages: [],
+        unseenCount: 0,
+        blockedBy: [],
+        archivedFor: [],
+      );
     }
   }
 
@@ -751,13 +757,19 @@ class Messages {
         chatId: json['chat_id'],
         senderId: json['sender_id'],
         user: json['User'],
-        actionedUser: json['ActionedUser'] != null ? User.fromJson(json['ActionedUser']) : null,
+        actionedUser:
+            json['ActionedUser'] != null
+                ? User.fromJson(json['ActionedUser'])
+                : null,
         // Add social property if present in your model
         social: json['social'] != null ? Social.fromJson(json['social']) : null,
         // Parse Calls array
-        calls: json['Calls'] != null
-            ? (json['Calls'] as List).map((call) => CallData.fromJson(call)).toList()
-            : null,
+        calls:
+            json['Calls'] != null
+                ? (json['Calls'] as List)
+                    .map((call) => CallData.fromJson(call))
+                    .toList()
+                : null,
       );
     } catch (e) {
       debugPrint('Error parsing Messages: $e');

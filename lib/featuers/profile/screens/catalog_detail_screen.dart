@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:whoxa/featuers/auth/data/models/user_name_check_model.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/featuers/auth/data/models/user_name_check_model.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
 
 class CatalogDetailScreen extends StatefulWidget {
   final Catalog catalog;
 
-  const CatalogDetailScreen({
-    super.key,
-    required this.catalog,
-  });
+  const CatalogDetailScreen({super.key, required this.catalog});
 
   @override
   State<CatalogDetailScreen> createState() => _CatalogDetailScreenState();
@@ -82,8 +79,9 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
               height: SizeConfig.height(30),
               margin: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color:
-                    AppThemeManage.appTheme.textGreyWhite.withValues(alpha: 0.1),
+                color: AppThemeManage.appTheme.textGreyWhite.withValues(
+                  alpha: 0.1,
+                ),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(
@@ -125,9 +123,10 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
                 // Price Card
                 _buildInfoCard(
                   label: 'Price',
-                  value: widget.catalog.price != null
-                      ? '\$${widget.catalog.price}'
-                      : 'Price not specified',
+                  value:
+                      widget.catalog.price != null
+                          ? '\$${widget.catalog.price}'
+                          : 'Price not specified',
                 ),
 
                 SizedBox(height: 16),
@@ -155,7 +154,8 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
                       ),
                       SizedBox(height: 12),
                       Text(
-                        widget.catalog.description ?? 'No description available',
+                        widget.catalog.description ??
+                            'No description available',
                         style: AppTypography.innerText16(context).copyWith(
                           color: AppThemeManage.appTheme.textColor,
                           height: 1.5,
@@ -242,9 +242,10 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
                     width: _currentImageIndex == index ? 24 : 8,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: _currentImageIndex == index
-                          ? AppColors.appPriSecColor.primaryColor
-                          : Colors.white.withValues(alpha: 0.5),
+                      color:
+                          _currentImageIndex == index
+                              ? AppColors.appPriSecColor.primaryColor
+                              : Colors.white.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),
@@ -262,24 +263,26 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
       fit: BoxFit.cover,
       width: double.infinity,
       height: double.infinity,
-      placeholder: (context, url) => Container(
-        color: AppThemeManage.appTheme.shimmerBaseColor,
-        child: Center(
-          child: CircularProgressIndicator(
-            color: AppColors.appPriSecColor.primaryColor,
+      placeholder:
+          (context, url) => Container(
+            color: AppThemeManage.appTheme.shimmerBaseColor,
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppColors.appPriSecColor.primaryColor,
+              ),
+            ),
           ),
-        ),
-      ),
-      errorWidget: (context, url, error) => Container(
-        color: AppThemeManage.appTheme.shimmerBaseColor,
-        child: Center(
-          child: Icon(
-            Icons.image_not_supported,
-            color: AppThemeManage.appTheme.textGreyWhite,
-            size: 40,
+      errorWidget:
+          (context, url, error) => Container(
+            color: AppThemeManage.appTheme.shimmerBaseColor,
+            child: Center(
+              child: Icon(
+                Icons.image_not_supported,
+                color: AppThemeManage.appTheme.textGreyWhite,
+                size: 40,
+              ),
+            ),
           ),
-        ),
-      ),
     );
   }
 
@@ -319,10 +322,11 @@ class _CatalogDetailScreenState extends State<CatalogDetailScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => _FullScreenImageViewer(
-          images: images,
-          initialIndex: initialIndex,
-        ),
+        builder:
+            (context) => _FullScreenImageViewer(
+              images: images,
+              initialIndex: initialIndex,
+            ),
       ),
     );
   }
@@ -434,31 +438,30 @@ class _FullScreenImageViewerState extends State<_FullScreenImageViewer> {
         child: CachedNetworkImage(
           imageUrl: image.image ?? '',
           fit: BoxFit.contain,
-          placeholder: (context, url) => Center(
-            child: CircularProgressIndicator(
-              color: AppColors.appPriSecColor.primaryColor,
-            ),
-          ),
-          errorWidget: (context, url, error) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.image_not_supported,
-                  color: Colors.grey[400],
-                  size: 64,
+          placeholder:
+              (context, url) => Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.appPriSecColor.primaryColor,
                 ),
-                SizedBox(height: 16),
-                Text(
-                  'Failed to load image',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 16,
-                  ),
+              ),
+          errorWidget:
+              (context, url, error) => Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.image_not_supported,
+                      color: Colors.grey[400],
+                      size: 64,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Failed to load image',
+                      style: TextStyle(color: Colors.grey[400], fontSize: 16),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
         ),
       ),
     );

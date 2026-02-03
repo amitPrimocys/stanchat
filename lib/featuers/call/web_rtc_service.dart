@@ -10,9 +10,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:peerdart/peerdart.dart';
-import 'package:whoxa/featuers/call/call_model.dart';
-import 'package:whoxa/core/services/call_audio_manager.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
+import 'package:stanchat/core/services/call_audio_manager.dart';
+import 'package:stanchat/utils/logger.dart';
 
 // Platform channel for native iOS speaker management
 const MethodChannel _platform = MethodChannel('primocys.call.audio');
@@ -738,7 +738,9 @@ class WebRTCService {
   /// Force earpiece routing on Android with multiple attempts
   Future<void> _forceEarpieceOnAndroid() async {
     try {
-      _logger.i('📱 Android: Forcing earpiece routing with multiple attempts...');
+      _logger.i(
+        '📱 Android: Forcing earpiece routing with multiple attempts...',
+      );
 
       // Method 1: Multiple setSpeakerphoneOn(false) calls with delays
       // Android sometimes needs repeated calls to properly route to earpiece
@@ -753,7 +755,9 @@ class WebRTCService {
       // Method 2: Try device enumeration as additional step
       try {
         final devices = await Helper.enumerateDevices('audiooutput');
-        _logger.d('📱 Available audio devices: ${devices.map((d) => d.label).toList()}');
+        _logger.d(
+          '📱 Available audio devices: ${devices.map((d) => d.label).toList()}',
+        );
 
         // Look for earpiece/receiver device (might be labeled differently on different devices)
         for (var device in devices) {
@@ -764,13 +768,16 @@ class WebRTCService {
               label.contains('phone') ||
               label.contains('handset') ||
               label.contains('built-in') ||
-              (label.contains('speaker') == false && device.deviceId != 'default')) {
+              (label.contains('speaker') == false &&
+                  device.deviceId != 'default')) {
             try {
               await Helper.selectAudioOutput(device.deviceId);
               _logger.i('✅ Android: Selected device: ${device.label}');
               break;
             } catch (selectError) {
-              _logger.w('⚠️ Android: Could not select ${device.label}: $selectError');
+              _logger.w(
+                '⚠️ Android: Could not select ${device.label}: $selectError',
+              );
             }
           }
         }
@@ -781,7 +788,6 @@ class WebRTCService {
       // Final verification - one more setSpeakerphoneOn(false)
       await Helper.setSpeakerphoneOn(false);
       _logger.i('✅ Android: Earpiece routing completed');
-
     } catch (e) {
       _logger.e('❌ Android earpiece routing failed: $e');
     }
@@ -823,7 +829,9 @@ class WebRTCService {
 
       // CRITICAL FIX Step 1: Clean up ALL remote streams FIRST (reelboostmobile pattern)
       // This ensures remote audio stops immediately before anything else
-      _logger.i('🔇 Step 1: Cleaning up ${_remoteStreams.length} remote streams...');
+      _logger.i(
+        '🔇 Step 1: Cleaning up ${_remoteStreams.length} remote streams...',
+      );
       final remoteStreamIds = List<String>.from(_remoteStreams.keys);
       for (final peerId in remoteStreamIds) {
         final remoteStream = _remoteStreams[peerId];
@@ -920,7 +928,9 @@ class WebRTCService {
       _isAudioEnabled = true;
       _isSpeakerOn = true;
 
-      _logger.i('✅ WebRTCService: Disposed successfully - all audio should be stopped');
+      _logger.i(
+        '✅ WebRTCService: Disposed successfully - all audio should be stopped',
+      );
     } catch (e) {
       _logger.e('❌ Error disposing WebRTCService: $e');
     }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/featuers/language_method/data/model/lang_list_model.dart'
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/featuers/language_method/data/model/lang_list_model.dart'
     as langlist;
-import 'package:whoxa/featuers/language_method/data/model/word_list_model.dart'
+import 'package:stanchat/featuers/language_method/data/model/word_list_model.dart'
     as word_list;
-import 'package:whoxa/featuers/language_method/data/repository/language_repo.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/language_method/data/repository/language_repo.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class LanguageProvider extends ChangeNotifier {
   LanguageProvider(this.languageRepository);

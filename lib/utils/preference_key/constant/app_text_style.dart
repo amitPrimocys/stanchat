@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
 
 class AppTypography {
   // Base text style that includes the font

@@ -3,26 +3,26 @@
 // ========================================
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/delete_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/document_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/gif_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/group_created_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/image_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/link_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/location_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/story_reply_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/text_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/video_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/call_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/contact_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/block_unblock_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/voice_message_widget.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/delete_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/document_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/gif_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/group_created_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/image_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/link_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/location_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/story_reply_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/text_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/video_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/call_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/contact_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/block_unblock_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/voice_message_widget.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
 
 /// Main widget that determines which message type to display
 /// Updated MessageContentWidget with star support

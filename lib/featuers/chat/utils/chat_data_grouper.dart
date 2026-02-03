@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart';
 
 class ChatDateGrouper {
   static Map<String, List<Records>> groupMessagesByDate(

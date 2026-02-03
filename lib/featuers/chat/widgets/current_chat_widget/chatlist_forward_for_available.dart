@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
 
 class ChatListForForward extends StatefulWidget {
   final Function(int chatId, String chatName) onChatSelected;

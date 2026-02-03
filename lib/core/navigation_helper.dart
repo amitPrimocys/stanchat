@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/core/services/local_notification_service.dart';
-import 'package:whoxa/featuers/call/call_provider.dart';
-import 'package:whoxa/featuers/call/call_ui.dart';
-import 'package:whoxa/featuers/call/call_model.dart';
-import 'package:whoxa/screens/splash_screen.dart';
-import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/core/services/local_notification_service.dart';
+import 'package:stanchat/featuers/call/call_provider.dart';
+import 'package:stanchat/featuers/call/call_ui.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
+import 'package:stanchat/screens/splash_screen.dart';
+import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
 
 class NavigationHelper {
   // Add global navigator key for call notifications

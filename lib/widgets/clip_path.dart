@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 class DiagonalClipper extends CustomClipper<Path> {
   @override

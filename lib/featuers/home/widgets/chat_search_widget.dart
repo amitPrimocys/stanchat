@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ChatSearchWidget extends StatefulWidget {
   final Function(

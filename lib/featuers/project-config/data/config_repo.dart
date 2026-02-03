@@ -7,18 +7,18 @@
 
 import 'dart:ui';
 
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/featuers/notification/model/mark_read_model.dart';
-import 'package:whoxa/featuers/notification/model/notification_model.dart';
-import 'package:whoxa/featuers/project-config/data/config_model.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/featuers/notification/model/mark_read_model.dart';
+import 'package:stanchat/featuers/notification/model/notification_model.dart';
+import 'package:stanchat/featuers/project-config/data/config_model.dart';
 
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ProjectConfigRepository {
   final ApiClient _apiClient;
@@ -170,7 +170,7 @@ class ProjectConfigRepository {
         showPhoneContacts: true,
         userNameFlow: true,
         contactFlow: true, // Set to true for testing, normally would be false
-        appName: 'whoxa',
+        appName: 'stanchat',
         appEmail: '',
         appText: '',
         appPrimaryColor: '#006400',

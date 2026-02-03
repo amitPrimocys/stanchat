@@ -8,12 +8,12 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:get_it/get_it.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/utils/logger.dart' show ConsoleAppLogger;
-import 'package:whoxa/utils/network_info.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/utils/logger.dart' show ConsoleAppLogger;
+import 'package:stanchat/utils/network_info.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 
 // Enum to represent the connection state of the socket
@@ -204,7 +204,7 @@ class SocketService {
       _logger.i('Socket connected successfully');
       log('CONNECTED', name: 'SOCKET');
       _connectionStateController.add(SocketConnectionState.connected);
-       // Reset on successful connection
+      // Reset on successful connection
     });
 
     _socket!.onConnectError((error) {
@@ -242,8 +242,6 @@ class SocketService {
 
   // Manually disconnect from the socket server
   void disconnect() {
-    
-
     if (_socket != null) {
       _logger.i('Manually disconnecting socket');
       _socket!.disconnect();
@@ -253,8 +251,6 @@ class SocketService {
 
   // Close and clean up all socket resources
   void closeSocket() {
-    
-
     if (_socket != null) {
       _socket!.clearListeners();
       _socket!.disconnect();
@@ -415,7 +411,7 @@ class SocketService {
       _logger.i('All event handlers cleared');
 
       // Reset all state flags
-      
+
       _initialized = false;
       _connecting = false;
 

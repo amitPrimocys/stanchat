@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/report/data/models/report_types_model.dart';
-import 'package:whoxa/featuers/report/data/models/report_response_model.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/report/data/models/report_types_model.dart';
+import 'package:stanchat/featuers/report/data/models/report_response_model.dart';
 
 class ReportRepository {
   final ApiClient _apiClient;

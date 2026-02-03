@@ -7,31 +7,32 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whoxa/featuers/auth/data/models/user_name_check_model.dart'
+import 'package:stanchat/featuers/auth/data/models/user_name_check_model.dart'
     as usernamecheck;
-import 'package:whoxa/featuers/chat/data/models/chat_media_model.dart' as media;
-import 'package:whoxa/featuers/chat/data/models/link_model.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/chat/repository/chat_repository.dart';
-import 'package:whoxa/featuers/chat/widgets/chat_files_views_handle/image_view.dart';
-import 'package:whoxa/featuers/chat/widgets/chat_files_views_handle/video_view.dart';
-import 'package:whoxa/featuers/call/call_model.dart';
-import 'package:whoxa/featuers/call/call_ui.dart';
-import 'package:whoxa/featuers/profile/provider/profile_provider.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/metadata_service.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_direction_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/custom_bottomsheet.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/featuers/report/widgets/report_user_dialog.dart';
-import 'package:whoxa/featuers/chat/data/starred_messages_model.dart'
+import 'package:stanchat/featuers/chat/data/models/chat_media_model.dart'
+    as media;
+import 'package:stanchat/featuers/chat/data/models/link_model.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/chat/repository/chat_repository.dart';
+import 'package:stanchat/featuers/chat/widgets/chat_files_views_handle/image_view.dart';
+import 'package:stanchat/featuers/chat/widgets/chat_files_views_handle/video_view.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
+import 'package:stanchat/featuers/call/call_ui.dart';
+import 'package:stanchat/featuers/profile/provider/profile_provider.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/metadata_service.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_direction_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/custom_bottomsheet.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/featuers/report/widgets/report_user_dialog.dart';
+import 'package:stanchat/featuers/chat/data/starred_messages_model.dart'
     as starred;
 
 class UserProfileViewBusiness extends StatefulWidget {

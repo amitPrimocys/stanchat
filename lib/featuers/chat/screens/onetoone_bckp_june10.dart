@@ -9,30 +9,30 @@
 // import 'package:flutter/rendering.dart';
 // import 'package:image_picker/image_picker.dart';
 // import 'package:provider/provider.dart';
-// import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// import 'package:whoxa/featuers/chat/utils/message_utils.dart';
-// import 'package:whoxa/featuers/chat/utils/time_stamp_formatter.dart';
-// import 'package:whoxa/featuers/chat/widgets/call_widget.dart';
-// import 'package:whoxa/featuers/chat/widgets/chat_appbar_title.dart';
-// import 'package:whoxa/featuers/chat/widgets/chat_files_views_handle/image_view.dart';
-// import 'package:whoxa/featuers/chat/widgets/chat_files_views_handle/video_view.dart';
-// import 'package:whoxa/featuers/chat/widgets/chat_keyboard.dart';
-// import 'package:whoxa/featuers/chat/widgets/chat_type_dialog.dart';
-// import 'package:whoxa/featuers/chat/widgets/current_chat_widget/lastseen_widget.dart';
-// import 'package:whoxa/featuers/chat/widgets/current_chat_widget/message_content_widget.dart';
-// import 'package:whoxa/featuers/chat/widgets/current_chat_widget/pin_duration_dialog.dart';
-// import 'package:whoxa/featuers/chat/widgets/pinned_widget.dart';
-// import 'package:whoxa/utils/app_size_config.dart';
-// import 'package:whoxa/utils/enums.dart';
-// import 'package:whoxa/utils/logger.dart';
-// import 'package:whoxa/utils/packages/scroll_to_index/scroll_to_index.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-// import 'package:whoxa/utils/preference_key/preference_key.dart';
-// import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-// import 'package:whoxa/widgets/cusotm_blur_appbar.dart';
+// import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+// import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// import 'package:stanchat/featuers/chat/utils/message_utils.dart';
+// import 'package:stanchat/featuers/chat/utils/time_stamp_formatter.dart';
+// import 'package:stanchat/featuers/chat/widgets/call_widget.dart';
+// import 'package:stanchat/featuers/chat/widgets/chat_appbar_title.dart';
+// import 'package:stanchat/featuers/chat/widgets/chat_files_views_handle/image_view.dart';
+// import 'package:stanchat/featuers/chat/widgets/chat_files_views_handle/video_view.dart';
+// import 'package:stanchat/featuers/chat/widgets/chat_keyboard.dart';
+// import 'package:stanchat/featuers/chat/widgets/chat_type_dialog.dart';
+// import 'package:stanchat/featuers/chat/widgets/current_chat_widget/lastseen_widget.dart';
+// import 'package:stanchat/featuers/chat/widgets/current_chat_widget/message_content_widget.dart';
+// import 'package:stanchat/featuers/chat/widgets/current_chat_widget/pin_duration_dialog.dart';
+// import 'package:stanchat/featuers/chat/widgets/pinned_widget.dart';
+// import 'package:stanchat/utils/app_size_config.dart';
+// import 'package:stanchat/utils/enums.dart';
+// import 'package:stanchat/utils/logger.dart';
+// import 'package:stanchat/utils/packages/scroll_to_index/scroll_to_index.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+// import 'package:stanchat/utils/preference_key/preference_key.dart';
+// import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+// import 'package:stanchat/widgets/cusotm_blur_appbar.dart';
 
 // /// OneToOneChat Screen - Main chat interface for private conversations
 // ///
@@ -1015,7 +1015,7 @@
 //                 Container(
 //                   padding: EdgeInsets.all(10),
 //                   decoration: BoxDecoration(
-//                     color: AppColors.appPriSecColor.secondaryColor.withValues(alpha: 
+//                     color: AppColors.appPriSecColor.secondaryColor.withValues(alpha:
 //                       0.1,
 //                     ),
 //                     borderRadius: BorderRadius.circular(50),

@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class SecureStorageKeys {
   static const String TOKEN = "TOKEN";
@@ -29,7 +29,8 @@ class SecureStorageKeys {
   static const isLightMode = 'isLightMode';
   static const String customThemeColor = 'customThemeColor';
   static const String IS_DEMO = "IS_DEMO";
-  static const String PROJECT_CONFIG = "PROJECT_CONFIG"; // ✅ Cache for project configuration
+  static const String PROJECT_CONFIG =
+      "PROJECT_CONFIG"; // ✅ Cache for project configuration
   static const String DEMO_CREDENTIAL = "DEMO_CREDENTIAL";
 
   // Contact sync data (stores timestamp + contacts snapshot for diff detection)

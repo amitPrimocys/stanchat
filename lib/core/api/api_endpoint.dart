@@ -4,8 +4,8 @@ class ApiEndpoints {
   // static const String baseUrl = 'https://advance.whoxachat.com/api';
   // static const String socketUrl = 'https://advance.whoxachat.com';
 
-  static const String baseUrl = 'http://192.168.0.27:3047/api';
-  static const String socketUrl = 'http://192.168.0.27:3047';
+  static const String baseUrl = 'http://92.112.124.212:3007/api';
+  static const String socketUrl = 'http://92.112.124.212:3007';
 
   static const String projectConfig = "/config/";
   static const String registerEmail = "/users/signup";

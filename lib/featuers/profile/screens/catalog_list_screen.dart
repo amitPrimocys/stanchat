@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:whoxa/featuers/auth/data/models/user_name_check_model.dart';
-import 'package:whoxa/featuers/profile/screens/catalog_detail_screen.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/featuers/auth/data/models/user_name_check_model.dart';
+import 'package:stanchat/featuers/profile/screens/catalog_detail_screen.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class CatalogListScreen extends StatelessWidget {
   final List<Catalog> catalogs;

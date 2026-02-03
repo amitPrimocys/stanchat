@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-// import 'package:whoxa/core/services/socket_event_controller.dart';
+// import 'package:stanchat/core/services/socket_event_controller.dart';
 
 // class ConnectionStatusWidget extends StatelessWidget {
 //   final VoidCallback? onRetry;

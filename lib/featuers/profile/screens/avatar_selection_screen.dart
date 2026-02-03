@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/auth/provider/auth_provider.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/cusotm_blur_appbar.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/auth/provider/auth_provider.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/cusotm_blur_appbar.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class AvatarSelectionScreen extends StatefulWidget {
   const AvatarSelectionScreen({super.key});

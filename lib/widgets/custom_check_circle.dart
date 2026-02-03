@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
 
 class CustomCheckCircle extends StatelessWidget {
   final bool isSelected;

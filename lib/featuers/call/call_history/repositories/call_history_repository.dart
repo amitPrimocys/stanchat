@@ -1,8 +1,8 @@
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/call/call_history/models/call_history_model.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/call/call_history/models/call_history_model.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class CallHistoryRepository {
   final ApiClient _apiClient;

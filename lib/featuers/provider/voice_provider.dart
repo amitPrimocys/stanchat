@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:whoxa/main.dart';
+import 'package:stanchat/main.dart';
 
 class VoiceProvider extends ChangeNotifier {
   VoiceProvider() {

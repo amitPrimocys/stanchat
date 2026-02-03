@@ -3,7 +3,7 @@
 library;
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/packages/dotted_border/path/src/dash_path.dart';
+import 'package:stanchat/utils/packages/dotted_border/path/src/dash_path.dart';
 
 part 'dash_painter.dart';
 

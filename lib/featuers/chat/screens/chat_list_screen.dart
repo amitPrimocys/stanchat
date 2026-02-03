@@ -4,13 +4,13 @@
 // // import 'package:flutter/material.dart';
 // // import 'package:provider/provider.dart';
 // // import 'package:get_it/get_it.dart';
-// // import 'package:whoxa/core/services/socket_service.dart';
-// // import 'package:whoxa/core/services/socket_event_controller.dart';
-// // import 'package:whoxa/featuers/chat/data/chat_list_model.dart' as chatlist;
-// // import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// // import 'package:whoxa/featuers/chat/screens/chat_screen.dart';
-// // import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// // import 'package:whoxa/utils/logger.dart';
+// // import 'package:stanchat/core/services/socket_service.dart';
+// // import 'package:stanchat/core/services/socket_event_controller.dart';
+// // import 'package:stanchat/featuers/chat/data/chat_list_model.dart' as chatlist;
+// // import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// // import 'package:stanchat/featuers/chat/screens/chat_screen.dart';
+// // import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// // import 'package:stanchat/utils/logger.dart';
 
 // // class ChatListScreen extends StatefulWidget {
 // //   const ChatListScreen({Key? key}) : super(key: key);
@@ -574,13 +574,13 @@
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 // import 'package:get_it/get_it.dart';
-// import 'package:whoxa/core/services/socket/socket_service.dart';
-// import 'package:whoxa/core/services/socket/socket_event_controller.dart';
-// import 'package:whoxa/featuers/chat/screens/one_to_one_chats.dart';
-// import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// import 'package:whoxa/utils/logger.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/core/services/socket/socket_service.dart';
+// import 'package:stanchat/core/services/socket/socket_event_controller.dart';
+// import 'package:stanchat/featuers/chat/screens/one_to_one_chats.dart';
+// import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+// import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// import 'package:stanchat/utils/logger.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 // class ChatListScreen extends StatefulWidget {
 //   const ChatListScreen({super.key});

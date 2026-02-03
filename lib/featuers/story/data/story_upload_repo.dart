@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/story/data/model/delete_story_model.dart';
-import 'package:whoxa/featuers/story/data/model/get_all_story_model.dart';
-import 'package:whoxa/featuers/story/data/model/story_upload_model.dart';
-import 'package:whoxa/featuers/story/data/model/viewed_story_model.dart';
-import 'package:whoxa/featuers/story/data/model/viewed_user_list_model.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/story/data/model/delete_story_model.dart';
+import 'package:stanchat/featuers/story/data/model/get_all_story_model.dart';
+import 'package:stanchat/featuers/story/data/model/story_upload_model.dart';
+import 'package:stanchat/featuers/story/data/model/viewed_story_model.dart';
+import 'package:stanchat/featuers/story/data/model/viewed_user_list_model.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class StoryUploadRepo {
   final ApiClient _apiClient;

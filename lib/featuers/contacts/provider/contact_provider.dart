@@ -1,9 +1,9 @@
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter_contacts/flutter_contacts.dart';
-// import 'package:whoxa/core/error/app_error.dart';
-// import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-// import 'package:whoxa/featuers/contacts/data/model/get_contact_model.dart';
-// import 'package:whoxa/featuers/contacts/data/repository/contact_repo.dart';
+// import 'package:stanchat/core/error/app_error.dart';
+// import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+// import 'package:stanchat/featuers/contacts/data/model/get_contact_model.dart';
+// import 'package:stanchat/featuers/contacts/data/repository/contact_repo.dart';
 
 // class ContactListProvider with ChangeNotifier {
 //   final ContactRepo _contactRepo;
@@ -240,18 +240,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-import 'package:whoxa/featuers/contacts/data/model/contact_sync_models.dart';
-import 'package:whoxa/featuers/contacts/data/model/get_contact_model.dart';
-import 'package:whoxa/featuers/contacts/data/repository/contact_repo.dart';
-import 'package:whoxa/featuers/contacts/services/countrycode_service.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart' as global;
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+import 'package:stanchat/featuers/contacts/data/model/contact_sync_models.dart';
+import 'package:stanchat/featuers/contacts/data/model/get_contact_model.dart';
+import 'package:stanchat/featuers/contacts/data/repository/contact_repo.dart';
+import 'package:stanchat/featuers/contacts/services/countrycode_service.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart' as global;
+import 'package:stanchat/widgets/global.dart';
 
 class ContactListProvider with ChangeNotifier {
   final ContactRepo _contactRepo;
@@ -368,13 +368,17 @@ class ContactListProvider with ChangeNotifier {
     // ALREADY INITIALIZED: Just trigger background sync for new activity
     // -------------------------------------------------------
     if (_isInitialized) {
-      debugPrint('✅ Already initialized — triggering background sync for new activity');
+      debugPrint(
+        '✅ Already initialized — triggering background sync for new activity',
+      );
       // Still run background sync to detect new contacts (non-blocking)
-      _backgroundSync().then((_) {
-        debugPrint('✅ Background sync (re-check) completed');
-      }).catchError((e) {
-        debugPrint('❌ Background sync (re-check) failed: $e');
-      });
+      _backgroundSync()
+          .then((_) {
+            debugPrint('✅ Background sync (re-check) completed');
+          })
+          .catchError((e) {
+            debugPrint('❌ Background sync (re-check) failed: $e');
+          });
       return;
     }
 
@@ -393,11 +397,13 @@ class ContactListProvider with ChangeNotifier {
     // STEP 2: Background sync (does NOT block UI)
     // -------------------------------------------------------
     // Use Future (not await) so it runs in background
-    _backgroundSync().then((_) {
-      debugPrint('✅ Background sync completed');
-    }).catchError((e) {
-      debugPrint('❌ Background sync failed: $e');
-    });
+    _backgroundSync()
+        .then((_) {
+          debugPrint('✅ Background sync completed');
+        })
+        .catchError((e) {
+          debugPrint('❌ Background sync failed: $e');
+        });
 
     // If no cache (first time), wait for sync to finish
     if (!hasCache) {
@@ -486,9 +492,10 @@ class ContactListProvider with ChangeNotifier {
       for (var contact in deviceContacts) {
         if (contact.phones.isEmpty) continue;
 
-        String bestName = contact.displayName.trim().isEmpty
-            ? 'Unknown'
-            : contact.displayName.trim();
+        String bestName =
+            contact.displayName.trim().isEmpty
+                ? 'Unknown'
+                : contact.displayName.trim();
 
         for (var phone in contact.phones) {
           final phoneData = _parsePhoneNumber(phone.number);
@@ -541,7 +548,8 @@ class ContactListProvider with ChangeNotifier {
       if (savedSyncData.isFirstSync) {
         // FIRST TIME: send all contacts via create-contacts
         debugPrint(
-            '📱 First time sync: sending ${contactsForApi.length} contacts');
+          '📱 First time sync: sending ${contactsForApi.length} contacts',
+        );
         shouldRefreshContacts = await doFullSync(
           allContactsForApi: contactsForApi,
           contactsByPhone: contactsByPhone,
@@ -549,7 +557,8 @@ class ContactListProvider with ChangeNotifier {
       } else {
         // INCREMENTAL: find changes, send only diff via sync-contacts
         debugPrint(
-            '🔄 Incremental sync: comparing with ${savedSyncData.contacts.length} saved contacts');
+          '🔄 Incremental sync: comparing with ${savedSyncData.contacts.length} saved contacts',
+        );
         final changes = findChanges(
           currentDeviceContacts: contactsByPhone,
           savedContacts: savedSyncData.contacts,
@@ -559,7 +568,8 @@ class ContactListProvider with ChangeNotifier {
           debugPrint('✅ No changes detected');
         } else {
           debugPrint(
-              '📤 Sending ${changes.totalChanges} changes to sync API...');
+            '📤 Sending ${changes.totalChanges} changes to sync API...',
+          );
         }
 
         shouldRefreshContacts = await doIncrementalSync(
@@ -607,20 +617,25 @@ class ContactListProvider with ChangeNotifier {
           debugPrint('get-contacts failed: $e');
         }
       } else {
-        debugPrint('⏭️ Skipping get-contacts API - no changes detected, using cached data');
+        debugPrint(
+          '⏭️ Skipping get-contacts API - no changes detected, using cached data',
+        );
         // Use cached contacts for UI (already loaded in initializeContacts)
         // Just process with existing cache to ensure UI is consistent
         final cached = await loadCachedContacts();
         if (cached.isNotEmpty) {
-          final cachedContactDetails = cached.contacts
-              .map((c) => ContactDetails(
-                    name: c.name,
-                    number: c.number,
-                    userId: c.userId,
-                    userName: c.userName,
-                    profilePic: c.profilePic,
-                  ))
-              .toList();
+          final cachedContactDetails =
+              cached.contacts
+                  .map(
+                    (c) => ContactDetails(
+                      name: c.name,
+                      number: c.number,
+                      userId: c.userId,
+                      userName: c.userName,
+                      profilePic: c.profilePic,
+                    ),
+                  )
+                  .toList();
           processContacts(deviceContacts, cachedContactDetails);
           // Note: _notifyContactNameService() inside processContacts() now clears
           // the cache and updates with fresh device names, then calls notifyListeners()
@@ -759,7 +774,8 @@ class ContactListProvider with ChangeNotifier {
     // Handle common country code scenarios (like +91 for India)
     if (_cachedOwnNumberNoLeadingZeros!.startsWith('91') &&
         _cachedOwnNumberNoLeadingZeros!.length > 10) {
-      _cachedOwnNumberNoLeadingZeros = _cachedOwnNumberNoLeadingZeros!.substring(2);
+      _cachedOwnNumberNoLeadingZeros = _cachedOwnNumberNoLeadingZeros!
+          .substring(2);
     }
 
     _ownNumberCacheValid = true;
@@ -905,8 +921,8 @@ class ContactListProvider with ChangeNotifier {
         if (cleanNumber.isEmpty) continue;
 
         if (seenNumbers.contains(cleanNumber)) {
-      continue; // Duplicate number, skip
-    }
+          continue; // Duplicate number, skip
+        }
 
         // Skip if this is the user's own number - check multiple formats
         String fullNumberWithCountryCode = '';
@@ -931,7 +947,7 @@ class ContactListProvider with ChangeNotifier {
           continue;
         }
 
-         seenNumbers.add(cleanNumber);
+        seenNumbers.add(cleanNumber);
 
         // Check if this contact exists in API results
         final apiContact = apiContactsMap[cleanNumber];
@@ -1215,15 +1231,18 @@ class ContactListProvider with ChangeNotifier {
       );
 
       // Update cache (fire-and-forget, but cache is already cleared above)
-      contactNameService.updateCacheWithContacts(localContactMap).then((_) {
-        debugPrint(
-          '✅ ContactNameService cache updated with ${localContactMap.length} LOCAL device contact names (Priority 1)',
-        );
-        // Notify listeners again after cache is updated to refresh UI with new names
-        notifyListeners();
-      }).catchError((e) {
-        debugPrint('❌ Error updating ContactNameService: $e');
-      });
+      contactNameService
+          .updateCacheWithContacts(localContactMap)
+          .then((_) {
+            debugPrint(
+              '✅ ContactNameService cache updated with ${localContactMap.length} LOCAL device contact names (Priority 1)',
+            );
+            // Notify listeners again after cache is updated to refresh UI with new names
+            notifyListeners();
+          })
+          .catchError((e) {
+            debugPrint('❌ Error updating ContactNameService: $e');
+          });
     } catch (e) {
       debugPrint('❌ Error notifying contact name service: $e');
     }
@@ -1257,16 +1276,21 @@ class ContactListProvider with ChangeNotifier {
   Future<void> saveCachedContacts(List<ContactDetails> apiContacts) async {
     try {
       final cached = CachedContactList(
-        contacts: apiContacts
-            .where((c) => c.userId != null) // Only cache registered contacts
-            .map((c) => CachedContact(
-                  name: c.name ?? '',
-                  number: c.number ?? '',
-                  userId: c.userId,
-                  userName: c.userName,
-                  profilePic: c.profilePic,
-                ))
-            .toList(),
+        contacts:
+            apiContacts
+                .where(
+                  (c) => c.userId != null,
+                ) // Only cache registered contacts
+                .map(
+                  (c) => CachedContact(
+                    name: c.name ?? '',
+                    number: c.number ?? '',
+                    userId: c.userId,
+                    userName: c.userName,
+                    profilePic: c.profilePic,
+                  ),
+                )
+                .toList(),
         cachedAt: DateTime.now().toUtc().toIso8601String(),
       );
       await SecurePrefs.setString(
@@ -1274,7 +1298,8 @@ class ContactListProvider with ChangeNotifier {
         cached.toJsonString(),
       );
       debugPrint(
-          'Cached ${cached.contacts.length} registered contacts for instant load');
+        'Cached ${cached.contacts.length} registered contacts for instant load',
+      );
     } catch (e) {
       debugPrint('Error saving cached contacts: $e');
     }
@@ -1301,14 +1326,17 @@ class ContactListProvider with ChangeNotifier {
     }
 
     // Build ContactModel list from cache to populate UI
-    _chatContacts = cached.contacts
-        .map((c) => ContactModel(
-              name: c.name,
-              phoneNumber: c.number,
-              userId: c.userId?.toString(),
-              profilePicUrl: c.profilePic,
-            ))
-        .toList();
+    _chatContacts =
+        cached.contacts
+            .map(
+              (c) => ContactModel(
+                name: c.name,
+                phoneNumber: c.number,
+                userId: c.userId?.toString(),
+                profilePicUrl: c.profilePic,
+              ),
+            )
+            .toList();
 
     // Sort alphabetically
     _chatContacts.sort((a, b) => a.name.compareTo(b.name));
@@ -1466,17 +1494,22 @@ class ContactListProvider with ChangeNotifier {
       // Save new snapshot
       final syncData = ContactSyncData(
         syncTimestamp: newTimestamp ?? DateTime.now().toUtc().toIso8601String(),
-        contacts: currentDeviceContacts.entries
-            .map((e) => SavedContact(
-                  phone: e.key,
-                  name: e.value['name'] as String? ?? '',
-                  countryCode: e.value['country_code'] as String? ?? '',
-                ))
-            .toList(),
+        contacts:
+            currentDeviceContacts.entries
+                .map(
+                  (e) => SavedContact(
+                    phone: e.key,
+                    name: e.value['name'] as String? ?? '',
+                    countryCode: e.value['country_code'] as String? ?? '',
+                  ),
+                )
+                .toList(),
       );
       await saveSyncData(syncData);
 
-      debugPrint('📊 Incremental sync complete - shouldRefreshContacts: $shouldRefreshContacts');
+      debugPrint(
+        '📊 Incremental sync complete - shouldRefreshContacts: $shouldRefreshContacts',
+      );
       return shouldRefreshContacts;
     } catch (e) {
       debugPrint('Incremental sync failed: $e');
@@ -1499,13 +1532,16 @@ class ContactListProvider with ChangeNotifier {
       if (createResponse.status == true) {
         final syncData = ContactSyncData(
           syncTimestamp: DateTime.now().toUtc().toIso8601String(),
-          contacts: contactsByPhone.entries
-              .map((e) => SavedContact(
-                    phone: e.key,
-                    name: e.value['name'] as String? ?? '',
-                    countryCode: e.value['country_code'] as String? ?? '',
-                  ))
-              .toList(),
+          contacts:
+              contactsByPhone.entries
+                  .map(
+                    (e) => SavedContact(
+                      phone: e.key,
+                      name: e.value['name'] as String? ?? '',
+                      countryCode: e.value['country_code'] as String? ?? '',
+                    ),
+                  )
+                  .toList(),
         );
         await saveSyncData(syncData);
       }
@@ -1523,7 +1559,9 @@ class ContactListProvider with ChangeNotifier {
 
   /// Check if cached contacts are stale (older than threshold).
   /// This is a fallback to ensure contacts are refreshed periodically.
-  Future<bool> isCacheStale({Duration threshold = const Duration(hours: 6)}) async {
+  Future<bool> isCacheStale({
+    Duration threshold = const Duration(hours: 6),
+  }) async {
     try {
       final cached = await loadCachedContacts();
       if (cached.cachedAt == null) return true;
@@ -1535,7 +1573,9 @@ class ContactListProvider with ChangeNotifier {
       final isStale = age > threshold;
 
       if (isStale) {
-        debugPrint('⏰ Cache is stale (age: ${age.inHours}h, threshold: ${threshold.inHours}h)');
+        debugPrint(
+          '⏰ Cache is stale (age: ${age.inHours}h, threshold: ${threshold.inHours}h)',
+        );
       }
 
       return isStale;

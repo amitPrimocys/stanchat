@@ -5,7 +5,7 @@
 /// in translations.
 library;
 
-import 'package:whoxa/featuers/language_method/provider/language_provider.dart';
+import 'package:stanchat/featuers/language_method/provider/language_provider.dart';
 
 class AppString {
   // static final LanguageProvider _langProvider =
@@ -548,7 +548,7 @@ class AppString {
   // *
   static String get shareThisLinkWithYourFriendsToInviteThemTojoin =>
       _langProvider.textTranslate(
-        "Join me on WhoxaChat! Download the app and start chatting",
+        "Join me on StanChat! Download the app and start chatting",
       );
   // *
   static String get shareLink => _langProvider.textTranslate("Share Link");

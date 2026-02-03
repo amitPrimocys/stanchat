@@ -8,23 +8,24 @@
 
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/core/services/call_audio_manager.dart';
-import 'package:whoxa/core/services/device_profile_manager.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/core/services/call_audio_manager.dart';
+import 'package:stanchat/core/services/device_profile_manager.dart';
 
 class CallNotificationManager {
-  static final CallNotificationManager _instance = CallNotificationManager._internal();
+  static final CallNotificationManager _instance =
+      CallNotificationManager._internal();
   static CallNotificationManager get instance => _instance;
   CallNotificationManager._internal();
 
   final _logger = ConsoleAppLogger.forModule('CallNotificationManager');
-  
+
   // State management
   bool _isInitialized = false;
   Timer? _vibrationTimer;
   Timer? _ringtoneTimer;
   bool _isNotificationActive = false;
-  
+
   // Platform channel for native ringer mode detection
   static const platform = MethodChannel('primocys.call.notification');
 
@@ -32,10 +33,10 @@ class CallNotificationManager {
   Future<void> initialize() async {
     try {
       _logger.i('🔔 CallNotificationManager: Initializing...');
-      
+
       // Initialize device profile manager
       await DeviceProfileManager.instance.initialize();
-      
+
       _isInitialized = true;
       _logger.i('✅ CallNotificationManager: Initialized successfully');
     } catch (e) {
@@ -44,20 +45,20 @@ class CallNotificationManager {
     }
   }
 
-
   /// Start incoming call notification based on device sound profile
   Future<void> startIncomingCallNotification() async {
     if (!_isInitialized) await initialize();
-    
+
     try {
       _logger.i('🔔 Starting incoming call notification...');
-      
+
       // Get current ringer mode from device profile manager
-      final currentRingerMode = await DeviceProfileManager.instance.getCurrentRingerMode();
-      
+      final currentRingerMode =
+          await DeviceProfileManager.instance.getCurrentRingerMode();
+
       // Stop any existing notification
       await stopIncomingCallNotification();
-      
+
       _isNotificationActive = true;
 
       switch (currentRingerMode) {
@@ -71,7 +72,9 @@ class CallNotificationManager {
           break;
 
         case DeviceRingerMode.general:
-          _logger.i('🔔 Device in general mode - starting ringtone and vibration');
+          _logger.i(
+            '🔔 Device in general mode - starting ringtone and vibration',
+          );
           await _startRingtoneAndVibration();
           break;
       }
@@ -89,14 +92,14 @@ class CallNotificationManager {
       // Stop any existing vibration timer first
       _vibrationTimer?.cancel();
       _vibrationTimer = null;
-      
+
       // Start continuous vibration pattern using native
       _vibrationTimer = Timer.periodic(Duration(seconds: 3), (timer) async {
         if (!_isNotificationActive) {
           timer.cancel();
           return;
         }
-        
+
         try {
           await platform.invokeMethod('startVibration');
         } catch (e) {
@@ -106,7 +109,7 @@ class CallNotificationManager {
 
       // Start first vibration immediately
       await platform.invokeMethod('startVibration');
-      
+
       _logger.d('📳 Vibration pattern started');
     } catch (e) {
       _logger.e('❌ Failed to start vibration: $e');
@@ -118,14 +121,14 @@ class CallNotificationManager {
     try {
       // Start custom ringtone using CallAudioManager
       await CallAudioManager.instance.startIncomingCallRingtone();
-      
+
       // Also start vibration pattern alongside ringtone
       await _startVibrationPattern();
-      
+
       _logger.d('🔔 Ringtone and vibration started');
     } catch (e) {
       _logger.e('❌ Failed to start ringtone and vibration: $e');
-      
+
       // Fallback to system ringtone
       try {
         await _startSystemRingtone();
@@ -151,18 +154,18 @@ class CallNotificationManager {
   Future<void> stopIncomingCallNotification() async {
     try {
       _logger.i('🔔 Stopping incoming call notification...');
-      
+
       _isNotificationActive = false;
 
       // Stop vibration
       await _stopVibration();
-      
+
       // Stop ringtone
       await _stopRingtone();
-      
+
       // Stop system ringtone
       await _stopSystemRingtone();
-      
+
       _logger.i('✅ Incoming call notification stopped');
     } catch (e) {
       _logger.e('❌ Failed to stop incoming call notification: $e');
@@ -173,13 +176,15 @@ class CallNotificationManager {
   Future<void> onCallAccepted({bool useSpeaker = false}) async {
     try {
       _logger.i('📞 Call accepted - stopping all notifications...');
-      
+
       // Stop all incoming call notifications
       await stopIncomingCallNotification();
-      
+
       // Configure audio for call using CallAudioManager
-      await CallAudioManager.instance.configureAudioForCall(useSpeaker: useSpeaker);
-      
+      await CallAudioManager.instance.configureAudioForCall(
+        useSpeaker: useSpeaker,
+      );
+
       _logger.i('✅ Call acceptance handled successfully');
     } catch (e) {
       _logger.e('❌ Failed to handle call acceptance: $e');
@@ -190,13 +195,13 @@ class CallNotificationManager {
   Future<void> onCallRejected() async {
     try {
       _logger.i('📞 Call rejected - stopping all notifications...');
-      
+
       // Stop all incoming call notifications
       await stopIncomingCallNotification();
-      
+
       // Clean up audio using CallAudioManager
       await CallAudioManager.instance.cleanup();
-      
+
       _logger.i('✅ Call rejection handled successfully');
     } catch (e) {
       _logger.e('❌ Failed to handle call rejection: $e');
@@ -208,7 +213,7 @@ class CallNotificationManager {
     try {
       _vibrationTimer?.cancel();
       _vibrationTimer = null;
-      
+
       await platform.invokeMethod('stopVibration');
       _logger.d('📳 Vibration stopped');
     } catch (e) {
@@ -240,19 +245,23 @@ class CallNotificationManager {
   Future<void> emergencyStopNotification() async {
     try {
       _logger.w('🚨 Emergency notification stop initiated...');
-      
+
       _isNotificationActive = false;
-      
+
       // Cancel timers immediately
       _vibrationTimer?.cancel();
       _vibrationTimer = null;
       _ringtoneTimer?.cancel();
       _ringtoneTimer = null;
-      
+
       // Stop all without waiting for completion
-      platform.invokeMethod('stopVibration').catchError((e) => _logger.w('Emergency vibration stop error: $e'));
-      platform.invokeMethod('stopSystemRingtone').catchError((e) => _logger.w('Emergency ringtone stop error: $e'));
-      
+      platform
+          .invokeMethod('stopVibration')
+          .catchError((e) => _logger.w('Emergency vibration stop error: $e'));
+      platform
+          .invokeMethod('stopSystemRingtone')
+          .catchError((e) => _logger.w('Emergency ringtone stop error: $e'));
+
       _logger.w('🚨 Emergency notification stop completed');
     } catch (e) {
       _logger.e('❌ Emergency stop failed: $e');
@@ -260,12 +269,12 @@ class CallNotificationManager {
   }
 
   /// Get current ringer mode
-  Future<DeviceRingerMode> getCurrentRingerMode() async => 
+  Future<DeviceRingerMode> getCurrentRingerMode() async =>
       await DeviceProfileManager.instance.getCurrentRingerMode();
-  
+
   /// Check if notification is active
   bool get isNotificationActive => _isNotificationActive;
-  
+
   /// Check if initialized
   bool get isInitialized => _isInitialized;
 
@@ -282,29 +291,30 @@ class CallNotificationManager {
   Future<void> _testCallNotificationInternal() async {
     try {
       _logger.i('🧪 DEVELOPER TEST: Starting call notification test...');
-      
+
       if (!_isInitialized) await initialize();
-      
+
       // Show test notification info
-      _logger.i('🧪 TEST: Device will play call ringtone based on current sound profile');
+      _logger.i(
+        '🧪 TEST: Device will play call ringtone based on current sound profile',
+      );
       _logger.i('🧪 TEST: - Silent mode: No sound/vibration');
-      _logger.i('🧪 TEST: - Vibrate mode: Vibration only');  
+      _logger.i('🧪 TEST: - Vibrate mode: Vibration only');
       _logger.i('🧪 TEST: - Normal mode: Custom ringtone + vibration');
-      
+
       // Get and display current ringer mode
       final currentMode = await getCurrentRingerMode();
       _logger.i('🧪 TEST: Current device mode: $currentMode');
-      
+
       // Start test notification
       await startIncomingCallNotification();
-      
+
       // Auto-stop after 10 seconds for testing
       Timer(Duration(seconds: 10), () async {
         _logger.i('🧪 TEST: Auto-stopping test notification after 10 seconds');
         await stopIncomingCallNotification();
         _logger.i('🧪 TEST: Call notification test completed ✅');
       });
-      
     } catch (e) {
       _logger.e('🧪 TEST ERROR: Failed to run test notification: $e');
     }

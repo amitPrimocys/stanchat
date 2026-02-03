@@ -2,17 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/story/provider/story_provider.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/packages/read_more/read_more_text.dart';
-import 'package:whoxa/utils/packages/story/src/controller/flutter_story_controller.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/custom_bottomsheet.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/story/provider/story_provider.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/packages/read_more/read_more_text.dart';
+import 'package:stanchat/utils/packages/story/src/controller/flutter_story_controller.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/custom_bottomsheet.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class MyStoryViewList extends StatelessWidget {
   const MyStoryViewList({

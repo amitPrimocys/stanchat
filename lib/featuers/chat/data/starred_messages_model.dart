@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:whoxa/featuers/chat/data/chats_model.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart';
 
 class StarredMessagesResponse {
   bool? status;
@@ -316,7 +316,7 @@ class StarredMessageChat {
     return data;
   }
 }
-// import 'package:whoxa/featuers/chat/data/chats_model.dart';
+// import 'package:stanchat/featuers/chat/data/chats_model.dart';
 
 // class StarredMessagesResponse {
 //   bool? status;

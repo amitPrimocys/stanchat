@@ -1,9 +1,9 @@
 // import 'package:flutter/material.dart';
-// import 'package:whoxa/utils/app_size_config.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-// import 'package:whoxa/utils/preference_key/constant/strings.dart';
+// import 'package:stanchat/utils/app_size_config.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+// import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 // class ChatAppbarTitle extends StatefulWidget {
 //   final String profile;
@@ -199,11 +199,11 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class ChatAppbarTitle extends StatefulWidget {
   final String profile;

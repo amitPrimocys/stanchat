@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/featuers/chat/data/models/link_model.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/chat_related_widget.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/metadata_service.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_direction_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/shimmer.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/featuers/chat/data/models/link_model.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/chat_related_widget.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/metadata_service.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_direction_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/shimmer.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class LinkMessageWidget extends StatelessWidget {
   final chats.Records chat;

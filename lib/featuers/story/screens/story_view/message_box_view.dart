@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/packages/read_more/read_more_text.dart';
-import 'package:whoxa/utils/packages/story/src/controller/flutter_story_controller.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/packages/read_more/read_more_text.dart';
+import 'package:stanchat/utils/packages/story/src/controller/flutter_story_controller.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class MessageBoxView extends StatelessWidget {
   const MessageBoxView({

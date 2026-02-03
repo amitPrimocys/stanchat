@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/report/data/models/report_types_model.dart';
-import 'package:whoxa/featuers/report/data/repositories/report_repository.dart';
+import 'package:stanchat/featuers/report/data/models/report_types_model.dart';
+import 'package:stanchat/featuers/report/data/repositories/report_repository.dart';
 
 class ReportProvider extends ChangeNotifier {
   final ReportRepository _reportRepository;

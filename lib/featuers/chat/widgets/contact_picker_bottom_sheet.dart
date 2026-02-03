@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ContactPickerBottomSheet extends StatefulWidget {
   const ContactPickerBottomSheet({super.key});
@@ -47,13 +47,17 @@ class _ContactPickerBottomSheetState extends State<ContactPickerBottomSheet> {
         if (isDemo) {
           // Demo mode: chatContacts already includes all contacts
           filteredContacts = contactProvider.chatContacts;
-          debugPrint('📱 Contact Picker - DEMO MODE: Showing ${filteredContacts.length} total contacts');
+          debugPrint(
+            '📱 Contact Picker - DEMO MODE: Showing ${filteredContacts.length} total contacts',
+          );
         } else {
           // Regular mode: Show registered contacts + unregistered for invite
           final registeredContacts = contactProvider.chatContacts;
           final unregisteredContacts = contactProvider.inviteContacts;
           filteredContacts = [...registeredContacts, ...unregisteredContacts];
-          debugPrint('👤 Contact Picker - REGULAR MODE: ${registeredContacts.length} registered + ${unregisteredContacts.length} unregistered');
+          debugPrint(
+            '👤 Contact Picker - REGULAR MODE: ${registeredContacts.length} registered + ${unregisteredContacts.length} unregistered',
+          );
         }
         _isLoadingContacts = false;
       });
@@ -73,10 +77,11 @@ class _ContactPickerBottomSheetState extends State<ContactPickerBottomSheet> {
       // ✅ UPDATED: Use chatContacts which handles demo mode automatically
       if (isDemo) {
         // Demo mode: chatContacts already includes all contacts
-        filteredContacts = contactProvider.chatContacts.where((contact) {
-          return contact.name.toLowerCase().contains(query.toLowerCase()) ||
-              contact.phoneNumber.contains(query);
-        }).toList();
+        filteredContacts =
+            contactProvider.chatContacts.where((contact) {
+              return contact.name.toLowerCase().contains(query.toLowerCase()) ||
+                  contact.phoneNumber.contains(query);
+            }).toList();
       } else {
         // Regular mode: Filter from both lists
         final registeredContacts =

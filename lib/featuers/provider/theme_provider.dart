@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class ThemeProvider extends ChangeNotifier {
   bool isLightTheme = true;
@@ -52,10 +52,7 @@ class ThemeProvider extends ChangeNotifier {
   /// Set custom theme color
   Future<void> setCustomThemeColor(String colorHex) async {
     _customThemeColor = colorHex;
-    await SecurePrefs.setString(
-      SecureStorageKeys.customThemeColor,
-      colorHex,
-    );
+    await SecurePrefs.setString(SecureStorageKeys.customThemeColor, colorHex);
     notifyListeners();
   }
 

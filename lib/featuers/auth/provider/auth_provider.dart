@@ -6,24 +6,24 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/core/app_life_cycle.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/core/services/socket/socket_manager.dart';
-import 'package:whoxa/core/services/socket/socket_service.dart';
-import 'package:whoxa/dependency_injection.dart';
-import 'package:whoxa/featuers/auth/data/repositories/login_repository.dart';
-import 'package:whoxa/featuers/auth/data/models/avatar_model.dart';
-import 'package:whoxa/featuers/auth/services/onesignal_service.dart';
-import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-import 'package:whoxa/featuers/language_method/provider/language_provider.dart';
-import 'package:whoxa/featuers/chat/utils/chat_cache_manager.dart'; // ✅ Import cache manager
-import 'package:whoxa/utils/enums.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/packages/phone_field/countries.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/core/app_life_cycle.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/core/services/socket/socket_manager.dart';
+import 'package:stanchat/core/services/socket/socket_service.dart';
+import 'package:stanchat/dependency_injection.dart';
+import 'package:stanchat/featuers/auth/data/repositories/login_repository.dart';
+import 'package:stanchat/featuers/auth/data/models/avatar_model.dart';
+import 'package:stanchat/featuers/auth/services/onesignal_service.dart';
+import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+import 'package:stanchat/featuers/language_method/provider/language_provider.dart';
+import 'package:stanchat/featuers/chat/utils/chat_cache_manager.dart'; // ✅ Import cache manager
+import 'package:stanchat/utils/enums.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/packages/phone_field/countries.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/global.dart';
 
 class AuthProvider extends ChangeNotifier {
   final ConsoleAppLogger _logger = ConsoleAppLogger();
@@ -182,12 +182,13 @@ class AuthProvider extends ChangeNotifier {
         _isLoading = false;
         _errorMessage = result.message;
         noty();
+        return true;
       } else {
         _isLoading = false;
         _errorMessage = result.message;
         noty();
+        return false;
       }
-      return true;
     } on AppError catch (e) {
       _isLoading = false;
       _errorMessage = e.message;

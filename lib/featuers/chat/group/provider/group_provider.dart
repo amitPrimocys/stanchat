@@ -1,10 +1,10 @@
 // File: lib/features/groups/providers/group_provider.dart
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/featuers/chat/group/data/model/create_group_response.dart';
-import 'package:whoxa/featuers/chat/group/data/model/group_member_response.dart';
-import 'package:whoxa/featuers/chat/group/data/repository/group_repository.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/featuers/chat/group/data/model/create_group_response.dart';
+import 'package:stanchat/featuers/chat/group/data/model/group_member_response.dart';
+import 'package:stanchat/featuers/chat/group/data/repository/group_repository.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class GroupProvider with ChangeNotifier {
   final GroupRepo _repo;

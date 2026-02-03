@@ -4,23 +4,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/dependency_injection.dart';
-import 'package:whoxa/featuers/auth/services/onesignal_service.dart';
-import 'package:whoxa/featuers/language_method/provider/language_provider.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/provider_list.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/widgets/app_version.dart';
-import 'package:whoxa/core/app_life_cycle.dart';
-import 'package:whoxa/core/navigation_helper.dart';
+import 'package:stanchat/dependency_injection.dart';
+import 'package:stanchat/featuers/auth/services/onesignal_service.dart';
+import 'package:stanchat/featuers/language_method/provider/language_provider.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/provider_list.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/widgets/app_version.dart';
+import 'package:stanchat/core/app_life_cycle.dart';
+import 'package:stanchat/core/navigation_helper.dart';
 import 'package:get_it/get_it.dart';
-import 'package:whoxa/widgets/global.dart';
+import 'package:stanchat/widgets/global.dart';
 
 final ConsoleAppLogger logger = ConsoleAppLogger();
 
@@ -237,7 +237,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             NavigationHelper.navigatorKey, // ✅ Critical for navigation
         debugShowCheckedModeBanner: false,
 
-        title: 'Whoxa',
+        title: 'StanChat',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.white),
           useMaterial3: true,

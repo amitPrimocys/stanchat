@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/contacts/data/model/get_contact_model.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/contacts/data/model/get_contact_model.dart';
 
 class ContactRepo {
   final ApiClient _apiClient;
@@ -53,7 +53,10 @@ class ContactRepo {
         final contactDataList = response['data'] as List<dynamic>;
         return contactDataList
             .where((contact) => contact != null)
-            .map((contact) => ContactDetails.fromJson(contact as Map<String, dynamic>))
+            .map(
+              (contact) =>
+                  ContactDetails.fromJson(contact as Map<String, dynamic>),
+            )
             .toList();
       }
 

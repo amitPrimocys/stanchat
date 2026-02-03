@@ -14,18 +14,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/call/call_model.dart';
-import 'package:whoxa/featuers/call/web_rtc_service.dart';
-import 'package:whoxa/core/services/socket/socket_service.dart';
-import 'package:whoxa/core/services/call_audio_manager.dart';
-import 'package:whoxa/core/services/call_notification_manager.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/core/navigation_helper.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
+import 'package:stanchat/featuers/call/web_rtc_service.dart';
+import 'package:stanchat/core/services/socket/socket_service.dart';
+import 'package:stanchat/core/services/call_audio_manager.dart';
+import 'package:stanchat/core/services/call_notification_manager.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/core/navigation_helper.dart';
 
 class CallManager {
   // Singleton

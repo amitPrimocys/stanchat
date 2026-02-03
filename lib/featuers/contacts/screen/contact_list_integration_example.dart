@@ -2,12 +2,11 @@
 // This shows how to integrate the ImprovedForwardMessageHandler into your ContactListScreen
 
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/contacts/screen/improved_contact_list_forward.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/featuers/contacts/screen/improved_contact_list_forward.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 /// Example of how to replace the existing _handleForwardMessages method
 class ContactListScreenIntegration {
-  
   /// REPLACE YOUR EXISTING _handleForwardMessages METHOD WITH THIS:
   Future<void> handleForwardMessages(
     BuildContext context,
@@ -17,7 +16,6 @@ class ContactListScreenIntegration {
     int? fromChatId,
     Function()? onForwardCompleted,
   }) async {
-    
     // Create the improved handler
     final forwardHandler = ImprovedForwardMessageHandler(
       context: context,
@@ -33,8 +31,11 @@ class ContactListScreenIntegration {
 
     try {
       // Execute the forward operation with improved reliability
-      final result = await forwardHandler.handleForwardMessages(chatIds, userIds);
-      
+      final result = await forwardHandler.handleForwardMessages(
+        chatIds,
+        userIds,
+      );
+
       // Close loading dialog
       forwardHandler.closeLoadingDialog();
 
@@ -43,16 +44,15 @@ class ContactListScreenIntegration {
         // All forwards successful
         if (!context.mounted) return;
         Navigator.of(context).pop(); // Close forward screen
-        
+
         // Trigger completion callback
         if (onForwardCompleted != null) {
           onForwardCompleted();
         }
-        
+
         // Navigate back to chat list - the handler already refreshed the data
         if (!context.mounted) return;
         _navigateToChatListWithRefresh(context);
-        
       } else if (result['success_count'] > 0) {
         // Show result dialog for partial success or complete failure
         forwardHandler.showResultDialog(result);
@@ -60,11 +60,10 @@ class ContactListScreenIntegration {
         // Show error dialog for complete failure
         forwardHandler.showResultDialog(result);
       }
-      
     } catch (e) {
       // Close loading dialog on error
       forwardHandler.closeLoadingDialog();
-      
+
       // Show error dialog
       final errorResult = {
         'success': false,
@@ -74,7 +73,7 @@ class ContactListScreenIntegration {
         'errors': ['Critical error: ${e.toString()}'],
         'all_successful': false,
       };
-      
+
       forwardHandler.showResultDialog(errorResult);
     }
   }
@@ -83,7 +82,7 @@ class ContactListScreenIntegration {
   static void _navigateToChatListWithRefresh(BuildContext context) {
     // Navigate back to the main chat list screen
     Navigator.of(context).popUntil((route) => route.isFirst);
-    
+
     // The refresh is already handled by the ImprovedForwardMessageHandler
     // So no need for additional refresh calls here
   }
@@ -92,7 +91,7 @@ class ContactListScreenIntegration {
 /// INTEGRATION STEPS:
 /// 
 /// 1. Add the import at the top of your contact_list.dart:
-///    import 'package:whoxa/featuers/contacts/screen/improved_contact_list_forward.dart';
+///    import 'package:stanchat/featuers/contacts/screen/improved_contact_list_forward.dart';
 ///
 /// 2. Replace your existing _handleForwardMessages method with:
 /// 

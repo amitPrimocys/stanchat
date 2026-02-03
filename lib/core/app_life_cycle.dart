@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:whoxa/core/network/network_listner.dart';
-import 'package:whoxa/core/services/socket/socket_manager.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/core/network/network_listner.dart';
+import 'package:stanchat/core/services/socket/socket_manager.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 
 /// AppLifecycleManager - FIXED VERSION
 /// Manages app lifecycle events and maintains socket connections appropriately

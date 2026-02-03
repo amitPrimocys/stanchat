@@ -4,12 +4,12 @@
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 // import 'package:http/http.dart' as http;
-// import 'package:whoxa/core/utils/logger.dart';
-// import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-// import 'package:whoxa/utils/constants/app_colors.dart';
-// import 'package:whoxa/utils/constants/message_type.dart';
-// import 'package:whoxa/utils/logger.dart';
-// import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+// import 'package:stanchat/core/utils/logger.dart';
+// import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+// import 'package:stanchat/utils/constants/app_colors.dart';
+// import 'package:stanchat/utils/constants/message_type.dart';
+// import 'package:stanchat/utils/logger.dart';
+// import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 // class GifScreen extends StatefulWidget {
 //   final String userId;

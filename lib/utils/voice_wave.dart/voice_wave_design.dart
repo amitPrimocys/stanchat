@@ -4,8 +4,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/utils/app_size_config.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/utils/app_size_config.dart';
 
 class CachedVoicePlayer extends StatelessWidget {
   final String voiceUrl;

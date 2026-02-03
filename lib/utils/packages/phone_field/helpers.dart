@@ -1,4 +1,4 @@
-import 'package:whoxa/utils/packages/phone_field/countries.dart';
+import 'package:stanchat/utils/packages/phone_field/countries.dart';
 
 bool isNumeric(String s) =>
     s.isNotEmpty && int.tryParse(s.replaceAll("+", "")) != null;

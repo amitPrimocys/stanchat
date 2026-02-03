@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-import 'package:whoxa/featuers/contacts/data/model/contact_model.dart';
-import 'package:whoxa/featuers/chat/data/chat_list_model.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+import 'package:stanchat/featuers/contacts/data/model/contact_model.dart';
+import 'package:stanchat/featuers/chat/data/chat_list_model.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
 
 // Enhanced Forward item model to unify different data types
 class ForwardItem {
@@ -291,7 +291,9 @@ class _ImprovedForwardManagerState extends State<ImprovedForwardManager>
         if (widget.fromChatId != null &&
             effectiveRecord.chatId == widget.fromChatId) {
           currentChatSkipped++;
-          debugPrint('🔍 DEBUG - Skipping current chat: ${effectiveRecord.chatId}');
+          debugPrint(
+            '🔍 DEBUG - Skipping current chat: ${effectiveRecord.chatId}',
+          );
           continue;
         }
 
@@ -305,7 +307,9 @@ class _ImprovedForwardManagerState extends State<ImprovedForwardManager>
         recentChats.add(_createForwardItemFromChat(chat, effectiveRecord));
       } else {
         emptyRecordsCount++;
-        debugPrint('🔍 DEBUG - Skipping chat with no valid data: Chat index $i');
+        debugPrint(
+          '🔍 DEBUG - Skipping chat with no valid data: Chat index $i',
+        );
       }
     }
 
@@ -553,11 +557,13 @@ class _ImprovedForwardManagerState extends State<ImprovedForwardManager>
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
+                  color: AppColors.appPriSecColor.primaryColor.withValues(
+                    alpha: 0.1,
+                  ),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 
-                      0.3,
+                    color: AppColors.appPriSecColor.primaryColor.withValues(
+                      alpha: 0.3,
                     ),
                   ),
                 ),
@@ -797,10 +803,14 @@ class _ImprovedForwardManagerState extends State<ImprovedForwardManager>
               padding: const EdgeInsets.all(12),
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
-                color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.1),
+                color: AppColors.appPriSecColor.primaryColor.withValues(
+                  alpha: 0.1,
+                ),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.3),
+                  color: AppColors.appPriSecColor.primaryColor.withValues(
+                    alpha: 0.3,
+                  ),
                 ),
               ),
               child: Row(

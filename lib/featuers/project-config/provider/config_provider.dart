@@ -7,16 +7,16 @@
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:whoxa/core/error/app_error.dart';
-import 'package:whoxa/featuers/notification/model/mark_read_model.dart';
-import 'package:whoxa/featuers/notification/model/notification_model.dart';
-import 'package:whoxa/featuers/project-config/data/config_model.dart';
-import 'package:whoxa/featuers/project-config/data/config_repo.dart';
+import 'package:stanchat/core/error/app_error.dart';
+import 'package:stanchat/featuers/notification/model/mark_read_model.dart';
+import 'package:stanchat/featuers/notification/model/notification_model.dart';
+import 'package:stanchat/featuers/project-config/data/config_model.dart';
+import 'package:stanchat/featuers/project-config/data/config_repo.dart';
 
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 
 class ProjectConfigProvider with ChangeNotifier {
   final ProjectConfigRepository _repository;
@@ -28,7 +28,8 @@ class ProjectConfigProvider with ChangeNotifier {
   ProjectConfig? _projectConfig;
   bool _isLoading = false;
   bool _isInitialized = false;
-  bool _isFetchedThisSession = false;  // ✅ Track if fetched from network this session
+  bool _isFetchedThisSession =
+      false; // ✅ Track if fetched from network this session
   String? _errorMessage;
   bool _hasError = false;
 
@@ -101,7 +102,9 @@ class ProjectConfigProvider with ChangeNotifier {
   Future<bool> loadCachedConfig() async {
     try {
       _logger.i('📦 Loading cached project configuration...');
-      final cachedConfigJson = await SecurePrefs.getString(SecureStorageKeys.PROJECT_CONFIG);
+      final cachedConfigJson = await SecurePrefs.getString(
+        SecureStorageKeys.PROJECT_CONFIG,
+      );
 
       if (cachedConfigJson != null && cachedConfigJson.isNotEmpty) {
         final configMap = jsonDecode(cachedConfigJson);
@@ -132,7 +135,10 @@ class ProjectConfigProvider with ChangeNotifier {
     try {
       if (_projectConfig != null) {
         final configJson = jsonEncode(_projectConfig!.toJson());
-        await SecurePrefs.setString(SecureStorageKeys.PROJECT_CONFIG, configJson);
+        await SecurePrefs.setString(
+          SecureStorageKeys.PROJECT_CONFIG,
+          configJson,
+        );
         _logger.i('💾 Project configuration cached successfully');
       }
     } catch (e) {
@@ -162,8 +168,10 @@ class ProjectConfigProvider with ChangeNotifier {
       await _saveCachedConfig();
 
       _isInitialized = true;
-      _isFetchedThisSession = true;  // ✅ Mark as fetched this session
-      _logger.i('✅ Project configuration initialized successfully from network');
+      _isFetchedThisSession = true; // ✅ Mark as fetched this session
+      _logger.i(
+        '✅ Project configuration initialized successfully from network',
+      );
       return true;
     } catch (e) {
       _logger.e('❌ Failed to initialize project configuration from network', e);
@@ -387,7 +395,7 @@ class ProjectConfigProvider with ChangeNotifier {
     _projectConfig = null;
     _isLoading = false;
     _isInitialized = false;
-    _isFetchedThisSession = false;  // ✅ Reset session flag
+    _isFetchedThisSession = false; // ✅ Reset session flag
     _errorMessage = null;
     _hasError = false;
     notifyListeners();

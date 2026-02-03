@@ -3,12 +3,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class PinDurationDialog extends StatelessWidget {
   final Function(int) onDurationSelected;
@@ -148,7 +148,10 @@ class PinDurationDialog extends StatelessWidget {
             SvgPicture.asset(
               assetName,
               height: 20,
-              colorFilter: ColorFilter.mode(AppThemeManage.appTheme.darkWhiteColor, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                AppThemeManage.appTheme.darkWhiteColor,
+                BlendMode.srcIn,
+              ),
             ),
             SizedBox(width: 12),
             Text(

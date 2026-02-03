@@ -1,8 +1,8 @@
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/core/api/api_endpoint.dart';
-import 'package:whoxa/featuers/language_method/data/model/lang_list_model.dart';
-import 'package:whoxa/featuers/language_method/data/model/word_list_model.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/core/api/api_endpoint.dart';
+import 'package:stanchat/featuers/language_method/data/model/lang_list_model.dart';
+import 'package:stanchat/featuers/language_method/data/model/word_list_model.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class LanguageRepository {
   final ApiClient _apiClient;

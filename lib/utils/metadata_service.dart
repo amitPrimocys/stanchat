@@ -3,8 +3,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/chat/data/models/link_model.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/featuers/chat/data/models/link_model.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 
 // class MetadataService {
 //   static final Map<String, Future<Metadata>> _futureCache = {};

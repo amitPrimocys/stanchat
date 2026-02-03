@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:whoxa/core/api/api_client.dart';
-import 'package:whoxa/featuers/contacts/data/repository/contact_repo.dart';
-import 'package:whoxa/featuers/contacts/data/model/get_contact_model.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/utils/network_info.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/core/api/api_client.dart';
+import 'package:stanchat/featuers/contacts/data/repository/contact_repo.dart';
+import 'package:stanchat/featuers/contacts/data/model/get_contact_model.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/utils/network_info.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
 import 'dart:convert';
 
 class ContactNameService {
@@ -60,20 +60,24 @@ class ContactNameService {
       }
 
       // Load API user data cache from storage
-      final String? apiCachedData = await SecurePrefs.getString(_apiDataCacheKey);
+      final String? apiCachedData = await SecurePrefs.getString(
+        _apiDataCacheKey,
+      );
       if (apiCachedData != null && apiCachedData.isNotEmpty) {
         final Map<String, dynamic> decoded = json.decode(apiCachedData);
         _apiUserDataCache = decoded.map(
           (key, value) => MapEntry(
-            int.parse(key), 
+            int.parse(key),
             (value as Map<String, dynamic>).map(
-              (k, v) => MapEntry(k, v?.toString())
-            )
+              (k, v) => MapEntry(k, v?.toString()),
+            ),
           ),
         );
 
         if (kDebugMode) {
-          debugPrint('✅ Loaded ${_apiUserDataCache.length} API user data from storage');
+          debugPrint(
+            '✅ Loaded ${_apiUserDataCache.length} API user data from storage',
+          );
         }
       }
 
@@ -91,7 +95,8 @@ class ContactNameService {
   );
   Map<int, String> _userIdToContactNameCache = {}; // Local device contact names
   Map<int, String> _finalDisplayNameCache = {}; // Cache for final decided names
-  Map<int, Map<String, String?>> _apiUserDataCache = {}; // API user data (userName, fullName, email)
+  Map<int, Map<String, String?>> _apiUserDataCache =
+      {}; // API user data (userName, fullName, email)
   DateTime? _lastCacheUpdate;
   static const Duration _cacheValidityDuration = Duration(minutes: 10);
   static const String _cacheKey = 'contact_name_cache';
@@ -115,18 +120,24 @@ class ContactNameService {
     _isLoading = true;
     try {
       // 🔄 UPDATED: Use the new getContactsList method for consistency
-      debugPrint('🔄 loadAndCacheContacts: Using getContactsList for contact sync');
+      debugPrint(
+        '🔄 loadAndCacheContacts: Using getContactsList for contact sync',
+      );
       final contactDetailsList = await _contactRepo.getContactsList();
 
       if (contactDetailsList.isNotEmpty) {
         // Use the new sync method to handle contact updates properly
         await syncContactDataFromApi(contactDetailsList);
-        
+
         _lastCacheUpdate = now;
 
         if (kDebugMode) {
-          debugPrint('✅ loadAndCacheContacts: Synced ${contactDetailsList.length} contacts');
-          debugPrint('   Local contacts cached: ${_userIdToContactNameCache.length}');
+          debugPrint(
+            '✅ loadAndCacheContacts: Synced ${contactDetailsList.length} contacts',
+          );
+          debugPrint(
+            '   Local contacts cached: ${_userIdToContactNameCache.length}',
+          );
           debugPrint('   API users cached: ${_apiUserDataCache.length}');
         }
       } else {
@@ -152,7 +163,9 @@ class ContactNameService {
     await _saveToStorage();
 
     if (kDebugMode) {
-      debugPrint('Contact cache manually updated with ${contacts.length} contacts');
+      debugPrint(
+        'Contact cache manually updated with ${contacts.length} contacts',
+      );
       for (final entry in contacts.entries) {
         debugPrint('Cached contact: userId=${entry.key}, name=${entry.value}');
       }
@@ -168,21 +181,24 @@ class ContactNameService {
       if (apiContact.userId == null) continue;
 
       final userId = apiContact.userId!;
-      final apiDisplayName = apiContact.name; // This is the ONLY display name we use
+      final apiDisplayName =
+          apiContact.name; // This is the ONLY display name we use
       final apiUserName = apiContact.userName; // Store for fallback only
-      
+
       // Check if we have existing cached display name
       final existingDisplayName = _userIdToContactNameCache[userId];
-      
+
       // Update cache if API has a different value
       if (apiDisplayName != null && apiDisplayName.trim().isNotEmpty) {
         if (existingDisplayName != apiDisplayName) {
           _userIdToContactNameCache[userId] = apiDisplayName;
           changedUserIds.add(userId);
           nameUpdatesCount++;
-          
+
           if (kDebugMode) {
-            debugPrint('[ContactSync] user_id=$userId, old_name="${existingDisplayName ?? 'null'}", new_name="$apiDisplayName" → updated');
+            debugPrint(
+              '[ContactSync] user_id=$userId, old_name="${existingDisplayName ?? 'null'}", new_name="$apiDisplayName" → updated',
+            );
           }
         } else {
           if (kDebugMode) {
@@ -195,7 +211,9 @@ class ContactNameService {
           _userIdToContactNameCache.remove(userId);
           changedUserIds.add(userId);
           if (kDebugMode) {
-            debugPrint('[ContactSync] user_id=$userId, API name empty → removed from primary cache, will use userName fallback');
+            debugPrint(
+              '[ContactSync] user_id=$userId, API name empty → removed from primary cache, will use userName fallback',
+            );
           }
         }
       }
@@ -213,9 +231,11 @@ class ContactNameService {
       for (final userId in changedUserIds) {
         _finalDisplayNameCache.remove(userId);
       }
-      
+
       if (kDebugMode) {
-        debugPrint('[ContactSync] Cleared final cache for ${changedUserIds.length} users with name changes');
+        debugPrint(
+          '[ContactSync] Cleared final cache for ${changedUserIds.length} users with name changes',
+        );
       }
     }
 
@@ -223,7 +243,9 @@ class ContactNameService {
     await _saveToStorage();
 
     if (kDebugMode) {
-      debugPrint('[ContactSync] Sync completed: $nameUpdatesCount names updated, ${_userIdToContactNameCache.length} total API names cached');
+      debugPrint(
+        '[ContactSync] Sync completed: $nameUpdatesCount names updated, ${_userIdToContactNameCache.length} total API names cached',
+      );
     }
   }
 
@@ -256,10 +278,7 @@ class ContactNameService {
       final Map<String, dynamic> apiCacheData = _apiUserDataCache.map(
         (key, value) => MapEntry(key.toString(), value),
       );
-      await SecurePrefs.setString(
-        _apiDataCacheKey,
-        json.encode(apiCacheData),
-      );
+      await SecurePrefs.setString(_apiDataCacheKey, json.encode(apiCacheData));
     } catch (e) {
       if (kDebugMode) {
         debugPrint('Error saving contact cache to storage: $e');
@@ -278,7 +297,9 @@ class ContactNameService {
     if (userId != null && _finalDisplayNameCache.containsKey(userId)) {
       final cachedName = _finalDisplayNameCache[userId]!;
       if (kDebugMode) {
-        debugPrint('🔒 ANTI-FLUCTUATION: Using cached final name for userId $userId: "$cachedName"');
+        debugPrint(
+          '🔒 ANTI-FLUCTUATION: Using cached final name for userId $userId: "$cachedName"',
+        );
       }
       return cachedName;
     }
@@ -324,13 +345,16 @@ class ContactNameService {
   String getDisplayNameStable({
     required int? userId,
     required ProjectConfigProvider? configProvider,
-    String? contextFullName, // Full name from the calling context (e.g., PeerUserData)
+    String?
+    contextFullName, // Full name from the calling context (e.g., PeerUserData)
   }) {
     // ANTI-FLUCTUATION: Always check cached final decision first
     if (userId != null && _finalDisplayNameCache.containsKey(userId)) {
       final cachedName = _finalDisplayNameCache[userId]!;
       if (kDebugMode) {
-        debugPrint('🔒 STABLE: Using cached final name for userId $userId: "$cachedName"');
+        debugPrint(
+          '🔒 STABLE: Using cached final name for userId $userId: "$cachedName"',
+        );
       }
       return cachedName;
     }
@@ -339,7 +363,9 @@ class ContactNameService {
     if (userId != null && _userIdToContactNameCache.containsKey(userId)) {
       final apiName = _userIdToContactNameCache[userId]!;
       if (kDebugMode) {
-        debugPrint('🎯 STABLE API: Using contacts API name for userId $userId: "$apiName"');
+        debugPrint(
+          '🎯 STABLE API: Using contacts API name for userId $userId: "$apiName"',
+        );
       }
       // Cache this as final decision
       _saveFinalDisplayName(userId, apiName);
@@ -349,7 +375,9 @@ class ContactNameService {
     // Priority 2: Use full name from calling context when number is NOT in local contacts
     if (contextFullName != null && contextFullName.trim().isNotEmpty) {
       if (kDebugMode) {
-        debugPrint('🎯 CONTEXT FULL NAME: Using full name from context for userId $userId: "$contextFullName"');
+        debugPrint(
+          '🎯 CONTEXT FULL NAME: Using full name from context for userId $userId: "$contextFullName"',
+        );
       }
       // Cache this decision
       _saveFinalDisplayName(userId, contextFullName);
@@ -359,7 +387,9 @@ class ContactNameService {
     // Priority 3: Final fallback - return unknown user only when no data exists
     const unknownName = 'Unknown User';
     if (kDebugMode) {
-      debugPrint('❓ STABLE UNKNOWN: No data for userId $userId, using: "$unknownName"');
+      debugPrint(
+        '❓ STABLE UNKNOWN: No data for userId $userId, using: "$unknownName"',
+      );
     }
     // Don't cache this decision - let it re-evaluate when API data comes in
     return unknownName;
@@ -392,7 +422,11 @@ class ContactNameService {
   }
 
   // CORRECTED FALLBACK: userName (Priority 2) → fullName (Priority 3) → email
-  String _getCorrectedFallbackName(String? fullName, String? userName, String? email) {
+  String _getCorrectedFallbackName(
+    String? fullName,
+    String? userName,
+    String? email,
+  ) {
     // PRIORITY FIXED: userName first, then fullName
     if (userName != null && userName.trim().isNotEmpty) {
       if (kDebugMode) {
@@ -425,9 +459,11 @@ class ContactNameService {
     _lastCacheUpdate = null;
     // Clear persistent storage
     _clearStorageCache();
-    
+
     if (kDebugMode) {
-      debugPrint('🧹 ContactNameService: All caches cleared (local contacts + final names + API data)');
+      debugPrint(
+        '🧹 ContactNameService: All caches cleared (local contacts + final names + API data)',
+      );
     }
   }
 
@@ -440,9 +476,11 @@ class ContactNameService {
         debugPrint('Error saving after clearing final name cache: $e');
       }
     });
-    
+
     if (kDebugMode) {
-      debugPrint('🧹 ContactNameService: Final name cache cleared, names will be re-evaluated with fixed priority');
+      debugPrint(
+        '🧹 ContactNameService: Final name cache cleared, names will be re-evaluated with fixed priority',
+      );
     }
   }
 
@@ -524,9 +562,11 @@ class ContactNameService {
   }) {
     if (kDebugMode) {
       debugPrint('🔍 TRACE: Starting name resolution for userId $userId');
-      debugPrint('   Input: fullName="$userFullName", userName="$userName", email="$userEmail"');
+      debugPrint(
+        '   Input: fullName="$userFullName", userName="$userName", email="$userEmail"',
+      );
     }
-    
+
     // Get regular display name with enhanced logging
     String result = getDisplayName(
       userId: userId,
@@ -540,48 +580,63 @@ class ContactNameService {
       debugPrint('🎯 TRACE RESULT: userId $userId → "$result"');
       getNameSourceDebugInfo(userId); // Print debug info
     }
-    
+
     return result;
   }
 
   // 🐛 DEBUG METHOD: List all cached contacts
   void printAllCachedContacts() {
     if (kDebugMode) {
-      debugPrint('📋 ALL CACHED LOCAL CONTACTS (${_userIdToContactNameCache.length}):');
+      debugPrint(
+        '📋 ALL CACHED LOCAL CONTACTS (${_userIdToContactNameCache.length}):',
+      );
       _userIdToContactNameCache.forEach((userId, name) {
         debugPrint('   userId: $userId → "$name"');
       });
-      
-      debugPrint('📋 ALL FINAL CACHED NAMES (${_finalDisplayNameCache.length}):');
+
+      debugPrint(
+        '📋 ALL FINAL CACHED NAMES (${_finalDisplayNameCache.length}):',
+      );
       _finalDisplayNameCache.forEach((userId, name) {
         debugPrint('   userId: $userId → "$name"');
       });
 
       debugPrint('📋 ALL API USER DATA (${_apiUserDataCache.length}):');
       _apiUserDataCache.forEach((userId, userData) {
-        debugPrint('   userId: $userId → userName:"${userData['userName']}", fullName:"${userData['fullName']}"');
+        debugPrint(
+          '   userId: $userId → userName:"${userData['userName']}", fullName:"${userData['fullName']}"',
+        );
       });
     }
   }
 
   // 🐛 DEBUG METHOD: Check if API data exists for a specific user
   Map<String, String?> getApiUserData(int userId) {
-    return _apiUserDataCache[userId] ?? {'userName': null, 'fullName': null, 'email': null};
+    return _apiUserDataCache[userId] ??
+        {'userName': null, 'fullName': null, 'email': null};
   }
 
   // 🧪 TEST METHOD: Simulate API response with updated name field (single source of truth)
-  Future<void> simulateApiNameUpdate(int userId, String newApiName, {String? userName}) async {
+  Future<void> simulateApiNameUpdate(
+    int userId,
+    String newApiName, {
+    String? userName,
+  }) async {
     if (kDebugMode) {
       debugPrint('🧪 SIMULATING API NAME UPDATE for userId=$userId');
-      debugPrint('   New API name field: "$newApiName" (single source of truth)');
+      debugPrint(
+        '   New API name field: "$newApiName" (single source of truth)',
+      );
       debugPrint('   UserName: "${userName ?? 'unchanged'}"');
-      
+
       // Show current state
       final currentApiName = _userIdToContactNameCache[userId];
       final currentFinalName = _finalDisplayNameCache[userId];
       debugPrint('   Current API name: "${currentApiName ?? 'none'}"');
-      debugPrint('   Current final cached name: "${currentFinalName ?? 'none'}"');
-      
+      debugPrint(
+        '   Current final cached name: "${currentFinalName ?? 'none'}"',
+      );
+
       // Create fake ContactDetails representing API response
       final fakeApiResponse = ContactDetails(
         userId: userId,
@@ -590,18 +645,24 @@ class ContactNameService {
         number: 'test_number',
         profilePic: null,
       );
-      
+
       // Call sync method (simulating API response processing)
       await syncContactDataFromApi([fakeApiResponse]);
-      
+
       // Show result
       final updatedApiName = _userIdToContactNameCache[userId];
       final updatedFinalName = _finalDisplayNameCache[userId];
       debugPrint('🧪 SIMULATION COMPLETE:');
       debugPrint('   Final API name: "${updatedApiName ?? 'none'}"');
-      debugPrint('   Final display cache: "${updatedFinalName ?? 'cleared - will re-evaluate'}"');
-      debugPrint('   Name change applied: ${currentApiName != updatedApiName ? 'YES' : 'NO'}');
-      debugPrint('   UI will refresh: ${currentFinalName != null && updatedFinalName == null ? 'YES' : 'NO'}');
+      debugPrint(
+        '   Final display cache: "${updatedFinalName ?? 'cleared - will re-evaluate'}"',
+      );
+      debugPrint(
+        '   Name change applied: ${currentApiName != updatedApiName ? 'YES' : 'NO'}',
+      );
+      debugPrint(
+        '   UI will refresh: ${currentFinalName != null && updatedFinalName == null ? 'YES' : 'NO'}',
+      );
     }
   }
 
@@ -609,13 +670,17 @@ class ContactNameService {
   Future<void> testApiOnlyNameDisplay(int userId, String newApiName) async {
     if (kDebugMode) {
       debugPrint('🧪 TESTING API-ONLY NAME DISPLAY for userId=$userId');
-      debugPrint('   New API name: "$newApiName" (ignores local device contacts)');
-      
+      debugPrint(
+        '   New API name: "$newApiName" (ignores local device contacts)',
+      );
+
       await simulateApiNameUpdate(userId, newApiName);
-      
+
       debugPrint('🧪 TEST COMPLETE: All screens should show API name');
       debugPrint('   Expected display name: "$newApiName"');
-      debugPrint('   Screens affected: Chat List, Call Screen, Starred Messages, etc.');
+      debugPrint(
+        '   Screens affected: Chat List, Call Screen, Starred Messages, etc.',
+      );
     }
   }
 }

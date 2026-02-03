@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/story/provider/story_provider.dart';
-import 'package:whoxa/featuers/story/screens/story_view/story_view_inner.dart';
-import 'package:whoxa/main.dart';
-import 'package:whoxa/utils/packages/story/flutter_story_presenter.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/story/provider/story_provider.dart';
+import 'package:stanchat/featuers/story/screens/story_view/story_view_inner.dart';
+import 'package:stanchat/main.dart';
+import 'package:stanchat/utils/packages/story/flutter_story_presenter.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
 
 class MyStoriesView extends StatefulWidget {
   final bool isMyStory;

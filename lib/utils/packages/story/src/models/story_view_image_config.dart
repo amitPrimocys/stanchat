@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:whoxa/utils/packages/story/src/models/story_view_audio_config.dart';
+import 'package:stanchat/utils/packages/story/src/models/story_view_audio_config.dart';
 
 class StoryViewImageConfig {
   const StoryViewImageConfig({

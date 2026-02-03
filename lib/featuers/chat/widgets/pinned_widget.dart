@@ -5,27 +5,27 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/contact_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/delete_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/document_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/gif_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/image_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/link_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/location_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/video_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/voice_message_widget.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
-import 'package:whoxa/widgets/custom_bottomsheet.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/contact_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/delete_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/document_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/gif_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/image_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/link_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/location_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/video_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/voice_message_widget.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/widgets/custom_bottomsheet.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
 
 class PinnedMessagesWidget extends StatelessWidget {
   final ChatProvider chatProvider;
@@ -110,7 +110,10 @@ class PinnedMessagesWidget extends StatelessWidget {
                         child: SvgPicture.asset(
                           AppAssets.pinMessageIcon,
                           height: 23,
-                          colorFilter: ColorFilter.mode(AppThemeManage.appTheme.darkWhiteColor, BlendMode.srcIn),
+                          colorFilter: ColorFilter.mode(
+                            AppThemeManage.appTheme.darkWhiteColor,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
             ),
@@ -125,7 +128,9 @@ class PinnedMessagesWidget extends StatelessWidget {
                     '${pinnedMessages.length} ${AppString.homeScreenString.pinnedMessage}${pinnedMessages.length > 1 ? 's' : ''}',
                     style: AppTypography.innerText12Mediu(context)
                         .copyWith(fontWeight: FontWeight.w600)
-                        .copyWith(color: AppThemeManage.appTheme.darkWhiteColor),
+                        .copyWith(
+                          color: AppThemeManage.appTheme.darkWhiteColor,
+                        ),
                   ),
 
                   // ✅ NEW: Search status indicator
@@ -134,8 +139,9 @@ class PinnedMessagesWidget extends StatelessWidget {
                     Text(
                       'Searching for message...',
                       style: AppTypography.captionText(context).copyWith(
-                        color: AppColors.appPriSecColor.primaryColor
-                            .withValues(alpha: 0.8),
+                        color: AppColors.appPriSecColor.primaryColor.withValues(
+                          alpha: 0.8,
+                        ),
                         fontSize: 10,
                         fontStyle: FontStyle.italic,
                       ),
@@ -149,7 +155,10 @@ class PinnedMessagesWidget extends StatelessWidget {
             AnimatedRotation(
               turns: isExpanded ? 0.5 : 0,
               duration: Duration(milliseconds: 300),
-              child: Icon(Icons.expand_more, color: AppThemeManage.appTheme.darkWhiteColor),
+              child: Icon(
+                Icons.expand_more,
+                color: AppThemeManage.appTheme.darkWhiteColor,
+              ),
             ),
           ],
         ),
@@ -209,14 +218,16 @@ class PinnedMessagesWidget extends StatelessWidget {
     Border? border;
 
     if (isHighlighted) {
-      backgroundColor = AppColors.appPriSecColor.primaryColor.withValues(alpha: 0.2);
+      backgroundColor = AppColors.appPriSecColor.primaryColor.withValues(
+        alpha: 0.2,
+      );
       border = Border.all(
         color: AppColors.appPriSecColor.primaryColor,
         width: 2,
       );
     } else if (isSearching) {
-      backgroundColor = AppColors.appPriSecColor.secondaryColor.withValues(alpha: 
-        0.1,
+      backgroundColor = AppColors.appPriSecColor.secondaryColor.withValues(
+        alpha: 0.1,
       );
       border = Border.all(
         color: AppColors.appPriSecColor.secondaryColor.withValues(alpha: 0.5),
@@ -469,7 +480,7 @@ class PinnedMessagesWidget extends StatelessWidget {
               ],
             ],
           ),
-        );  
+        );
 
       case 'image':
         return Padding(

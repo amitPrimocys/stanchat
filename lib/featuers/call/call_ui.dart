@@ -10,17 +10,17 @@ import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 import 'dart:ui';
-import 'package:whoxa/featuers/call/call_model.dart';
-import 'package:whoxa/featuers/call/call_provider.dart';
-import 'package:whoxa/core/services/call_notification_manager.dart';
-import 'package:whoxa/screens/splash_screen.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-import 'package:whoxa/featuers/chat/services/contact_name_service.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
+import 'package:stanchat/featuers/call/call_provider.dart';
+import 'package:stanchat/core/services/call_notification_manager.dart';
+import 'package:stanchat/screens/splash_screen.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+import 'package:stanchat/featuers/chat/services/contact_name_service.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /// Configuration class for responsive video grid layout

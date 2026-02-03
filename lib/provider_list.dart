@@ -1,24 +1,24 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:whoxa/core/services/socket/socket_event_controller.dart';
-import 'package:whoxa/dependency_injection.dart';
-import 'package:whoxa/featuers/auth/provider/auth_provider.dart';
-import 'package:whoxa/featuers/chat/group/provider/group_provider.dart';
-import 'package:whoxa/featuers/chat/provider/chat_provider.dart';
-import 'package:whoxa/featuers/chat/provider/archive_chat_provider.dart';
-import 'package:whoxa/featuers/home/provider/home_provider.dart';
-import 'package:whoxa/featuers/language_method/provider/language_provider.dart';
-import 'package:whoxa/featuers/onboarding/Provider/onboarding_provider.dart';
-import 'package:whoxa/featuers/call/call_provider.dart';
-import 'package:whoxa/featuers/profile/provider/profile_provider.dart';
-import 'package:whoxa/featuers/project-config/provider/config_provider.dart';
-import 'package:whoxa/featuers/provider/theme_provider.dart';
-import 'package:whoxa/featuers/provider/voice_provider.dart';
-import 'package:whoxa/featuers/story/provider/story_provider.dart';
-import 'package:whoxa/featuers/contacts/provider/contact_provider.dart';
-import 'package:whoxa/featuers/provider/tabbar_provider.dart';
-import 'package:whoxa/featuers/report/provider/report_provider.dart';
-import 'package:whoxa/featuers/call/call_history/providers/call_history_provider.dart';
+import 'package:stanchat/core/services/socket/socket_event_controller.dart';
+import 'package:stanchat/dependency_injection.dart';
+import 'package:stanchat/featuers/auth/provider/auth_provider.dart';
+import 'package:stanchat/featuers/chat/group/provider/group_provider.dart';
+import 'package:stanchat/featuers/chat/provider/chat_provider.dart';
+import 'package:stanchat/featuers/chat/provider/archive_chat_provider.dart';
+import 'package:stanchat/featuers/home/provider/home_provider.dart';
+import 'package:stanchat/featuers/language_method/provider/language_provider.dart';
+import 'package:stanchat/featuers/onboarding/Provider/onboarding_provider.dart';
+import 'package:stanchat/featuers/call/call_provider.dart';
+import 'package:stanchat/featuers/profile/provider/profile_provider.dart';
+import 'package:stanchat/featuers/project-config/provider/config_provider.dart';
+import 'package:stanchat/featuers/provider/theme_provider.dart';
+import 'package:stanchat/featuers/provider/voice_provider.dart';
+import 'package:stanchat/featuers/story/provider/story_provider.dart';
+import 'package:stanchat/featuers/contacts/provider/contact_provider.dart';
+import 'package:stanchat/featuers/provider/tabbar_provider.dart';
+import 'package:stanchat/featuers/report/provider/report_provider.dart';
+import 'package:stanchat/featuers/call/call_history/providers/call_history_provider.dart';
 
 List<SingleChildWidget> appProviders = [
   // Core providers

@@ -4,7 +4,7 @@
 // import 'package:flutter/foundation.dart';
 // import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 // import 'package:permission_handler/permission_handler.dart';
-// import 'package:whoxa/utils/logger.dart';
+// import 'package:stanchat/utils/logger.dart';
 
 // class LocalNotificationService {
 //   static final LocalNotificationService _instance =
@@ -469,7 +469,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/utils/logger.dart';
 
 class CallNotificationService {
   static final CallNotificationService _instance =
@@ -975,8 +975,8 @@ class CallNotificationService {
 
     // CRITICAL FIX: For now, this method will be called when user taps on the notification
     // The actual implementation should be done at the top of this file by importing:
-    // import 'package:whoxa/core/navigation_helper.dart';
-    // import 'package:whoxa/featuers/opus_call/call_model.dart';
+    // import 'package:stanchat/core/navigation_helper.dart';
+    // import 'package:stanchat/featuers/opus_call/call_model.dart';
 
     _logger.w(
       '⚠️ _navigateToIncomingCallScreen called but not fully implemented',

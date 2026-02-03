@@ -9,13 +9,13 @@ import 'dart:async';
 
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:whoxa/core/navigation_helper.dart';
-import 'package:whoxa/core/services/local_notification_service.dart';
-import 'package:whoxa/core/services/socket/socket_event_controller.dart';
-import 'package:whoxa/featuers/call/call_manager.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/core/services/cold_start_handler.dart';
-import 'package:whoxa/dependency_injection.dart';
+import 'package:stanchat/core/navigation_helper.dart';
+import 'package:stanchat/core/services/local_notification_service.dart';
+import 'package:stanchat/core/services/socket/socket_event_controller.dart';
+import 'package:stanchat/featuers/call/call_manager.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/core/services/cold_start_handler.dart';
+import 'package:stanchat/dependency_injection.dart';
 
 class OneSignalService {
   static final OneSignalService _instance = OneSignalService._internal();
@@ -324,7 +324,9 @@ class OneSignalService {
       _logger.i('🔍 Permission status: $permissionStatus');
 
       if (permissionStatus.isGranted || permissionStatus.isProvisional) {
-        _logger.i('✅ Notification permission confirmed - opting in to OneSignal...');
+        _logger.i(
+          '✅ Notification permission confirmed - opting in to OneSignal...',
+        );
 
         // ✅ CRITICAL FIX: Opt-in to OneSignal push notifications
         // This is what actually subscribes the user to push notifications in OneSignal
@@ -505,7 +507,9 @@ class OneSignalService {
       if (isCall) {
         _logger.i('📞 CALL NOTIFICATION DETECTED');
         try {
-          _passNotificationToCallController(event.notification); // Add this line
+          _passNotificationToCallController(
+            event.notification,
+          ); // Add this line
         } catch (e) {
           _logger.e('💥 Error passing to call controller: $e');
         }
@@ -633,7 +637,9 @@ class OneSignalService {
     }
 
     final delayMs = [500, 1000, 2000, 3000, 5000][attempt];
-    _logger.i('⏳ Scheduling navigation retry attempt ${attempt + 1} in ${delayMs}ms');
+    _logger.i(
+      '⏳ Scheduling navigation retry attempt ${attempt + 1} in ${delayMs}ms',
+    );
 
     Future.delayed(Duration(milliseconds: delayMs), () {
       if (_isDisposed) {
@@ -645,7 +651,9 @@ class OneSignalService {
         _logger.i('✅ Navigation context available - attempting navigation');
         _navigateToCallScreen(callData);
       } else {
-        _logger.w('⚠️ Navigation context still null - scheduling retry ${attempt + 2}');
+        _logger.w(
+          '⚠️ Navigation context still null - scheduling retry ${attempt + 2}',
+        );
         _scheduleNavigationRetry(callData, attempt + 1);
       }
     });
@@ -1053,12 +1061,17 @@ class OneSignalService {
       // OneSignal blocks certain user IDs to prevent spam/abuse
       final String prefixedUserId = 'user_$userId';
 
-      _logger.i('🔐 Attempting to set OneSignal external user ID: $prefixedUserId (original: $userId)');
+      _logger.i(
+        '🔐 Attempting to set OneSignal external user ID: $prefixedUserId (original: $userId)',
+      );
 
       // ✅ Add timeout to prevent infinite blocking
       await Future.any([
         Future(() => OneSignal.login(prefixedUserId)),
-        Future.delayed(Duration(seconds: 10), () => throw TimeoutException('OneSignal login timeout')),
+        Future.delayed(
+          Duration(seconds: 10),
+          () => throw TimeoutException('OneSignal login timeout'),
+        ),
       ]);
 
       _externalUserId = prefixedUserId;
@@ -1069,8 +1082,12 @@ class OneSignalService {
 
       // ✅ CRITICAL: Don't block app initialization on OneSignal errors
       // The app should continue to work even if OneSignal login fails
-      _logger.w('⚠️ OneSignal user login failed - notifications may not work properly');
-      _logger.w('⚠️ This usually happens when the user ID is blocked by OneSignal spam protection');
+      _logger.w(
+        '⚠️ OneSignal user login failed - notifications may not work properly',
+      );
+      _logger.w(
+        '⚠️ This usually happens when the user ID is blocked by OneSignal spam protection',
+      );
 
       return false;
     }
@@ -1122,7 +1139,9 @@ class OneSignalService {
       // Clear the stored external user ID
       _externalUserId = null;
 
-      _logger.i('✅ OneSignal logout completed - user disassociated from device');
+      _logger.i(
+        '✅ OneSignal logout completed - user disassociated from device',
+      );
     } catch (e) {
       _logger.e('❌ Error during OneSignal logout', e);
       // Still clear the external user ID even if OneSignal logout fails

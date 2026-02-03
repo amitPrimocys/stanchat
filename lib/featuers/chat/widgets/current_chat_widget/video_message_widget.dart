@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/base_message_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/chat_related_widget.dart';
-import 'package:whoxa/featuers/chat/widgets/current_chat_widget/delete_message_widget.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/base_message_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/chat_related_widget.dart';
+import 'package:stanchat/featuers/chat/widgets/current_chat_widget/delete_message_widget.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
 
 class VideoMessageWidget extends BaseMessageWidget {
   final VoidCallback? onTap;

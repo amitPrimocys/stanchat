@@ -4,10 +4,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
-import 'package:whoxa/featuers/call/call_manager.dart';
-import 'package:whoxa/featuers/call/call_model.dart';
-import 'package:whoxa/featuers/call/web_rtc_service.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/featuers/call/call_manager.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
+import 'package:stanchat/featuers/call/web_rtc_service.dart';
+import 'package:stanchat/utils/logger.dart';
 import 'dart:async';
 import 'dart:io';
 
@@ -167,7 +167,9 @@ class CallProvider extends ChangeNotifier {
     // CRITICAL: Set initial speaker state when call connects (ONE TIME ONLY)
     if (currentState == CallState.connected &&
         previousState != CallState.connected) {
-      _logger.i('🔄 CallProvider: Call connected - setting INITIAL speaker state');
+      _logger.i(
+        '🔄 CallProvider: Call connected - setting INITIAL speaker state',
+      );
       _logger.i('🔍 DEBUG: Platform.isIOS = ${Platform.isIOS}');
       _logger.i('🔍 DEBUG: currentCall?.callType = ${currentCall?.callType}');
 
@@ -427,7 +429,9 @@ class CallProvider extends ChangeNotifier {
   /// Uses reelboostmobile pattern: DISABLE first, then STOP
   void _stopAllTracksImmediately() {
     try {
-      _logger.i('🚨 EMERGENCY: Stopping all media tracks IMMEDIATELY (reelboostmobile pattern)');
+      _logger.i(
+        '🚨 EMERGENCY: Stopping all media tracks IMMEDIATELY (reelboostmobile pattern)',
+      );
 
       // CRITICAL FIX: Clear renderer srcObject FIRST (reelboostmobile pattern)
       // This detaches the stream from audio output immediately
@@ -477,7 +481,9 @@ class CallProvider extends ChangeNotifier {
         }
       }
 
-      _logger.i('✅ EMERGENCY STOP: All media tracks disabled and stopped immediately');
+      _logger.i(
+        '✅ EMERGENCY STOP: All media tracks disabled and stopped immediately',
+      );
 
       // NOTE: Remote stream cleanup is handled by WebRTCService.dispose()
       // which now properly tracks and cleans up all remote streams

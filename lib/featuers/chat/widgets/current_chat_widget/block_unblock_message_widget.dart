@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:whoxa/featuers/chat/data/chats_model.dart' as chats;
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/featuers/chat/data/chats_model.dart' as chats;
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
 
 /// System-generated non-interactive widget for block/unblock messages
 /// This widget displays block/unblock events and cannot be starred, pinned, or replied to
@@ -48,7 +48,7 @@ class BlockUnblockMessageWidget extends StatelessWidget {
                 ),
                 SizedBox(width: 6),
                 Text(
-                  isBlockMessage 
+                  isBlockMessage
                       ? messageContent
                       : 'message_content: unblocked',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -60,15 +60,14 @@ class BlockUnblockMessageWidget extends StatelessWidget {
             ),
           ),
         ),
-        
+
         Container(
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Text(
             _formatTime(_getMessageTimestamp()),
-            style: AppTypography.captionText(context).copyWith(
-              color: AppColors.textColor.textGreyColor,
-              fontSize: 10,
-            ),
+            style: AppTypography.captionText(
+              context,
+            ).copyWith(color: AppColors.textColor.textGreyColor, fontSize: 10),
           ),
         ),
       ],
@@ -99,11 +98,11 @@ class BlockUnblockMessageWidget extends StatelessWidget {
     if (chat.updatedAt != null && chat.updatedAt!.trim().isNotEmpty) {
       return chat.updatedAt;
     }
-    
+
     if (chat.createdAt != null && chat.createdAt!.trim().isNotEmpty) {
       return chat.createdAt;
     }
-    
+
     return null;
   }
 }

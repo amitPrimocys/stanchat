@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:whoxa/featuers/auth/provider/auth_provider.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/packages/phone_field/intl_phone_field.dart';
-import 'package:whoxa/utils/packages/phone_field/phone_number.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_routes.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/widgets/cusotm_blur_appbar.dart';
-import 'package:whoxa/widgets/global.dart';
-import 'package:whoxa/widgets/global_textfield.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/featuers/auth/provider/auth_provider.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/packages/phone_field/intl_phone_field.dart';
+import 'package:stanchat/utils/packages/phone_field/phone_number.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_routes.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/widgets/cusotm_blur_appbar.dart';
+import 'package:stanchat/widgets/global.dart';
+import 'package:stanchat/widgets/global_textfield.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -361,6 +361,7 @@ class _LoginPageState extends State<LoginPage> {
                                         : customBtn2(
                                           context,
                                           onTap: () async {
+                                            closeKeyboard();
                                             if (!context.mounted) return;
                                             if (authProvider
                                                     .isSelectLoginType ==
@@ -402,19 +403,6 @@ class _LoginPageState extends State<LoginPage> {
                                                   Navigator.pushNamed(
                                                     context,
                                                     AppRoutes.otp,
-                                                    // MaterialPageRoute(
-                                                    //   builder:
-                                                    //       (context) => OtpScreen(
-                                                    //         countryCode:
-                                                    //             authProvider
-                                                    //                 .selectedCountrycode,
-                                                    //         mobileNum:
-                                                    //             authProvider
-                                                    //                 .mobilecontroller
-                                                    //                 .text,
-                                                    //         email: "",
-                                                    //       ),
-                                                    // ),
                                                   );
                                                 } else {
                                                   final msg =
@@ -461,17 +449,6 @@ class _LoginPageState extends State<LoginPage> {
                                                   Navigator.pushNamed(
                                                     context,
                                                     AppRoutes.otp,
-                                                    //         // MaterialPageRoute(
-                                                    //         //   builder:
-                                                    //         //       (context) => OtpScreen(
-                                                    //         //         countryCode: "",
-                                                    //         //         mobileNum: "",
-                                                    //         //         email:
-                                                    //         //             authProvider
-                                                    //         //                 .emailcontroller
-                                                    //         //                 .text,
-                                                    //         //       ),
-                                                    //         // ),
                                                   );
                                                 } else {
                                                   final msg =
@@ -500,9 +477,6 @@ class _LoginPageState extends State<LoginPage> {
                                                         .appPriSecColor
                                                         .primaryColor,
                                                   ),
-                                              // AppColors
-                                              //     .textColor
-                                              //     .textBlackColor,
                                             ),
                                           ),
                                         ),

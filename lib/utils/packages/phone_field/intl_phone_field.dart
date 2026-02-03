@@ -6,8 +6,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:whoxa/utils/packages/phone_field/country_picker_dialog.dart';
-import 'package:whoxa/utils/packages/phone_field/helpers.dart';
+import 'package:stanchat/utils/packages/phone_field/country_picker_dialog.dart';
+import 'package:stanchat/utils/packages/phone_field/helpers.dart';
 import './countries.dart';
 import './phone_number.dart';
 

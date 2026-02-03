@@ -11,8 +11,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/core/services/call_notification_manager.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/core/services/call_notification_manager.dart';
 
 enum AudioMode {
   normal, // Default mode
@@ -143,7 +143,7 @@ class CallAudioManager {
     }
   }
 
-  /// Start caller tone (earpiece for audio calls, speaker for video calls)  
+  /// Start caller tone (earpiece for audio calls, speaker for video calls)
   /// Uses phone-ringtone-emitting-from-ear-piece.mp3 from assets when user makes outgoing call
   Future<void> startCallerTone({bool isVideoCall = false}) async {
     if (!_isInitialized) {
@@ -183,7 +183,9 @@ class CallAudioManager {
 
       // CRITICAL: Stop any existing ringtone first (only if not already playing to prevent interruption)
       if (_callerTonePlayer!.playing) {
-        _logger.w('⚠️ Stopping existing caller tone to start fresh (this may cause interruption)');
+        _logger.w(
+          '⚠️ Stopping existing caller tone to start fresh (this may cause interruption)',
+        );
         await _callerTonePlayer!.stop();
         await _callerTonePlayer!.seek(Duration.zero);
         // Add delay to prevent race condition
@@ -257,7 +259,9 @@ class CallAudioManager {
         _logger.i('✅ Phone ringtone started successfully');
       } else {
         // SENIOR DEV FALLBACK: Use platform-native audio as last resort
-        _logger.w('⚠️ All just_audio methods failed, trying platform-native fallback...');
+        _logger.w(
+          '⚠️ All just_audio methods failed, trying platform-native fallback...',
+        );
         await _tryPlatformNativeRingtone(isVideoCall: isVideoCall);
       }
     } catch (e) {
@@ -382,7 +386,9 @@ class CallAudioManager {
   /// No native code needed - flutter_webrtc handles audio routing
   Future<void> configureAudioForCall({bool useSpeaker = false}) async {
     try {
-      _logger.i('🎯 Configuring audio for call (speaker: $useSpeaker) - WebRTC only');
+      _logger.i(
+        '🎯 Configuring audio for call (speaker: $useSpeaker) - WebRTC only',
+      );
 
       // Stop any playing tones
       await _stopAllAudio();
@@ -393,8 +399,9 @@ class CallAudioManager {
       // SIMPLIFIED: Use ONLY flutter_webrtc's built-in speaker control (like reelboostmobile)
       // WebRTC manages its own audio session - no native code needed
       await Helper.setSpeakerphoneOn(useSpeaker);
-      _logger.i('✅ Speaker set to ${useSpeaker ? "ON" : "OFF"} via flutter_webrtc');
-
+      _logger.i(
+        '✅ Speaker set to ${useSpeaker ? "ON" : "OFF"} via flutter_webrtc',
+      );
     } catch (e) {
       _logger.e('❌ Failed to configure audio for call: $e');
     }
@@ -662,17 +669,21 @@ class CallAudioManager {
   /// SENIOR DEV: Release WebRTC audio session temporarily for ringtones
   Future<void> _releaseWebRTCAudioSession() async {
     try {
-      _logger.i('🔧 Temporarily releasing WebRTC audio session for ringtone...');
-      
+      _logger.i(
+        '🔧 Temporarily releasing WebRTC audio session for ringtone...',
+      );
+
       // Use platform channel to temporarily release WebRTC audio control
       await platform.invokeMethod('releaseAudioSession');
-      
+
       // Small delay to ensure release takes effect
       await Future.delayed(Duration(milliseconds: 100));
-      
+
       _logger.i('✅ WebRTC audio session temporarily released');
     } catch (e) {
-      _logger.w('⚠️ Could not release WebRTC audio session: $e (continuing anyway)');
+      _logger.w(
+        '⚠️ Could not release WebRTC audio session: $e (continuing anyway)',
+      );
     }
   }
 
@@ -680,13 +691,15 @@ class CallAudioManager {
   Future<void> _reclaimWebRTCAudioSession() async {
     try {
       _logger.i('🔧 Reclaiming WebRTC audio session after ringtone...');
-      
+
       // Use platform channel to reclaim WebRTC audio control
       await platform.invokeMethod('reclaimAudioSession');
-      
+
       _logger.i('✅ WebRTC audio session reclaimed');
     } catch (e) {
-      _logger.w('⚠️ Could not reclaim WebRTC audio session: $e (continuing anyway)');
+      _logger.w(
+        '⚠️ Could not reclaim WebRTC audio session: $e (continuing anyway)',
+      );
     }
   }
 
@@ -694,7 +707,7 @@ class CallAudioManager {
   Future<void> _tryPlatformNativeRingtone({required bool isVideoCall}) async {
     try {
       _logger.i('🔧 Attempting platform-native ringtone fallback...');
-      
+
       // Platform-specific ringtone that works with WebRTC
       final result = await platform.invokeMethod('playNativeRingtone', {
         'assetPath': 'assets/audio/phone-ringtone-emitting-from-ear-piece.mp3',
@@ -702,7 +715,7 @@ class CallAudioManager {
         'looping': true,
         'volume': isVideoCall ? 0.8 : 0.9,
       });
-      
+
       if (result == true) {
         _logger.i('✅ Platform-native ringtone started successfully');
         _startCallTimeout(); // Start timeout for native ringtone too
@@ -720,13 +733,15 @@ class CallAudioManager {
       _logger.i('🎵 Stopping caller tone...');
 
       // SENIOR DEV FIX: Stop both just_audio and platform-native audio
-      
+
       // Stop platform-native ringtone first
       try {
         await platform.invokeMethod('stopNativeRingtone');
         _logger.i('✅ Platform-native ringtone stopped');
       } catch (e) {
-        _logger.d('ℹ️ Platform-native ringtone stop: $e (normal if not running)');
+        _logger.d(
+          'ℹ️ Platform-native ringtone stop: $e (normal if not running)',
+        );
       }
 
       // Force stop caller tone player immediately
@@ -783,7 +798,9 @@ class CallAudioManager {
   /// Toggle speaker with reliable routing using both flutter_webrtc and native
   Future<void> toggleSpeaker(bool enabled) async {
     try {
-      _logger.i('🎯 Toggling speaker to ${enabled ? "ON (Speaker)" : "OFF (Earpiece)"}');
+      _logger.i(
+        '🎯 Toggling speaker to ${enabled ? "ON (Speaker)" : "OFF (Earpiece)"}',
+      );
 
       // Step 1: Use flutter_webrtc's built-in speaker control
       await Helper.setSpeakerphoneOn(enabled);
@@ -827,7 +844,9 @@ class CallAudioManager {
         }
       }
 
-      _logger.i('✅ Speaker toggle completed: ${enabled ? "SPEAKER" : "EARPIECE"}');
+      _logger.i(
+        '✅ Speaker toggle completed: ${enabled ? "SPEAKER" : "EARPIECE"}',
+      );
     } catch (e) {
       _logger.e('❌ Failed to toggle speaker: $e');
       rethrow;

@@ -5,25 +5,26 @@
 
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/utils/logger.dart';
 
 enum DeviceRingerMode {
-  silent,    // No sound, no vibration
-  vibrate,   // Vibration only
-  general,   // Sound with vibration
+  silent, // No sound, no vibration
+  vibrate, // Vibration only
+  general, // Sound with vibration
 }
 
 class DeviceProfileManager {
-  static final DeviceProfileManager _instance = DeviceProfileManager._internal();
+  static final DeviceProfileManager _instance =
+      DeviceProfileManager._internal();
   static DeviceProfileManager get instance => _instance;
   DeviceProfileManager._internal();
 
   final _logger = ConsoleAppLogger.forModule('DeviceProfileManager');
-  
+
   // State management
   bool _isInitialized = false;
   DeviceRingerMode _currentRingerMode = DeviceRingerMode.general;
-  
+
   // Platform channel for native ringer mode detection
   static const platform = MethodChannel('primocys.device.profile');
 
@@ -31,10 +32,10 @@ class DeviceProfileManager {
   Future<void> initialize() async {
     try {
       _logger.i('📱 DeviceProfileManager: Initializing...');
-      
+
       // Try to get initial ringer mode from native
       await _updateRingerModeFromNative();
-      
+
       _isInitialized = true;
       _logger.i('✅ DeviceProfileManager: Initialized successfully');
     } catch (e) {
@@ -78,7 +79,7 @@ class DeviceProfileManager {
   /// Get current ringer mode with fallback detection
   Future<DeviceRingerMode> getCurrentRingerMode() async {
     if (!_isInitialized) await initialize();
-    
+
     try {
       // Try to get fresh mode from native first
       await _updateRingerModeFromNative();
@@ -86,7 +87,7 @@ class DeviceProfileManager {
       // Use cached mode
       _logger.d('📱 Using cached ringer mode');
     }
-    
+
     return _currentRingerMode;
   }
 

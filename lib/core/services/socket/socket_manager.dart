@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:whoxa/core/services/socket/socket_event_controller.dart';
-import 'package:whoxa/core/services/socket/socket_service.dart';
-import 'package:whoxa/utils/logger.dart';
-import 'package:whoxa/utils/preference_key/sharedpref_key.dart';
-import 'package:whoxa/utils/preference_key/preference_key.dart';
-import 'package:whoxa/utils/network_info.dart';
+import 'package:stanchat/core/services/socket/socket_event_controller.dart';
+import 'package:stanchat/core/services/socket/socket_service.dart';
+import 'package:stanchat/utils/logger.dart';
+import 'package:stanchat/utils/preference_key/sharedpref_key.dart';
+import 'package:stanchat/utils/preference_key/preference_key.dart';
+import 'package:stanchat/utils/network_info.dart';
 
 /// SocketManager - FIXED VERSION
 /// A singleton class that manages socket connections throughout the application
@@ -203,25 +203,25 @@ class SocketManager {
   void reset() {
     try {
       _logger.i('Socket manager: Resetting all socket connections');
-      
+
       // Cancel any pending reconnection attempts
       _reconnectTimer?.cancel();
       _reconnectAttempts = 0;
       _connectingInProgress = false;
-      
+
       // Cancel connection subscription to prevent further state changes
       _connectionSubscription?.cancel();
       _connectionSubscription = null;
-      
+
       // ✅ FIXED: Use reset() instead of closeSocket() to fully reset the singleton
       _socketService.reset();
-      
+
       // Update connection status
       connectionStatus.value = false;
-      
+
       // Mark as uninitialized
       _initialized = false;
-      
+
       _logger.i('Socket manager: Reset completed');
     } catch (e) {
       _logger.e('Error during socket manager reset', e);

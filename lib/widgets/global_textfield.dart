@@ -4,15 +4,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:whoxa/utils/app_size_config.dart';
-import 'package:whoxa/utils/packages/phone_field/countries.dart';
-import 'package:whoxa/utils/packages/phone_field/intl_phone_field.dart';
-import 'package:whoxa/utils/packages/phone_field/phone_number.dart';
-import 'package:whoxa/utils/preference_key/constant/app_assets.dart';
-import 'package:whoxa/utils/preference_key/constant/app_colors.dart';
-import 'package:whoxa/utils/preference_key/constant/app_text_style.dart';
-import 'package:whoxa/utils/preference_key/constant/app_theme_manage.dart';
-import 'package:whoxa/utils/preference_key/constant/strings.dart';
+import 'package:stanchat/utils/app_size_config.dart';
+import 'package:stanchat/utils/packages/phone_field/countries.dart';
+import 'package:stanchat/utils/packages/phone_field/intl_phone_field.dart';
+import 'package:stanchat/utils/packages/phone_field/phone_number.dart';
+import 'package:stanchat/utils/preference_key/constant/app_assets.dart';
+import 'package:stanchat/utils/preference_key/constant/app_colors.dart';
+import 'package:stanchat/utils/preference_key/constant/app_text_style.dart';
+import 'package:stanchat/utils/preference_key/constant/app_theme_manage.dart';
+import 'package:stanchat/utils/preference_key/constant/strings.dart';
 
 Widget twoText(
   BuildContext context, {

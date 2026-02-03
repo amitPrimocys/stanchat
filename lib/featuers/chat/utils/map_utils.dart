@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:whoxa/utils/logger.dart';
+import 'package:stanchat/utils/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io' show Platform;
 

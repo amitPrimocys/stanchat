@@ -4,7 +4,7 @@
 // =============================================================================
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:whoxa/featuers/call/call_model.dart';
+import 'package:stanchat/featuers/call/call_model.dart';
 
 void main() {
   group('Speaker Synchronization Tests', () {

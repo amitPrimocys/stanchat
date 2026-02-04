@@ -25,7 +25,7 @@ const List<Country> countries = [
       "ro": "Afganistan",
       "ar": "أفغانستان",
       "fa": "افغانستان",
-      "yue": "阿富汗"
+      "yue": "阿富汗",
     },
     flag: "🇦🇫",
     code: "AF",
@@ -56,7 +56,7 @@ const List<Country> countries = [
       "ro": "Insulele Åland",
       "ar": "جزر أولاند",
       "fa": "جزیره اولاند",
-      "yue": "奧蘭群島"
+      "yue": "奧蘭群島",
     },
     flag: "🇦🇽",
     code: "AX",
@@ -87,7 +87,7 @@ const List<Country> countries = [
       "ro": "Albania",
       "ar": "ألبانيا",
       "fa": "آلبانی",
-      "yue": "阿爾巴尼亞"
+      "yue": "阿爾巴尼亞",
     },
     flag: "🇦🇱",
     code: "AL",
@@ -118,7 +118,7 @@ const List<Country> countries = [
       "ro": "Algeria",
       "ar": "الجزائر",
       "fa": "الجزیره",
-      "yue": "阿爾及利亞"
+      "yue": "阿爾及利亞",
     },
     flag: "🇩🇿",
     code: "DZ",
@@ -149,7 +149,7 @@ const List<Country> countries = [
       "ro": "Samoa Americană",
       "ar": "ساموا الأمريكية",
       "fa": "ساموا آمریکا",
-      "yue": "美屬薩摩亞"
+      "yue": "美屬薩摩亞",
     },
     flag: "🇦🇸",
     code: "AS",
@@ -180,7 +180,7 @@ const List<Country> countries = [
       "ro": "Andorra",
       "ar": "أندورا",
       "fa": "آندورا",
-      "yue": "安道爾"
+      "yue": "安道爾",
     },
     flag: "🇦🇩",
     code: "AD",
@@ -211,7 +211,7 @@ const List<Country> countries = [
       "ro": "Angola",
       "ar": "أنغولا",
       "fa": "آنگولا",
-      "yue": "安哥拉"
+      "yue": "安哥拉",
     },
     flag: "🇦🇴",
     code: "AO",
@@ -242,7 +242,7 @@ const List<Country> countries = [
       "ro": "Anguilla",
       "ar": "أنغويلا",
       "fa": "آنگولیا",
-      "yue": "安圭拉"
+      "yue": "安圭拉",
     },
     flag: "🇦🇮",
     code: "AI",
@@ -273,7 +273,7 @@ const List<Country> countries = [
       "ro": "Antarctica",
       "ar": "القارة القطبية الجنوبية",
       "fa": "قطب جنوب",
-      "yue": "南极洲"
+      "yue": "南极洲",
     },
     flag: "🇦🇶",
     code: "AQ",
@@ -304,7 +304,7 @@ const List<Country> countries = [
       "ro": "Antigua şi Barbuda",
       "ar": "أنتيغوا وباربودا",
       "fa": "آنتیگوآ و باربودا",
-      "yue": "安提瓜同巴布达"
+      "yue": "安提瓜同巴布达",
     },
     flag: "🇦🇬",
     code: "AG",
@@ -335,13 +335,13 @@ const List<Country> countries = [
       "ro": "Argentina",
       "ar": "الأرجنتين",
       "fa": "آرژانتین",
-      "yue": "阿根廷"
+      "yue": "阿根廷",
     },
     flag: "🇦🇷",
     code: "AR",
     dialCode: "54",
-    minLength: 12,
-    maxLength: 12,
+    minLength: 10,
+    maxLength: 10,
   ),
   Country(
     name: "Armenia",
@@ -366,7 +366,7 @@ const List<Country> countries = [
       "ro": "Armenia",
       "ar": "أرمينيا",
       "fa": "ارمنستان",
-      "yue": "亞美尼亞"
+      "yue": "亞美尼亞",
     },
     flag: "🇦🇲",
     code: "AM",
@@ -397,7 +397,7 @@ const List<Country> countries = [
       "ro": "Aruba",
       "ar": "أروبا",
       "fa": "آروبا",
-      "yue": "阿魯巴島"
+      "yue": "阿魯巴島",
     },
     flag: "🇦🇼",
     code: "AW",
@@ -428,7 +428,7 @@ const List<Country> countries = [
       "ro": "Australia",
       "ar": "أستراليا",
       "fa": "استرالیا",
-      "yue": "澳洲"
+      "yue": "澳洲",
     },
     flag: "🇦🇺",
     code: "AU",
@@ -459,7 +459,7 @@ const List<Country> countries = [
       "ro": "Austria",
       "ar": "النمسا",
       "fa": "اتریش",
-      "yue": "奧地利"
+      "yue": "奧地利",
     },
     flag: "🇦🇹",
     code: "AT",
@@ -490,7 +490,7 @@ const List<Country> countries = [
       "ro": "Azerbaidjan",
       "ar": "أذربيجان",
       "fa": "آذربایجان",
-      "yue": "阿塞拜疆"
+      "yue": "阿塞拜疆",
     },
     flag: "🇦🇿",
     code: "AZ",
@@ -521,7 +521,7 @@ const List<Country> countries = [
       "ro": "Bahamas",
       "ar": "باهاماس",
       "fa": "باهاماس",
-      "yue": "巴哈馬"
+      "yue": "巴哈馬",
     },
     flag: "🇧🇸",
     code: "BS",
@@ -552,7 +552,7 @@ const List<Country> countries = [
       "ro": "Bahrein",
       "ar": "البحرين",
       "fa": "بحرین",
-      "yue": "巴林"
+      "yue": "巴林",
     },
     flag: "🇧🇭",
     code: "BH",
@@ -583,7 +583,7 @@ const List<Country> countries = [
       "ro": "Bangladesh",
       "ar": "بنغلاديش",
       "fa": "بنگلادش",
-      "yue": "孟加拉囯"
+      "yue": "孟加拉囯",
     },
     flag: "🇧🇩",
     code: "BD",
@@ -614,7 +614,7 @@ const List<Country> countries = [
       "ro": "Barbados",
       "ar": "باربادوس",
       "fa": "باربادوس",
-      "yue": "巴巴多斯"
+      "yue": "巴巴多斯",
     },
     flag: "🇧🇧",
     code: "BB",
@@ -645,7 +645,7 @@ const List<Country> countries = [
       "ro": "Belarus",
       "ar": "بيلاروس",
       "fa": "بلاروس",
-      "yue": "白俄羅斯"
+      "yue": "白俄羅斯",
     },
     flag: "🇧🇾",
     code: "BY",
@@ -676,7 +676,7 @@ const List<Country> countries = [
       "ro": "Belgia",
       "ar": "بلجيكا",
       "fa": "بلژیک",
-      "yue": "比利時"
+      "yue": "比利時",
     },
     flag: "🇧🇪",
     code: "BE",
@@ -707,7 +707,7 @@ const List<Country> countries = [
       "ro": "Belize",
       "ar": "بليز",
       "fa": "بليز",
-      "yue": "伯利茲"
+      "yue": "伯利茲",
     },
     flag: "🇧🇿",
     code: "BZ",
@@ -738,7 +738,7 @@ const List<Country> countries = [
       "ro": "Benin",
       "ar": "بنين",
       "fa": "بنين",
-      "yue": "貝寧"
+      "yue": "貝寧",
     },
     flag: "🇧🇯",
     code: "BJ",
@@ -769,7 +769,7 @@ const List<Country> countries = [
       "ro": "Insulele Bermude",
       "ar": "برمودا",
       "fa": "برمودا",
-      "yue": "百慕大"
+      "yue": "百慕大",
     },
     flag: "🇧🇲",
     code: "BM",
@@ -800,7 +800,7 @@ const List<Country> countries = [
       "ro": "Bhutan",
       "ar": "بوتان",
       "fa": "بوتان",
-      "yue": "不丹"
+      "yue": "不丹",
     },
     flag: "🇧🇹",
     code: "BT",
@@ -831,7 +831,7 @@ const List<Country> countries = [
       "ro": "Bolivia",
       "ar": "بوليفيا",
       "fa": "بولیوی",
-      "yue": "玻利維亞（多民族國家）"
+      "yue": "玻利維亞（多民族國家）",
     },
     flag: "🇧🇴",
     code: "BO",
@@ -862,7 +862,7 @@ const List<Country> countries = [
       "ro": "Bosnia și Herțegovina",
       "ar": "البوسنة والهرسك",
       "fa": "بوسنی و هرزگوین",
-      "yue": "波斯尼亞黑塞哥維那"
+      "yue": "波斯尼亞黑塞哥維那",
     },
     flag: "🇧🇦",
     code: "BA",
@@ -893,7 +893,7 @@ const List<Country> countries = [
       "ro": "Botswana",
       "ar": "بوتسوانا",
       "fa": "بوتسوانا",
-      "yue": "博茨瓦納"
+      "yue": "博茨瓦納",
     },
     flag: "🇧🇼",
     code: "BW",
@@ -924,7 +924,7 @@ const List<Country> countries = [
       "ro": "Insula Bouvet",
       "ar": "جزيرة بوفيه",
       "fa": "جزیره بووه",
-      "yue": "布维特岛"
+      "yue": "布维特岛",
     },
     flag: "🇧🇻",
     code: "BV",
@@ -955,7 +955,7 @@ const List<Country> countries = [
       "ro": "Brazilia",
       "ar": "البرازيل",
       "fa": "برزیل",
-      "yue": "巴西"
+      "yue": "巴西",
     },
     flag: "🇧🇷",
     code: "BR",
@@ -986,7 +986,7 @@ const List<Country> countries = [
       "ro": "Teritoriul Britanic din Oceanul Indian",
       "ar": "إقليم المحيط الهندي البريطاني",
       "fa": "سرزمین دریایی هند - بریتانیا",
-      "yue": "英屬印度洋領土"
+      "yue": "英屬印度洋領土",
     },
     flag: "🇮🇴",
     code: "IO",
@@ -1017,7 +1017,7 @@ const List<Country> countries = [
       "ro": "Brunei",
       "ar": "بروناي",
       "fa": "برونئی",
-      "yue": "文萊達魯薩蘭國"
+      "yue": "文萊達魯薩蘭國",
     },
     flag: "🇧🇳",
     code: "BN",
@@ -1048,7 +1048,7 @@ const List<Country> countries = [
       "ro": "Bulgaria",
       "ar": "بلغاريا",
       "fa": "بلغارستان",
-      "yue": "保加利亞"
+      "yue": "保加利亞",
     },
     flag: "🇧🇬",
     code: "BG",
@@ -1079,7 +1079,7 @@ const List<Country> countries = [
       "ro": "Burkina Faso",
       "ar": "بوركينا فاسو",
       "fa": "بورکینافاسو",
-      "yue": "布基納法索"
+      "yue": "布基納法索",
     },
     flag: "🇧🇫",
     code: "BF",
@@ -1110,7 +1110,7 @@ const List<Country> countries = [
       "ro": "Burundi",
       "ar": "بوروندي",
       "fa": "بوروندی",
-      "yue": "蒲隆地"
+      "yue": "蒲隆地",
     },
     flag: "🇧🇮",
     code: "BI",
@@ -1141,7 +1141,7 @@ const List<Country> countries = [
       "ro": "Cambogia",
       "ar": "كمبوديا",
       "fa": "کامبوج",
-      "yue": "柬埔寨"
+      "yue": "柬埔寨",
     },
     flag: "🇰🇭",
     code: "KH",
@@ -1172,7 +1172,7 @@ const List<Country> countries = [
       "ro": "Camerun",
       "ar": "الكاميرون",
       "fa": "کامرون",
-      "yue": "喀 麥 隆"
+      "yue": "喀 麥 隆",
     },
     flag: "🇨🇲",
     code: "CM",
@@ -1203,7 +1203,7 @@ const List<Country> countries = [
       "ro": "Canada",
       "ar": "كندا",
       "fa": "کانادا",
-      "yue": "加拿大"
+      "yue": "加拿大",
     },
     flag: "🇨🇦",
     code: "CA",
@@ -1234,7 +1234,7 @@ const List<Country> countries = [
       "ro": "Insulele Cayman",
       "ar": "جزر كايمان",
       "fa": "جزایر کیمن",
-      "yue": "開曼群島"
+      "yue": "開曼群島",
     },
     flag: "🇰🇾",
     code: "KY",
@@ -1265,7 +1265,7 @@ const List<Country> countries = [
       "ro": "Republica Centrafricană",
       "ar": "جمهورية أفريقيا الوسطى",
       "fa": "جمهوری افریقای مرکزی",
-      "yue": "中非共和國"
+      "yue": "中非共和國",
     },
     flag: "🇨🇫",
     code: "CF",
@@ -1296,7 +1296,7 @@ const List<Country> countries = [
       "ro": "Ciad",
       "ar": "تشاد",
       "fa": "چاد",
-      "yue": "乍得"
+      "yue": "乍得",
     },
     flag: "🇹🇩",
     code: "TD",
@@ -1327,7 +1327,7 @@ const List<Country> countries = [
       "ro": "Chile",
       "ar": "تشيلي",
       "fa": "شیلی",
-      "yue": "智利"
+      "yue": "智利",
     },
     flag: "🇨🇱",
     code: "CL",
@@ -1358,7 +1358,7 @@ const List<Country> countries = [
       "ro": "China",
       "ar": "الصين",
       "fa": "چین",
-      "yue": "中國"
+      "yue": "中國",
     },
     flag: "🇨🇳",
     code: "CN",
@@ -1389,7 +1389,7 @@ const List<Country> countries = [
       "ro": "Insula Crăciunului",
       "ar": "جزيرة عيد الميلاد",
       "fa": "جزیره کریسمس",
-      "yue": "聖誕島"
+      "yue": "聖誕島",
     },
     flag: "🇨🇽",
     code: "CX",
@@ -1420,7 +1420,7 @@ const List<Country> countries = [
       "ro": "Insulele Cocos",
       "ar": "جزر كوكوس",
       "fa": "جزایر کوکوس",
-      "yue": "可可島（基林）群島"
+      "yue": "可可島（基林）群島",
     },
     flag: "🇨🇨",
     code: "CC",
@@ -1451,7 +1451,7 @@ const List<Country> countries = [
       "ro": "Columbia",
       "ar": "كولومبيا",
       "fa": "کلمبیا",
-      "yue": "哥倫比亞"
+      "yue": "哥倫比亞",
     },
     flag: "🇨🇴",
     code: "CO",
@@ -1482,7 +1482,7 @@ const List<Country> countries = [
       "ro": "Comore",
       "ar": "جزر القمر",
       "fa": "جزیره کومور",
-      "yue": "科摩羅"
+      "yue": "科摩羅",
     },
     flag: "🇰🇲",
     code: "KM",
@@ -1513,7 +1513,7 @@ const List<Country> countries = [
       "ro": "Republica Congo",
       "ar": "جمهورية الكونغو",
       "fa": "جمهوری کنگو",
-      "yue": "剛果（共和國）"
+      "yue": "剛果（共和國）",
     },
     flag: "🇨🇬",
     code: "CG",
@@ -1544,7 +1544,7 @@ const List<Country> countries = [
       "ro": "Republica Democrată Congo",
       "ar": "جمهورية الكونغو الديمقراطية",
       "fa": "جمهوری دموکراتیک کنگو",
-      "yue": "剛果（金）"
+      "yue": "剛果（金）",
     },
     flag: "🇨🇩",
     code: "CD",
@@ -1575,7 +1575,7 @@ const List<Country> countries = [
       "ro": "Insulele Cook",
       "ar": "جزر كوك",
       "fa": "جزایر کوک",
-      "yue": "庫克群島"
+      "yue": "庫克群島",
     },
     flag: "🇨🇰",
     code: "CK",
@@ -1606,7 +1606,7 @@ const List<Country> countries = [
       "ro": "Costa Rica",
       "ar": "كوستاريكا",
       "fa": "کاستاریکا",
-      "yue": "哥斯達黎加"
+      "yue": "哥斯達黎加",
     },
     flag: "🇨🇷",
     code: "CR",
@@ -1637,7 +1637,7 @@ const List<Country> countries = [
       "ro": "Coasta de fildeș",
       "ar": "ساحل العاج",
       "fa": "ساحل عاج",
-      "yue": "科特迪瓦"
+      "yue": "科特迪瓦",
     },
     flag: "🇨🇮",
     code: "CI",
@@ -1668,7 +1668,7 @@ const List<Country> countries = [
       "ro": "Croația",
       "ar": "كرواتيا",
       "fa": "کرواسی",
-      "yue": "克羅地亞"
+      "yue": "克羅地亞",
     },
     flag: "🇭🇷",
     code: "HR",
@@ -1699,7 +1699,7 @@ const List<Country> countries = [
       "ro": "Cuba",
       "ar": "كوبا",
       "fa": "كوبا",
-      "yue": "古巴"
+      "yue": "古巴",
     },
     flag: "🇨🇺",
     code: "CU",
@@ -1730,7 +1730,7 @@ const List<Country> countries = [
       "ro": "Cipru",
       "ar": "قبرص",
       "fa": "قبرس",
-      "yue": "塞浦路斯"
+      "yue": "塞浦路斯",
     },
     flag: "🇨🇾",
     code: "CY",
@@ -1761,7 +1761,7 @@ const List<Country> countries = [
       "ro": "Cehia",
       "ar": "جمهورية التشيك",
       "fa": "جمهوری چک",
-      "yue": "捷克共和國"
+      "yue": "捷克共和國",
     },
     flag: "🇨🇿",
     code: "CZ",
@@ -1792,7 +1792,7 @@ const List<Country> countries = [
       "ro": "Danemarca",
       "ar": "الدنمارك",
       "fa": "دانمارک",
-      "yue": "丹麥"
+      "yue": "丹麥",
     },
     flag: "🇩🇰",
     code: "DK",
@@ -1823,7 +1823,7 @@ const List<Country> countries = [
       "ro": "Djibouti",
       "ar": "جيبوتي",
       "fa": "جیبوتی",
-      "yue": "吉布提"
+      "yue": "吉布提",
     },
     flag: "🇩🇯",
     code: "DJ",
@@ -1854,7 +1854,7 @@ const List<Country> countries = [
       "ro": "Dominica",
       "ar": "دومينيكا",
       "fa": "دومينيكا",
-      "yue": "多米尼加"
+      "yue": "多米尼加",
     },
     flag: "🇩🇲",
     code: "DM",
@@ -1885,7 +1885,7 @@ const List<Country> countries = [
       "ro": "Republica Dominicană",
       "ar": "جمهورية الدومينيكان",
       "fa": "جمهوری دومنیکن",
-      "yue": "多明尼加共和國"
+      "yue": "多明尼加共和國",
     },
     flag: "🇩🇴",
     code: "DO",
@@ -1916,7 +1916,7 @@ const List<Country> countries = [
       "ro": "Ecuador",
       "ar": "الإكوادور",
       "fa": "اكوادور",
-      "yue": "厄瓜多爾"
+      "yue": "厄瓜多爾",
     },
     flag: "🇪🇨",
     code: "EC",
@@ -1947,7 +1947,7 @@ const List<Country> countries = [
       "ro": "Egipt",
       "ar": "مصر",
       "fa": "مصر",
-      "yue": "埃及"
+      "yue": "埃及",
     },
     flag: "🇪🇬",
     code: "EG",
@@ -1978,7 +1978,7 @@ const List<Country> countries = [
       "ro": "Salvador",
       "ar": "السلفادور",
       "fa": "ال سالوادور",
-      "yue": "薩爾瓦多"
+      "yue": "薩爾瓦多",
     },
     flag: "🇸🇻",
     code: "SV",
@@ -2009,7 +2009,7 @@ const List<Country> countries = [
       "ro": "Guineea Ecuatorială",
       "ar": "غينيا الاستوائية",
       "fa": "گینه استوایی",
-      "yue": "赤道幾內亞"
+      "yue": "赤道幾內亞",
     },
     flag: "🇬🇶",
     code: "GQ",
@@ -2040,7 +2040,7 @@ const List<Country> countries = [
       "ro": "Eritreea",
       "ar": "إريتريا",
       "fa": "اریتره",
-      "yue": "厄立特里亞"
+      "yue": "厄立特里亞",
     },
     flag: "🇪🇷",
     code: "ER",
@@ -2071,7 +2071,7 @@ const List<Country> countries = [
       "ro": "Estonia",
       "ar": "إستونيا",
       "fa": "استونی",
-      "yue": "愛沙尼亞"
+      "yue": "愛沙尼亞",
     },
     flag: "🇪🇪",
     code: "EE",
@@ -2102,7 +2102,7 @@ const List<Country> countries = [
       "ro": "Etiopia",
       "ar": "إثيوبيا",
       "fa": "اتیوپی",
-      "yue": "埃塞俄比亞"
+      "yue": "埃塞俄比亞",
     },
     flag: "🇪🇹",
     code: "ET",
@@ -2133,7 +2133,7 @@ const List<Country> countries = [
       "ro": "Insulele Falklands",
       "ar": "جزر فوكلاند",
       "fa": "جزایر فالکلند",
-      "yue": "福克蘭群島（馬爾維納斯群島）"
+      "yue": "福克蘭群島（馬爾維納斯群島）",
     },
     flag: "🇫🇰",
     code: "FK",
@@ -2164,7 +2164,7 @@ const List<Country> countries = [
       "ro": "Insulele Feroe",
       "ar": "جزر فارو",
       "fa": "جزایر فارو",
-      "yue": "法羅群島"
+      "yue": "法羅群島",
     },
     flag: "🇫🇴",
     code: "FO",
@@ -2195,7 +2195,7 @@ const List<Country> countries = [
       "ro": "Fiji",
       "ar": "فيجي",
       "fa": "فيجي",
-      "yue": "斐濟"
+      "yue": "斐濟",
     },
     flag: "🇫🇯",
     code: "FJ",
@@ -2226,7 +2226,7 @@ const List<Country> countries = [
       "ro": "Finlanda",
       "ar": "فنلندا",
       "fa": "فنلاند",
-      "yue": "芬蘭"
+      "yue": "芬蘭",
     },
     flag: "🇫🇮",
     code: "FI",
@@ -2257,7 +2257,7 @@ const List<Country> countries = [
       "ro": "Franța",
       "ar": "فرنسا",
       "fa": "فرانسه",
-      "yue": "法國"
+      "yue": "法國",
     },
     flag: "🇫🇷",
     code: "FR",
@@ -2288,7 +2288,7 @@ const List<Country> countries = [
       "ro": "Guiana Franceză",
       "ar": "غويانا الفرنسية",
       "fa": "گویان فرانسه",
-      "yue": "法屬圭亞那"
+      "yue": "法屬圭亞那",
     },
     flag: "🇬🇫",
     code: "GF",
@@ -2319,7 +2319,7 @@ const List<Country> countries = [
       "ro": "Polinezia Franceză",
       "ar": "بولينزيا الفرنسية",
       "fa": "پلی‌نزی فرانسه",
-      "yue": "法屬波利尼西亞"
+      "yue": "法屬波利尼西亞",
     },
     flag: "🇵🇫",
     code: "PF",
@@ -2350,7 +2350,7 @@ const List<Country> countries = [
       "ro": "Teritoriile australe și antarctice franceze",
       "ar": "أراض فرنسية جنوبية وأنتارتيكية",
       "fa": "سرزمین‌های جنوبی فرانسه",
-      "yue": "法國南部領土"
+      "yue": "法國南部領土",
     },
     flag: "🇹🇫",
     code: "TF",
@@ -2381,7 +2381,7 @@ const List<Country> countries = [
       "ro": "Gabon",
       "ar": "الغابون",
       "fa": "گابن",
-      "yue": "加蓬"
+      "yue": "加蓬",
     },
     flag: "🇬🇦",
     code: "GA",
@@ -2412,7 +2412,7 @@ const List<Country> countries = [
       "ro": "Gambia",
       "ar": "غامبيا",
       "fa": "گامبیا",
-      "yue": "岡比亞"
+      "yue": "岡比亞",
     },
     flag: "🇬🇲",
     code: "GM",
@@ -2443,7 +2443,7 @@ const List<Country> countries = [
       "ro": "Georgia",
       "ar": "جورجيا",
       "fa": "گرجستان",
-      "yue": "格魯吉亞"
+      "yue": "格魯吉亞",
     },
     flag: "🇬🇪",
     code: "GE",
@@ -2474,7 +2474,7 @@ const List<Country> countries = [
       "ro": "Germania",
       "ar": "ألمانيا",
       "fa": "آلمان",
-      "yue": "德國"
+      "yue": "德國",
     },
     flag: "🇩🇪",
     code: "DE",
@@ -2505,7 +2505,7 @@ const List<Country> countries = [
       "ro": "Ghana",
       "ar": "غانا",
       "fa": "غنا",
-      "yue": "加納"
+      "yue": "加納",
     },
     flag: "🇬🇭",
     code: "GH",
@@ -2536,7 +2536,7 @@ const List<Country> countries = [
       "ro": "Gibraltar",
       "ar": "جبل طارق",
       "fa": "جبل الطارق",
-      "yue": "直布羅陀"
+      "yue": "直布羅陀",
     },
     flag: "🇬🇮",
     code: "GI",
@@ -2567,7 +2567,7 @@ const List<Country> countries = [
       "ro": "Grecia",
       "ar": "اليونان",
       "fa": "یونان",
-      "yue": "希臘"
+      "yue": "希臘",
     },
     flag: "🇬🇷",
     code: "GR",
@@ -2598,7 +2598,7 @@ const List<Country> countries = [
       "ro": "Groenlanda",
       "ar": "جرينلاند",
       "fa": "گرینلند",
-      "yue": "格陵蘭"
+      "yue": "格陵蘭",
     },
     flag: "🇬🇱",
     code: "GL",
@@ -2629,7 +2629,7 @@ const List<Country> countries = [
       "ro": "Grenada",
       "ar": "غرينادا",
       "fa": "گرنادا",
-      "yue": "格林納達"
+      "yue": "格林納達",
     },
     flag: "🇬🇩",
     code: "GD",
@@ -2660,7 +2660,7 @@ const List<Country> countries = [
       "ro": "Guadelupa",
       "ar": "غوادلوب",
       "fa": "گوادلوپ",
-      "yue": "瓜德罗普"
+      "yue": "瓜德罗普",
     },
     flag: "🇬🇵",
     code: "GP",
@@ -2691,7 +2691,7 @@ const List<Country> countries = [
       "ro": "Guam",
       "ar": "غوام",
       "fa": "گوام",
-      "yue": "關島"
+      "yue": "關島",
     },
     flag: "🇬🇺",
     code: "GU",
@@ -2722,7 +2722,7 @@ const List<Country> countries = [
       "ro": "Guatemala",
       "ar": "غواتيمالا",
       "fa": "گواتمالا",
-      "yue": "危地馬拉"
+      "yue": "危地馬拉",
     },
     flag: "🇬🇹",
     code: "GT",
@@ -2753,7 +2753,7 @@ const List<Country> countries = [
       "ro": "Guernsey",
       "ar": "غيرنزي",
       "fa": "گرنزی",
-      "yue": "格恩西島"
+      "yue": "格恩西島",
     },
     flag: "🇬🇬",
     code: "GG",
@@ -2784,7 +2784,7 @@ const List<Country> countries = [
       "ro": "Guinea",
       "ar": "غينيا",
       "fa": "گینه",
-      "yue": "幾內亞"
+      "yue": "幾內亞",
     },
     flag: "🇬🇳",
     code: "GN",
@@ -2815,7 +2815,7 @@ const List<Country> countries = [
       "ro": "Guineea-Bissau",
       "ar": "غينيا بيساو",
       "fa": "گینه بیسائو",
-      "yue": "幾內亞比紹"
+      "yue": "幾內亞比紹",
     },
     flag: "🇬🇼",
     code: "GW",
@@ -2846,7 +2846,7 @@ const List<Country> countries = [
       "ro": "Guyana",
       "ar": "غيانا",
       "fa": "گویان",
-      "yue": "圭亞那"
+      "yue": "圭亞那",
     },
     flag: "🇬🇾",
     code: "GY",
@@ -2877,7 +2877,7 @@ const List<Country> countries = [
       "ro": "Haiti",
       "ar": "هايتي",
       "fa": "هائیتی",
-      "yue": "海地"
+      "yue": "海地",
     },
     flag: "🇭🇹",
     code: "HT",
@@ -2908,7 +2908,7 @@ const List<Country> countries = [
       "ro": "Insula Heard și Insulele McDonald",
       "ar": "جزيرة هيرد وجزر ماكدونالد",
       "fa": "جزیره هرد و جزایر مک‌دونالد",
-      "yue": "赫德岛同麦克唐纳群岛"
+      "yue": "赫德岛同麦克唐纳群岛",
     },
     flag: "🇭🇲",
     code: "HM",
@@ -2939,7 +2939,7 @@ const List<Country> countries = [
       "ro": "Vatican",
       "ar": "الفاتيكان",
       "fa": "واتیکان",
-      "yue": "梵蒂岡城國"
+      "yue": "梵蒂岡城國",
     },
     flag: "🇻🇦",
     code: "VA",
@@ -2970,7 +2970,7 @@ const List<Country> countries = [
       "ro": "Honduras",
       "ar": "هندوراس",
       "fa": "هندوراس",
-      "yue": "洪都拉斯"
+      "yue": "洪都拉斯",
     },
     flag: "🇭🇳",
     code: "HN",
@@ -3001,7 +3001,7 @@ const List<Country> countries = [
       "ro": "Hong Kong",
       "ar": "هونغ كونغ",
       "fa": "هنگ کنگ",
-      "yue": "香港"
+      "yue": "香港",
     },
     flag: "🇭🇰",
     code: "HK",
@@ -3032,7 +3032,7 @@ const List<Country> countries = [
       "ro": "Ungaria",
       "ar": "المجر",
       "fa": "مجارستان",
-      "yue": "匈牙利"
+      "yue": "匈牙利",
     },
     flag: "🇭🇺",
     code: "HU",
@@ -3063,7 +3063,7 @@ const List<Country> countries = [
       "ro": "Islanda",
       "ar": "آيسلندا",
       "fa": "ایسلند",
-      "yue": "冰島"
+      "yue": "冰島",
     },
     flag: "🇮🇸",
     code: "IS",
@@ -3094,7 +3094,7 @@ const List<Country> countries = [
       "ro": "India",
       "ar": "الهند",
       "fa": "هند",
-      "yue": "印度"
+      "yue": "印度",
     },
     flag: "🇮🇳",
     code: "IN",
@@ -3125,7 +3125,7 @@ const List<Country> countries = [
       "ro": "Indonezia",
       "ar": "إندونيسيا",
       "fa": "اندونزی",
-      "yue": "印尼"
+      "yue": "印尼",
     },
     flag: "🇮🇩",
     code: "ID",
@@ -3156,7 +3156,7 @@ const List<Country> countries = [
       "ro": "Iran",
       "ar": "إيران",
       "fa": "ایران",
-      "yue": "伊朗"
+      "yue": "伊朗",
     },
     flag: "🇮🇷",
     code: "IR",
@@ -3187,7 +3187,7 @@ const List<Country> countries = [
       "ro": "Irak",
       "ar": "العراق",
       "fa": "عراق",
-      "yue": "伊拉克"
+      "yue": "伊拉克",
     },
     flag: "🇮🇶",
     code: "IQ",
@@ -3218,7 +3218,7 @@ const List<Country> countries = [
       "ro": "Irlanda",
       "ar": "أيرلندا",
       "fa": "ایرلند",
-      "yue": "愛爾蘭"
+      "yue": "愛爾蘭",
     },
     flag: "🇮🇪",
     code: "IE",
@@ -3249,7 +3249,7 @@ const List<Country> countries = [
       "ro": "Insula Man",
       "ar": "جزيرة مان",
       "fa": "جزیره مان",
-      "yue": "马伊岛"
+      "yue": "马伊岛",
     },
     flag: "🇮🇲",
     code: "IM",
@@ -3280,7 +3280,7 @@ const List<Country> countries = [
       "ro": "Israel",
       "ar": "إسرائيل",
       "fa": "إسرائيل",
-      "yue": "以色列"
+      "yue": "以色列",
     },
     flag: "🇮🇱",
     code: "IL",
@@ -3311,7 +3311,7 @@ const List<Country> countries = [
       "ro": "Italia",
       "ar": "إيطاليا",
       "fa": "ایتالیا",
-      "yue": "意大利"
+      "yue": "意大利",
     },
     flag: "🇮🇹",
     code: "IT",
@@ -3342,7 +3342,7 @@ const List<Country> countries = [
       "ro": "Jamaica",
       "ar": "جامايكا",
       "fa": "جامائیکا",
-      "yue": "牙買加"
+      "yue": "牙買加",
     },
     flag: "🇯🇲",
     code: "JM",
@@ -3373,7 +3373,7 @@ const List<Country> countries = [
       "ro": "Japonia",
       "ar": "اليابان",
       "fa": "ژاپن",
-      "yue": "日本"
+      "yue": "日本",
     },
     flag: "🇯🇵",
     code: "JP",
@@ -3404,7 +3404,7 @@ const List<Country> countries = [
       "ro": "Jersey",
       "ar": "جيرزي",
       "fa": "جرزی",
-      "yue": "澤西"
+      "yue": "澤西",
     },
     flag: "🇯🇪",
     code: "JE",
@@ -3435,7 +3435,7 @@ const List<Country> countries = [
       "ro": "Iordania",
       "ar": "الأردن",
       "fa": "اردن",
-      "yue": "約旦"
+      "yue": "約旦",
     },
     flag: "🇯🇴",
     code: "JO",
@@ -3466,7 +3466,7 @@ const List<Country> countries = [
       "ro": "Kazahstan",
       "ar": "كازاخستان",
       "fa": "قزاقستان",
-      "yue": "哈薩克斯坦"
+      "yue": "哈薩克斯坦",
     },
     flag: "🇰🇿",
     code: "KZ",
@@ -3497,7 +3497,7 @@ const List<Country> countries = [
       "ro": "Kenya",
       "ar": "كينيا",
       "fa": "كنيا",
-      "yue": "肯雅"
+      "yue": "肯雅",
     },
     flag: "🇰🇪",
     code: "KE",
@@ -3528,7 +3528,7 @@ const List<Country> countries = [
       "ro": "Kiribati",
       "ar": "كيريباتي",
       "fa": "کیریباتی",
-      "yue": "基里巴斯"
+      "yue": "基里巴斯",
     },
     flag: "🇰🇮",
     code: "KI",
@@ -3559,7 +3559,7 @@ const List<Country> countries = [
       "ro": "Coreea de Nord",
       "ar": "كوريا الشمالية",
       "fa": "کره شمالی",
-      "yue": "朝鮮（朝鮮民主主義人民共咊囯）"
+      "yue": "朝鮮（朝鮮民主主義人民共咊囯）",
     },
     flag: "🇰🇵",
     code: "KP",
@@ -3590,7 +3590,7 @@ const List<Country> countries = [
       "ro": "Coreea de Sud",
       "ar": "كوريا الجنوبية",
       "fa": "کره جنوبی",
-      "yue": "韓國（大韓民國）"
+      "yue": "韓國（大韓民國）",
     },
     flag: "🇰🇷",
     code: "KR",
@@ -3621,7 +3621,7 @@ const List<Country> countries = [
       "ro": "Kuweit",
       "ar": "الكويت",
       "fa": "کویت",
-      "yue": "科威特"
+      "yue": "科威特",
     },
     flag: "🇰🇼",
     code: "KW",
@@ -3652,7 +3652,7 @@ const List<Country> countries = [
       "ro": "Kîrgîzstan",
       "ar": "قيرغيزستان",
       "fa": "قرقیزستان",
-      "yue": "吉爾吉斯斯坦"
+      "yue": "吉爾吉斯斯坦",
     },
     flag: "🇰🇬",
     code: "KG",
@@ -3683,7 +3683,7 @@ const List<Country> countries = [
       "ro": "Laos",
       "ar": "لاوس",
       "fa": "لائوس",
-      "yue": "老撾人民民主共和國"
+      "yue": "老撾人民民主共和國",
     },
     flag: "🇱🇦",
     code: "LA",
@@ -3714,7 +3714,7 @@ const List<Country> countries = [
       "ro": "Letonia",
       "ar": "لاتفيا",
       "fa": "لتونی",
-      "yue": "拉脫維亞"
+      "yue": "拉脫維亞",
     },
     flag: "🇱🇻",
     code: "LV",
@@ -3745,7 +3745,7 @@ const List<Country> countries = [
       "ro": "Liban",
       "ar": "لبنان",
       "fa": "لبنان",
-      "yue": "黎巴嫩"
+      "yue": "黎巴嫩",
     },
     flag: "🇱🇧",
     code: "LB",
@@ -3776,7 +3776,7 @@ const List<Country> countries = [
       "ro": "Lesotho",
       "ar": "ليسوتو",
       "fa": "لسوتو",
-      "yue": "萊索托"
+      "yue": "萊索托",
     },
     flag: "🇱🇸",
     code: "LS",
@@ -3807,7 +3807,7 @@ const List<Country> countries = [
       "ro": "Liberia",
       "ar": "ليبيريا",
       "fa": "لیبریا",
-      "yue": "利比里亞"
+      "yue": "利比里亞",
     },
     flag: "🇱🇷",
     code: "LR",
@@ -3838,7 +3838,7 @@ const List<Country> countries = [
       "ro": "Libia",
       "ar": "ليبيا",
       "fa": "لیبی",
-      "yue": "利比亞"
+      "yue": "利比亞",
     },
     flag: "🇱🇾",
     code: "LY",
@@ -3869,7 +3869,7 @@ const List<Country> countries = [
       "ro": "Liechtenstein",
       "ar": "ليختنشتاين",
       "fa": "لیختن‌اشتاین",
-      "yue": "列支敦士登"
+      "yue": "列支敦士登",
     },
     flag: "🇱🇮",
     code: "LI",
@@ -3900,7 +3900,7 @@ const List<Country> countries = [
       "ro": "Lituania",
       "ar": "ليتوانيا",
       "fa": "لیتوانی",
-      "yue": "立陶宛"
+      "yue": "立陶宛",
     },
     flag: "🇱🇹",
     code: "LT",
@@ -3931,7 +3931,7 @@ const List<Country> countries = [
       "ro": "Luxemburg",
       "ar": "لوكسمبورغ",
       "fa": "لوکزامبورگ",
-      "yue": "盧森堡"
+      "yue": "盧森堡",
     },
     flag: "🇱🇺",
     code: "LU",
@@ -3962,7 +3962,7 @@ const List<Country> countries = [
       "ro": "Macao",
       "ar": "ماكاو",
       "fa": "ماكائو",
-      "yue": "澳門"
+      "yue": "澳門",
     },
     flag: "🇲🇴",
     code: "MO",
@@ -3993,7 +3993,7 @@ const List<Country> countries = [
       "ro": "Macedonia de Nord",
       "ar": "مقدونيا",
       "fa": "مقدونیه",
-      "yue": "馬其頓（前南斯拉夫共和國）"
+      "yue": "馬其頓（前南斯拉夫共和國）",
     },
     flag: "🇲🇰",
     code: "MK",
@@ -4024,7 +4024,7 @@ const List<Country> countries = [
       "ro": "Madagascar",
       "ar": "مدغشقر",
       "fa": "ماداگاسکار",
-      "yue": "馬達加斯加"
+      "yue": "馬達加斯加",
     },
     flag: "🇲🇬",
     code: "MG",
@@ -4055,7 +4055,7 @@ const List<Country> countries = [
       "ro": "Malawi",
       "ar": "مالاوي",
       "fa": "مالاوی",
-      "yue": "馬拉維"
+      "yue": "馬拉維",
     },
     flag: "🇲🇼",
     code: "MW",
@@ -4086,7 +4086,7 @@ const List<Country> countries = [
       "ro": "Malaezia",
       "ar": "ماليزيا",
       "fa": "مالزی",
-      "yue": "馬來西亞"
+      "yue": "馬來西亞",
     },
     flag: "🇲🇾",
     code: "MY",
@@ -4117,7 +4117,7 @@ const List<Country> countries = [
       "ro": "Maldive",
       "ar": "جزر المالديف",
       "fa": "مالدیو",
-      "yue": "馬爾代夫"
+      "yue": "馬爾代夫",
     },
     flag: "🇲🇻",
     code: "MV",
@@ -4148,7 +4148,7 @@ const List<Country> countries = [
       "ro": "Mali",
       "ar": "مالي",
       "fa": "مالی",
-      "yue": "馬里"
+      "yue": "馬里",
     },
     flag: "🇲🇱",
     code: "ML",
@@ -4179,7 +4179,7 @@ const List<Country> countries = [
       "ro": "Malta",
       "ar": "مالطا",
       "fa": "مالت",
-      "yue": "馬耳他"
+      "yue": "馬耳他",
     },
     flag: "🇲🇹",
     code: "MT",
@@ -4210,7 +4210,7 @@ const List<Country> countries = [
       "ro": "Insulele Marshall",
       "ar": "جزر مارشال",
       "fa": "جزایر مارشال",
-      "yue": "馬紹爾群島"
+      "yue": "馬紹爾群島",
     },
     flag: "🇲🇭",
     code: "MH",
@@ -4241,7 +4241,7 @@ const List<Country> countries = [
       "ro": "Martinica",
       "ar": "مارتينيك",
       "fa": "مارتینیک",
-      "yue": "马提尼克"
+      "yue": "马提尼克",
     },
     flag: "🇲🇶",
     code: "MQ",
@@ -4272,7 +4272,7 @@ const List<Country> countries = [
       "ro": "Mauritania",
       "ar": "موريتانيا",
       "fa": "موریتانی",
-      "yue": "毛里塔尼亞"
+      "yue": "毛里塔尼亞",
     },
     flag: "🇲🇷",
     code: "MR",
@@ -4303,7 +4303,7 @@ const List<Country> countries = [
       "ro": "Mauritius",
       "ar": "موريشيوس",
       "fa": "موریس",
-      "yue": "毛里求斯"
+      "yue": "毛里求斯",
     },
     flag: "🇲🇺",
     code: "MU",
@@ -4334,7 +4334,7 @@ const List<Country> countries = [
       "ro": "Mayotte",
       "ar": "مايوت",
       "fa": "مایوت",
-      "yue": "馬約特"
+      "yue": "馬約特",
     },
     flag: "🇾🇹",
     code: "YT",
@@ -4365,7 +4365,7 @@ const List<Country> countries = [
       "ro": "Mexic",
       "ar": "المكسيك",
       "fa": "مکزیک",
-      "yue": "墨西哥"
+      "yue": "墨西哥",
     },
     flag: "🇲🇽",
     code: "MX",
@@ -4396,7 +4396,7 @@ const List<Country> countries = [
       "ro": "Micronezia",
       "ar": "ولايات ميكرونيسيا المتحدة",
       "fa": "ایالات فدرال میکرونزی",
-      "yue": "密克罗尼西亚（聯邦）"
+      "yue": "密克罗尼西亚（聯邦）",
     },
     flag: "🇫🇲",
     code: "FM",
@@ -4427,7 +4427,7 @@ const List<Country> countries = [
       "ro": "Moldova",
       "ar": "مولدوفا",
       "fa": "مولداوی",
-      "yue": "摩爾多瓦（共和國）"
+      "yue": "摩爾多瓦（共和國）",
     },
     flag: "🇲🇩",
     code: "MD",
@@ -4458,7 +4458,7 @@ const List<Country> countries = [
       "ro": "Monaco",
       "ar": "موناكو",
       "fa": "موناكو",
-      "yue": "摩納哥"
+      "yue": "摩納哥",
     },
     flag: "🇲🇨",
     code: "MC",
@@ -4489,7 +4489,7 @@ const List<Country> countries = [
       "ro": "Mongolia",
       "ar": "منغوليا",
       "fa": "مغولستان",
-      "yue": "蒙古"
+      "yue": "蒙古",
     },
     flag: "🇲🇳",
     code: "MN",
@@ -4520,7 +4520,7 @@ const List<Country> countries = [
       "ro": "Muntenegru",
       "ar": "الجبل الأسود",
       "fa": "مونته‌نگرو",
-      "yue": "黑山"
+      "yue": "黑山",
     },
     flag: "🇲🇪",
     code: "ME",
@@ -4551,7 +4551,7 @@ const List<Country> countries = [
       "ro": "Montserrat",
       "ar": "مونتسرات",
       "fa": "مونتسرات",
-      "yue": "蒙特塞拉特"
+      "yue": "蒙特塞拉特",
     },
     flag: "🇲🇸",
     code: "MS",
@@ -4582,7 +4582,7 @@ const List<Country> countries = [
       "ro": "Maroc",
       "ar": "المغرب",
       "fa": "مراکش",
-      "yue": "摩洛哥"
+      "yue": "摩洛哥",
     },
     flag: "🇲🇦",
     code: "MA",
@@ -4613,7 +4613,7 @@ const List<Country> countries = [
       "ro": "Mozambic",
       "ar": "موزمبيق",
       "fa": "موزامبیک",
-      "yue": "莫桑比克"
+      "yue": "莫桑比克",
     },
     flag: "🇲🇿",
     code: "MZ",
@@ -4644,7 +4644,7 @@ const List<Country> countries = [
       "ro": "Myanmar",
       "ar": "ميانمار",
       "fa": "میانمار",
-      "yue": "緬甸"
+      "yue": "緬甸",
     },
     flag: "🇲🇲",
     code: "MM",
@@ -4675,7 +4675,7 @@ const List<Country> countries = [
       "ro": "Namibia",
       "ar": "ناميبيا",
       "fa": "نامیبیا",
-      "yue": "納米比亞"
+      "yue": "納米比亞",
     },
     flag: "🇳🇦",
     code: "NA",
@@ -4706,7 +4706,7 @@ const List<Country> countries = [
       "ro": "Nauru",
       "ar": "ناورو",
       "fa": "نائورو",
-      "yue": "瑙魯"
+      "yue": "瑙魯",
     },
     flag: "🇳🇷",
     code: "NR",
@@ -4737,7 +4737,7 @@ const List<Country> countries = [
       "ro": "Nepal",
       "ar": "نيبال",
       "fa": "نپال",
-      "yue": "尼泊爾"
+      "yue": "尼泊爾",
     },
     flag: "🇳🇵",
     code: "NP",
@@ -4768,7 +4768,7 @@ const List<Country> countries = [
       "ro": "Olanda",
       "ar": "هولندا",
       "fa": "هلند",
-      "yue": "荷蘭"
+      "yue": "荷蘭",
     },
     flag: "🇳🇱",
     code: "NL",
@@ -4799,7 +4799,7 @@ const List<Country> countries = [
       "ro": "Noua Caledonie",
       "ar": "كاليدونيا الجديدة",
       "fa": "کالدونیای جدید",
-      "yue": "新喀里多尼亚"
+      "yue": "新喀里多尼亚",
     },
     flag: "🇳🇨",
     code: "NC",
@@ -4830,7 +4830,7 @@ const List<Country> countries = [
       "ro": "Noua Zeelandă",
       "ar": "نيوزيلندا",
       "fa": "نیوزلند",
-      "yue": "紐西蘭"
+      "yue": "紐西蘭",
     },
     flag: "🇳🇿",
     code: "NZ",
@@ -4861,7 +4861,7 @@ const List<Country> countries = [
       "ro": "Nicaragua",
       "ar": "نيكاراغوا",
       "fa": "نیکاراگوئه",
-      "yue": "尼加拉瓜"
+      "yue": "尼加拉瓜",
     },
     flag: "🇳🇮",
     code: "NI",
@@ -4892,7 +4892,7 @@ const List<Country> countries = [
       "ro": "Niger",
       "ar": "النيجر",
       "fa": "نیجر",
-      "yue": "尼日爾"
+      "yue": "尼日爾",
     },
     flag: "🇳🇪",
     code: "NE",
@@ -4923,7 +4923,7 @@ const List<Country> countries = [
       "ro": "Nigeria",
       "ar": "نيجيريا",
       "fa": "نیجریه",
-      "yue": "尼日利亞"
+      "yue": "尼日利亞",
     },
     flag: "🇳🇬",
     code: "NG",
@@ -4954,7 +4954,7 @@ const List<Country> countries = [
       "ro": "Niue",
       "ar": "نييوي",
       "fa": "نیووی",
-      "yue": "紐埃"
+      "yue": "紐埃",
     },
     flag: "🇳🇺",
     code: "NU",
@@ -4985,7 +4985,7 @@ const List<Country> countries = [
       "ro": "Insulele Norfolk",
       "ar": "جزيرة نورفولك",
       "fa": "جزیره نورفک",
-      "yue": "诺福克岛"
+      "yue": "诺福克岛",
     },
     flag: "🇳🇫",
     code: "NF",
@@ -5016,7 +5016,7 @@ const List<Country> countries = [
       "ro": "Insulelor Mariane de Nord",
       "ar": "جزر ماريانا الشمالية",
       "fa": "جزایر ماریانای شمالی",
-      "yue": "北馬里亞納群島"
+      "yue": "北馬里亞納群島",
     },
     flag: "🇲🇵",
     code: "MP",
@@ -5047,7 +5047,7 @@ const List<Country> countries = [
       "ro": "Norvegia",
       "ar": "النرويج",
       "fa": "نروژ",
-      "yue": "挪威"
+      "yue": "挪威",
     },
     flag: "🇳🇴",
     code: "NO",
@@ -5078,7 +5078,7 @@ const List<Country> countries = [
       "ro": "Oman",
       "ar": "عمان",
       "fa": "عمان",
-      "yue": "阿曼"
+      "yue": "阿曼",
     },
     flag: "🇴🇲",
     code: "OM",
@@ -5109,7 +5109,7 @@ const List<Country> countries = [
       "ro": "Pakistan",
       "ar": "باكستان",
       "fa": "پاکستان",
-      "yue": "巴基斯坦"
+      "yue": "巴基斯坦",
     },
     flag: "🇵🇰",
     code: "PK",
@@ -5140,7 +5140,7 @@ const List<Country> countries = [
       "ro": "Palau",
       "ar": "بالاو",
       "fa": "پالائو",
-      "yue": "帕劳"
+      "yue": "帕劳",
     },
     flag: "🇵🇼",
     code: "PW",
@@ -5171,7 +5171,7 @@ const List<Country> countries = [
       "ro": "Palestina",
       "ar": "فلسطين",
       "fa": "فلسطین",
-      "yue": "巴勒斯坦，国"
+      "yue": "巴勒斯坦，国",
     },
     flag: "🇵🇸",
     code: "PS",
@@ -5202,7 +5202,7 @@ const List<Country> countries = [
       "ro": "Panama",
       "ar": "بنما",
       "fa": "پاناما",
-      "yue": "巴拿馬"
+      "yue": "巴拿馬",
     },
     flag: "🇵🇦",
     code: "PA",
@@ -5233,7 +5233,7 @@ const List<Country> countries = [
       "ro": "Papua Noua Guinee",
       "ar": "بابوا غينيا الجديدة",
       "fa": "پاپوآ گینه نو",
-      "yue": "巴布亚新几内亚"
+      "yue": "巴布亚新几内亚",
     },
     flag: "🇵🇬",
     code: "PG",
@@ -5264,7 +5264,7 @@ const List<Country> countries = [
       "ro": "Paraguay",
       "ar": "باراغواي",
       "fa": "پاراگوئه",
-      "yue": "巴拉圭"
+      "yue": "巴拉圭",
     },
     flag: "🇵🇾",
     code: "PY",
@@ -5295,7 +5295,7 @@ const List<Country> countries = [
       "ro": "Peru",
       "ar": "بيرو",
       "fa": "پرو",
-      "yue": "秘魯"
+      "yue": "秘魯",
     },
     flag: "🇵🇪",
     code: "PE",
@@ -5326,7 +5326,7 @@ const List<Country> countries = [
       "ro": "Filipine",
       "ar": "الفلبين",
       "fa": "فیلیپین",
-      "yue": "菲律賓"
+      "yue": "菲律賓",
     },
     flag: "🇵🇭",
     code: "PH",
@@ -5357,7 +5357,7 @@ const List<Country> countries = [
       "ro": "Insulele Pitcairn",
       "ar": "جزر بيتكيرن",
       "fa": "جزایر پیت‌کرن",
-      "yue": "皮特凱恩"
+      "yue": "皮特凱恩",
     },
     flag: "🇵🇳",
     code: "PN",
@@ -5388,7 +5388,7 @@ const List<Country> countries = [
       "ro": "Polonia",
       "ar": "بولندا",
       "fa": "لهستان",
-      "yue": "波蘭"
+      "yue": "波蘭",
     },
     flag: "🇵🇱",
     code: "PL",
@@ -5419,7 +5419,7 @@ const List<Country> countries = [
       "ro": "Portugalia",
       "ar": "البرتغال",
       "fa": "پرتغال",
-      "yue": "葡萄牙"
+      "yue": "葡萄牙",
     },
     flag: "🇵🇹",
     code: "PT",
@@ -5450,7 +5450,7 @@ const List<Country> countries = [
       "ro": "Puerto Rico",
       "ar": "بورتوريكو",
       "fa": "پورتوریکو",
-      "yue": "波多黎各"
+      "yue": "波多黎各",
     },
     flag: "🇵🇷",
     code: "PR",
@@ -5481,7 +5481,7 @@ const List<Country> countries = [
       "ro": "Qatar",
       "ar": "قطر",
       "fa": "قطر",
-      "yue": "卡塔爾"
+      "yue": "卡塔爾",
     },
     flag: "🇶🇦",
     code: "QA",
@@ -5512,7 +5512,7 @@ const List<Country> countries = [
       "ro": "România",
       "ar": "رومانيا",
       "fa": "رومانی",
-      "yue": "羅馬尼亞"
+      "yue": "羅馬尼亞",
     },
     flag: "🇷🇴",
     code: "RO",
@@ -5543,7 +5543,7 @@ const List<Country> countries = [
       "ro": "Rusia",
       "ar": "روسيا",
       "fa": "روسیه",
-      "yue": "俄儸斯聯邦"
+      "yue": "俄儸斯聯邦",
     },
     flag: "🇷🇺",
     code: "RU",
@@ -5574,7 +5574,7 @@ const List<Country> countries = [
       "ro": "Rwanda",
       "ar": "رواندا",
       "fa": "رواندا",
-      "yue": "盧旺達"
+      "yue": "盧旺達",
     },
     flag: "🇷🇼",
     code: "RW",
@@ -5605,7 +5605,7 @@ const List<Country> countries = [
       "ro": "La Réunion",
       "ar": "لا ريونيون",
       "fa": "رئونیون",
-      "yue": "留尼汪"
+      "yue": "留尼汪",
     },
     flag: "🇷🇪",
     code: "RE",
@@ -5636,7 +5636,7 @@ const List<Country> countries = [
       "ro": "Saint Barthélemy",
       "ar": "سان بارتيلمي",
       "fa": "سن بارتلمی",
-      "yue": "聖巴泰勒米"
+      "yue": "聖巴泰勒米",
     },
     flag: "🇧🇱",
     code: "BL",
@@ -5667,7 +5667,7 @@ const List<Country> countries = [
       "ro": "Sfânta Elena",
       "ar": "سانت هيلانة وأسينشين وتريستان دا كونا",
       "fa": "سنت هلن",
-      "yue": "圣赫勒拿、阿森松同特里斯坦·达库尼亚"
+      "yue": "圣赫勒拿、阿森松同特里斯坦·达库尼亚",
     },
     flag: "🇸🇭",
     code: "SH",
@@ -5698,7 +5698,7 @@ const List<Country> countries = [
       "ro": "Sfântul Kitts și Nevis",
       "ar": "سانت كيتس ونيفيس",
       "fa": "سنت کیتس و نویس",
-      "yue": "圣基茨同尼维斯"
+      "yue": "圣基茨同尼维斯",
     },
     flag: "🇰🇳",
     code: "KN",
@@ -5729,7 +5729,7 @@ const List<Country> countries = [
       "ro": "Sfânta Elena",
       "ar": "سانت لوسيا",
       "fa": "سنت لوسیا",
-      "yue": "聖盧西亞"
+      "yue": "聖盧西亞",
     },
     flag: "🇱🇨",
     code: "LC",
@@ -5760,7 +5760,7 @@ const List<Country> countries = [
       "ro": "Sfântul Martin",
       "ar": "تجمع سان مارتين",
       "fa": "سن مارتن",
-      "yue": "聖馬丁（法國部分）"
+      "yue": "聖馬丁（法國部分）",
     },
     flag: "🇲🇫",
     code: "MF",
@@ -5791,7 +5791,7 @@ const List<Country> countries = [
       "ro": "Saint Pierre și Miquelon",
       "ar": "سان بيير وميكلون",
       "fa": "سن-پیر و میکلون",
-      "yue": "聖皮埃尔同米克隆"
+      "yue": "聖皮埃尔同米克隆",
     },
     flag: "🇵🇲",
     code: "PM",
@@ -5822,7 +5822,7 @@ const List<Country> countries = [
       "ro": "Sfântul Vincențiu și Grenadinele",
       "ar": "سانت فينسنت والغرينادين",
       "fa": "سنت وینسنت و گرنادین‌ها",
-      "yue": "聖文森特同格林纳丁斯"
+      "yue": "聖文森特同格林纳丁斯",
     },
     flag: "🇻🇨",
     code: "VC",
@@ -5853,7 +5853,7 @@ const List<Country> countries = [
       "ro": "Samoa",
       "ar": "ساموا",
       "fa": "ساموآ",
-      "yue": "薩摩亞"
+      "yue": "薩摩亞",
     },
     flag: "🇼🇸",
     code: "WS",
@@ -5884,7 +5884,7 @@ const List<Country> countries = [
       "ro": "San Marino",
       "ar": "سان مارينو",
       "fa": "سان مارینو",
-      "yue": "聖馬力諾"
+      "yue": "聖馬力諾",
     },
     flag: "🇸🇲",
     code: "SM",
@@ -5915,7 +5915,7 @@ const List<Country> countries = [
       "ro": "Sao Tome şi Principe",
       "ar": "ساو تومي وبرينسيب",
       "fa": "سائوتومه و پرنسیپ",
-      "yue": "聖多美和普林西比"
+      "yue": "聖多美和普林西比",
     },
     flag: "🇸🇹",
     code: "ST",
@@ -5946,7 +5946,7 @@ const List<Country> countries = [
       "ro": "Arabia Saudită",
       "ar": "السعودية",
       "fa": "عربستان سعودی",
-      "yue": "沙地阿拉伯"
+      "yue": "沙地阿拉伯",
     },
     flag: "🇸🇦",
     code: "SA",
@@ -5977,7 +5977,7 @@ const List<Country> countries = [
       "ro": "Senegal",
       "ar": "السنغال",
       "fa": "سنگال",
-      "yue": "塞內加爾"
+      "yue": "塞內加爾",
     },
     flag: "🇸🇳",
     code: "SN",
@@ -6008,7 +6008,7 @@ const List<Country> countries = [
       "ro": "Serbia",
       "ar": "صربيا",
       "fa": "صربستان",
-      "yue": "塞爾維亞"
+      "yue": "塞爾維亞",
     },
     flag: "🇷🇸",
     code: "RS",
@@ -6039,7 +6039,7 @@ const List<Country> countries = [
       "ro": "Seychelles",
       "ar": "سيشل",
       "fa": "سیشل",
-      "yue": "塞舌爾"
+      "yue": "塞舌爾",
     },
     flag: "🇸🇨",
     code: "SC",
@@ -6070,7 +6070,7 @@ const List<Country> countries = [
       "ro": "Sierra Leone",
       "ar": "سيراليون",
       "fa": "سیرالئون",
-      "yue": "塞拉利昂"
+      "yue": "塞拉利昂",
     },
     flag: "🇸🇱",
     code: "SL",
@@ -6101,7 +6101,7 @@ const List<Country> countries = [
       "ro": "Singapore",
       "ar": "سنغافورة",
       "fa": "سنگاپور",
-      "yue": "星架坡"
+      "yue": "星架坡",
     },
     flag: "🇸🇬",
     code: "SG",
@@ -6132,7 +6132,7 @@ const List<Country> countries = [
       "ro": "Slovacia",
       "ar": "سلوفاكيا",
       "fa": "اسلواکی",
-      "yue": "斯洛伐克"
+      "yue": "斯洛伐克",
     },
     flag: "🇸🇰",
     code: "SK",
@@ -6163,7 +6163,7 @@ const List<Country> countries = [
       "ro": "Slovenia",
       "ar": "سلوفينيا",
       "fa": "اسلوونی",
-      "yue": "斯洛文尼亞"
+      "yue": "斯洛文尼亞",
     },
     flag: "🇸🇮",
     code: "SI",
@@ -6194,7 +6194,7 @@ const List<Country> countries = [
       "ro": "Insulele Solomon",
       "ar": "جزر سليمان",
       "fa": "جزایر سلیمان",
-      "yue": "所羅門群島"
+      "yue": "所羅門群島",
     },
     flag: "🇸🇧",
     code: "SB",
@@ -6225,7 +6225,7 @@ const List<Country> countries = [
       "ro": "Somalia",
       "ar": "الصومال",
       "fa": "سومالی",
-      "yue": "索馬里"
+      "yue": "索馬里",
     },
     flag: "🇸🇴",
     code: "SO",
@@ -6256,7 +6256,7 @@ const List<Country> countries = [
       "ro": "Africa de Sud",
       "ar": "جنوب أفريقيا",
       "fa": "آفریقای جنوبی",
-      "yue": "南非"
+      "yue": "南非",
     },
     flag: "🇿🇦",
     code: "ZA",
@@ -6287,7 +6287,7 @@ const List<Country> countries = [
       "ro": "Sudanul de Sud",
       "ar": "جنوب السودان",
       "fa": "سودان جنوبی",
-      "yue": "南蘇丹"
+      "yue": "南蘇丹",
     },
     flag: "🇸🇸",
     code: "SS",
@@ -6318,7 +6318,7 @@ const List<Country> countries = [
       "ro": "Georgia de Sud și Insulele Sandwich de Sud",
       "ar": "جورجيا الجنوبية وجزر ساندويتش الجنوبية",
       "fa": "جزایر جورجیای جنوبی و ساندویچ جنوبی",
-      "yue": "南喬治亞州同南桑威奇群島"
+      "yue": "南喬治亞州同南桑威奇群島",
     },
     flag: "🇬🇸",
     code: "GS",
@@ -6349,7 +6349,7 @@ const List<Country> countries = [
       "ro": "Spania",
       "ar": "إسبانيا",
       "fa": "اسپانیا",
-      "yue": "西班牙"
+      "yue": "西班牙",
     },
     flag: "🇪🇸",
     code: "ES",
@@ -6380,7 +6380,7 @@ const List<Country> countries = [
       "ro": "Sri Lanka",
       "ar": "سريلانكا",
       "fa": "سریلانکا",
-      "yue": "斯里蘭卡"
+      "yue": "斯里蘭卡",
     },
     flag: "🇱🇰",
     code: "LK",
@@ -6411,7 +6411,7 @@ const List<Country> countries = [
       "ro": "Sudan",
       "ar": "السودان",
       "fa": "سودان",
-      "yue": "蘇丹"
+      "yue": "蘇丹",
     },
     flag: "🇸🇩",
     code: "SD",
@@ -6442,7 +6442,7 @@ const List<Country> countries = [
       "ro": "Surinam",
       "ar": "سورينام",
       "fa": "سورینام",
-      "yue": "蘇里南"
+      "yue": "蘇里南",
     },
     flag: "🇸🇷",
     code: "SR",
@@ -6473,7 +6473,7 @@ const List<Country> countries = [
       "ro": "Svalbard și Jan Mayen",
       "ar": "سفالبارد ويان ماين",
       "fa": "سوالبارد و یان ماین",
-      "yue": "斯瓦尔巴德同扬·马延"
+      "yue": "斯瓦尔巴德同扬·马延",
     },
     flag: "🇸🇯",
     code: "SJ",
@@ -6504,7 +6504,7 @@ const List<Country> countries = [
       "ro": "Eswatini",
       "ar": "إسواتيني",
       "fa": "اسواتینی",
-      "yue": "斯威士蘭"
+      "yue": "斯威士蘭",
     },
     flag: "🇸🇿",
     code: "SZ",
@@ -6535,7 +6535,7 @@ const List<Country> countries = [
       "ro": "Suedia",
       "ar": "السويد",
       "fa": "سوئد",
-      "yue": "瑞典"
+      "yue": "瑞典",
     },
     flag: "🇸🇪",
     code: "SE",
@@ -6566,7 +6566,7 @@ const List<Country> countries = [
       "ro": "Elveţia",
       "ar": "سويسرا",
       "fa": "سوئیس",
-      "yue": "瑞士"
+      "yue": "瑞士",
     },
     flag: "🇨🇭",
     code: "CH",
@@ -6597,7 +6597,7 @@ const List<Country> countries = [
       "ro": "Siria",
       "ar": "سوريا",
       "fa": "سوریه",
-      "yue": "阿拉伯敘利亞共和國"
+      "yue": "阿拉伯敘利亞共和國",
     },
     flag: "🇸🇾",
     code: "SY",
@@ -6628,7 +6628,7 @@ const List<Country> countries = [
       "ro": "Taiwan",
       "ar": "تايوان",
       "fa": "تایوان",
-      "yue": "台灣"
+      "yue": "台灣",
     },
     flag: "🇹🇼",
     code: "TW",
@@ -6659,7 +6659,7 @@ const List<Country> countries = [
       "ro": "Tadiquistão",
       "ar": "طاجيكستان",
       "fa": "تاجیکستان",
-      "yue": "塔吉克斯坦"
+      "yue": "塔吉克斯坦",
     },
     flag: "🇹🇯",
     code: "TJ",
@@ -6690,7 +6690,7 @@ const List<Country> countries = [
       "ro": "Tanzania",
       "ar": "تنزانيا",
       "fa": "تانزانیا",
-      "yue": "坦桑尼亞，聯合共和國"
+      "yue": "坦桑尼亞，聯合共和國",
     },
     flag: "🇹🇿",
     code: "TZ",
@@ -6721,7 +6721,7 @@ const List<Country> countries = [
       "ro": "Tailanda",
       "ar": "تايلاند",
       "fa": "تایلند",
-      "yue": "泰國"
+      "yue": "泰國",
     },
     flag: "🇹🇭",
     code: "TH",
@@ -6752,7 +6752,7 @@ const List<Country> countries = [
       "ro": "Timorul de Est",
       "ar": "تيمور الشرقية",
       "fa": "تیمور شرقی",
-      "yue": "東帝汶"
+      "yue": "東帝汶",
     },
     flag: "🇹🇱",
     code: "TL",
@@ -6783,7 +6783,7 @@ const List<Country> countries = [
       "ro": "Togo",
       "ar": "توغو",
       "fa": "توگو",
-      "yue": "多哥"
+      "yue": "多哥",
     },
     flag: "🇹🇬",
     code: "TG",
@@ -6814,7 +6814,7 @@ const List<Country> countries = [
       "ro": "Tokelau",
       "ar": "توكيلاو",
       "fa": "توکلائو",
-      "yue": "托克劳"
+      "yue": "托克劳",
     },
     flag: "🇹🇰",
     code: "TK",
@@ -6845,7 +6845,7 @@ const List<Country> countries = [
       "ro": "Tonga",
       "ar": "تونغا",
       "fa": "تونگا",
-      "yue": "湯加"
+      "yue": "湯加",
     },
     flag: "🇹🇴",
     code: "TO",
@@ -6876,7 +6876,7 @@ const List<Country> countries = [
       "ro": "Trinidad şi Tobago",
       "ar": "ترينيداد وتوباغو",
       "fa": "ترینیداد و توباگو",
-      "yue": "特立尼達和多巴哥"
+      "yue": "特立尼達和多巴哥",
     },
     flag: "🇹🇹",
     code: "TT",
@@ -6907,7 +6907,7 @@ const List<Country> countries = [
       "ro": "Tunisia",
       "ar": "تونس",
       "fa": "تونس",
-      "yue": "突尼斯"
+      "yue": "突尼斯",
     },
     flag: "🇹🇳",
     code: "TN",
@@ -6938,7 +6938,7 @@ const List<Country> countries = [
       "ro": "Turcia",
       "ar": "تركيا",
       "fa": "ترکیه",
-      "yue": "土耳其"
+      "yue": "土耳其",
     },
     flag: "🇹🇷",
     code: "TR",
@@ -6969,7 +6969,7 @@ const List<Country> countries = [
       "ro": "Turkmenistan",
       "ar": "تركمانستان",
       "fa": "ترکمنستان",
-      "yue": "土庫曼斯坦"
+      "yue": "土庫曼斯坦",
     },
     flag: "🇹🇲",
     code: "TM",
@@ -7000,7 +7000,7 @@ const List<Country> countries = [
       "ro": "Insulele Turks și Caicos",
       "ar": "جزر توركس وكايكوس",
       "fa": "جزایر تورکس و کایکوس",
-      "yue": "特克斯同凯科斯群岛"
+      "yue": "特克斯同凯科斯群岛",
     },
     flag: "🇹🇨",
     code: "TC",
@@ -7031,7 +7031,7 @@ const List<Country> countries = [
       "ro": "Tuvalu",
       "ar": "توفالو",
       "fa": "تووالو",
-      "yue": "圖瓦盧"
+      "yue": "圖瓦盧",
     },
     flag: "🇹🇻",
     code: "TV",
@@ -7062,7 +7062,7 @@ const List<Country> countries = [
       "ro": "Uganda",
       "ar": "أوغندا",
       "fa": "اوگاندا",
-      "yue": "烏干達"
+      "yue": "烏干達",
     },
     flag: "🇺🇬",
     code: "UG",
@@ -7093,7 +7093,7 @@ const List<Country> countries = [
       "ro": "Ucraína",
       "ar": "أوكرانيا",
       "fa": "اوکراین",
-      "yue": "烏克蘭"
+      "yue": "烏克蘭",
     },
     flag: "🇺🇦",
     code: "UA",
@@ -7124,7 +7124,7 @@ const List<Country> countries = [
       "ro": "Emiratele Arabe Unite",
       "ar": "الإمارات العربية المتحدة",
       "fa": "امارات متحده عربی",
-      "yue": "阿拉伯聯合酋長國"
+      "yue": "阿拉伯聯合酋長國",
     },
     flag: "🇦🇪",
     code: "AE",
@@ -7155,7 +7155,7 @@ const List<Country> countries = [
       "ro": "Regatul Unit al Marii Britanii și Irlandei de Nord",
       "ar": "المملكة المتحدة",
       "fa": "بریتانیا",
-      "yue": "大不列顛及北愛爾蘭聯合王國"
+      "yue": "大不列顛及北愛爾蘭聯合王國",
     },
     flag: "🇬🇧",
     code: "GB",
@@ -7186,7 +7186,7 @@ const List<Country> countries = [
       "ro": "Statele Unite ale Americii",
       "ar": "الولايات المتحدة",
       "fa": "ایالات متحده آمریکا",
-      "yue": "美利堅郃眾囯"
+      "yue": "美利堅郃眾囯",
     },
     flag: "🇺🇸",
     code: "US",
@@ -7217,7 +7217,7 @@ const List<Country> countries = [
       "ro": "Uruguay",
       "ar": "الأوروغواي",
       "fa": "اروگوئه",
-      "yue": "烏拉圭"
+      "yue": "烏拉圭",
     },
     flag: "🇺🇾",
     code: "UY",
@@ -7248,7 +7248,7 @@ const List<Country> countries = [
       "ro": "Uzbekistan",
       "ar": "أوزبكستان",
       "fa": "ازبکستان",
-      "yue": "月即別"
+      "yue": "月即別",
     },
     flag: "🇺🇿",
     code: "UZ",
@@ -7279,7 +7279,7 @@ const List<Country> countries = [
       "ro": "Vanuatu",
       "ar": "فانواتو",
       "fa": "وانواتو",
-      "yue": "瓦努阿圖"
+      "yue": "瓦努阿圖",
     },
     flag: "🇻🇺",
     code: "VU",
@@ -7310,7 +7310,7 @@ const List<Country> countries = [
       "ro": "Venezuela",
       "ar": "فنزويلا",
       "fa": "ونزوئلا",
-      "yue": "委內瑞拉（玻利瓦爾共和國）"
+      "yue": "委內瑞拉（玻利瓦爾共和國）",
     },
     flag: "🇻🇪",
     code: "VE",
@@ -7341,7 +7341,7 @@ const List<Country> countries = [
       "ro": "Vietnam",
       "ar": "فيتنام",
       "fa": "ویتنام",
-      "yue": "越南"
+      "yue": "越南",
     },
     flag: "🇻🇳",
     code: "VN",
@@ -7372,7 +7372,7 @@ const List<Country> countries = [
       "ro": "Insulele Virgine Britanice",
       "ar": "جزر العذراء البريطانية",
       "fa": "جزایر ویرجین بریتانیا",
-      "yue": "維爾京群島（英國）"
+      "yue": "維爾京群島（英國）",
     },
     flag: "🇻🇬",
     code: "VG",
@@ -7403,7 +7403,7 @@ const List<Country> countries = [
       "ro": "Insulele Virgine Americane",
       "ar": "جزر العذراء الأمريكية",
       "fa": "جزایر ویرجین ایالات متحده آمریکا",
-      "yue": "維爾京群島（美國）"
+      "yue": "維爾京群島（美國）",
     },
     flag: "🇻🇮",
     code: "VI",
@@ -7434,7 +7434,7 @@ const List<Country> countries = [
       "ro": "Wallis și Futuna",
       "ar": "والس وفوتونا",
       "fa": "والیس و فوتونا",
-      "yue": "瓦利斯同富图纳"
+      "yue": "瓦利斯同富图纳",
     },
     flag: "🇼🇫",
     code: "WF",
@@ -7465,7 +7465,7 @@ const List<Country> countries = [
       "ro": "Yemen",
       "ar": "اليمن",
       "fa": "یمن",
-      "yue": "也門"
+      "yue": "也門",
     },
     flag: "🇾🇪",
     code: "YE",
@@ -7496,7 +7496,7 @@ const List<Country> countries = [
       "ro": "Zambia",
       "ar": "زامبيا",
       "fa": "زامبیا",
-      "yue": "贊比亞"
+      "yue": "贊比亞",
     },
     flag: "🇿🇲",
     code: "ZM",
@@ -7505,35 +7505,36 @@ const List<Country> countries = [
     maxLength: 9,
   ),
   Country(
-      name: "Zimbabwe",
-      nameTranslations: {
-        "sk": "Zimbabwe",
-        "se": "Zimbabwe",
-        "pl": "Zimbabwe",
-        "no": "Zimbabwe",
-        "ja": "ジンバブエ",
-        "it": "Zimbabwe",
-        "zh": "津巴布韦",
-        "nl": "Zimbabwe",
-        "de": "Simbabwe",
-        "fr": "Zimbabwe",
-        "es": "Zimbabue",
-        "en": "Zimbabwe",
-        "pt_BR": "Zimbábue",
-        "sr-Cyrl": "Зимбабве",
-        "sr-Latn": "Zimbabve",
-        "zh_TW": "辛巴威",
-        "tr": "Zimbabve",
-        "ro": "Zimbabwe",
-        "ar": "زيمبابوي",
-        "fa": "زیمبابوه",
-        "yue": "津巴布韋"
-      },
-      flag: "🇿🇼",
-      code: "ZW",
-      dialCode: "263",
-      minLength: 9,
-      maxLength: 9)
+    name: "Zimbabwe",
+    nameTranslations: {
+      "sk": "Zimbabwe",
+      "se": "Zimbabwe",
+      "pl": "Zimbabwe",
+      "no": "Zimbabwe",
+      "ja": "ジンバブエ",
+      "it": "Zimbabwe",
+      "zh": "津巴布韦",
+      "nl": "Zimbabwe",
+      "de": "Simbabwe",
+      "fr": "Zimbabwe",
+      "es": "Zimbabue",
+      "en": "Zimbabwe",
+      "pt_BR": "Zimbábue",
+      "sr-Cyrl": "Зимбабве",
+      "sr-Latn": "Zimbabve",
+      "zh_TW": "辛巴威",
+      "tr": "Zimbabve",
+      "ro": "Zimbabwe",
+      "ar": "زيمبابوي",
+      "fa": "زیمبابوه",
+      "yue": "津巴布韋",
+    },
+    flag: "🇿🇼",
+    code: "ZW",
+    dialCode: "263",
+    minLength: 9,
+    maxLength: 9,
+  ),
 ];
 
 class Country {
